@@ -1,0 +1,1066 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portofolio Profesional - Full-Stack Developer & Designer</title>
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              50: '#eef2ff',
+              100: '#e0e7ff',
+              400: '#818cf8',
+              500: '#6366f1',
+              600: '#4f46e5',
+              700: '#4338ca',
+            }
+          },
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+  
+  <!-- Google Fonts: Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <style>
+    /* Custom scrollbar and subtle glassmorphism */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #0f172a;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #334155;
+      border-radius: 4px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #6366f1;
+    }
+    .glass-nav {
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+    }
+  </style>
+</head>
+<body class="bg-slate-50 text-slate-800 dark:bg-slate-950 dark:text-slate-100 font-sans transition-colors duration-300">
+
+  <header class="fixed top-0 left-0 w-full z-50 glass-nav bg-white/80 dark:bg-slate-900/80 border-b border-slate-200/80 dark:border-slate-800/80 transition-colors duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16 sm:h-20">
+        
+        <!-- Brand Logo -->
+        <a href="#hero" class="flex items-center space-x-2.5 group">
+          <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-indigo-600 to-violet-500 flex items-center justify-center text-white font-bold text-xl shadow-lg shadow-indigo-500/25 transition-transform group-hover:scale-105">
+            A
+          </div>
+          <span class="text-xl font-bold tracking-tight text-slate-900 dark:text-white">
+            Aksan<span class="text-indigo-600 dark:text-indigo-400">Zulkarnain</span>
+          </span>
+        </a>
+
+        <!-- Desktop Navigation Links -->
+        <nav class="hidden md:flex items-center space-x-8 text-sm font-medium">
+          <a href="#tentang" class="text-slate-600 hover:text-indigo-600 dark:text-slate-300 dark:hover:text-indigo-400 transition-colors">Tentang</a>
+          <a href="#keahlian" class="text-slate-600 hover:text-indigo-600 dark:text-slate-300 dark:hover:text-indigo-400 transition-colors">Keahlian</a>
+          <a href="#proyek" class="text-slate-600 hover:text-indigo-600 dark:text-slate-300 dark:hover:text-indigo-400 transition-colors">Portofolio</a>
+          <a href="#pengalaman" class="text-slate-600 hover:text-indigo-600 dark:text-slate-300 dark:hover:text-indigo-400 transition-colors">Pengalaman</a>
+          <a href="#kontak" class="text-slate-600 hover:text-indigo-600 dark:text-slate-300 dark:hover:text-indigo-400 transition-colors">Kontak</a>
+        </nav>
+
+        <!-- Action Buttons (Theme Toggle & CTA) -->
+        <div class="hidden md:flex items-center space-x-4">
+          <!-- Theme Toggle Button -->
+          <button id="themeToggleBtn" type="button" aria-label="Ganti Tema" class="p-2.5 rounded-xl text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition-all border border-slate-200 dark:border-slate-800">
+            <i class="fa-solid fa-moon text-lg dark:hidden"></i>
+            <i class="fa-solid fa-sun text-lg hidden dark:block text-amber-400"></i>
+          </button>
+          
+          <a href="#kontak" class="px-5 py-2.5 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white font-medium text-sm transition-all shadow-md shadow-indigo-600/20 hover:shadow-indigo-600/30 flex items-center gap-2">
+            <span>Ajak Diskusi</span>
+            <i class="fa-solid fa-arrow-right text-xs"></i>
+          </a>
+        </div>
+
+        <!-- Mobile Menu Toggle Button -->
+        <div class="flex items-center space-x-2 md:hidden">
+          <button id="mobileThemeToggleBtn" type="button" aria-label="Ganti Tema" class="p-2 rounded-lg text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800">
+            <i class="fa-solid fa-moon text-base dark:hidden"></i>
+            <i class="fa-solid fa-sun text-base hidden dark:block text-amber-400"></i>
+          </button>
+          <button id="mobileMenuBtn" type="button" aria-label="Buka Menu" class="p-2 rounded-lg text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 focus:outline-none">
+            <i class="fa-solid fa-bars text-xl" id="menuOpenIcon"></i>
+            <i class="fa-solid fa-xmark text-xl hidden" id="menuCloseIcon"></i>
+          </button>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Mobile Dropdown Navigation -->
+    <div id="mobileMenu" class="hidden md:hidden bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 px-4 pt-2 pb-6 space-y-3">
+      <a href="#tentang" class="block py-2 text-slate-700 dark:text-slate-200 font-medium hover:text-indigo-600 dark:hover:text-indigo-400 mobile-nav-link">Tentang</a>
+      <a href="#keahlian" class="block py-2 text-slate-700 dark:text-slate-200 font-medium hover:text-indigo-600 dark:hover:text-indigo-400 mobile-nav-link">Keahlian</a>
+      <a href="#proyek" class="block py-2 text-slate-700 dark:text-slate-200 font-medium hover:text-indigo-600 dark:hover:text-indigo-400 mobile-nav-link">Portofolio</a>
+      <a href="#pengalaman" class="block py-2 text-slate-700 dark:text-slate-200 font-medium hover:text-indigo-600 dark:hover:text-indigo-400 mobile-nav-link">Pengalaman</a>
+      <a href="#kontak" class="block py-2 text-slate-700 dark:text-slate-200 font-medium hover:text-indigo-600 dark:hover:text-indigo-400 mobile-nav-link">Kontak</a>
+      <div class="pt-2">
+        <a href="#kontak" class="w-full text-center block px-4 py-2.5 rounded-xl bg-indigo-600 text-white font-medium text-sm shadow-md mobile-nav-link">
+          Ajak Diskusi Sekarang
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section id="hero" class="relative pt-32 pb-20 md:pt-44 md:pb-32 overflow-hidden">
+      <!-- Background Ambient Glow -->
+      <div class="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-indigo-500/15 dark:bg-indigo-600/20 rounded-full blur-3xl pointer-events-none"></div>
+      <div class="absolute top-1/3 right-10 w-72 h-72 bg-violet-500/15 dark:bg-violet-600/20 rounded-full blur-3xl pointer-events-none"></div>
+
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+          
+          <!-- Left Column: Introduction -->
+          <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
+            <!-- Availability Badge -->
+            <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-50 dark:bg-emerald-950/50 border border-emerald-200 dark:border-emerald-800 text-emerald-700 dark:text-emerald-400 text-xs font-semibold">
+              <span class="w-2 h-2 rounded-full bg-emerald-500 animate-ping"></span>
+              <span>Terbuka untuk Proyek Freelance & Full-time</span>
+            </div>
+
+            <!-- Main Heading -->
+            <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-slate-900 dark:text-white leading-[1.15]">
+              Membangun Solusi Web <br class="hidden sm:inline">
+              <span class="bg-gradient-to-r from-indigo-600 via-violet-600 to-pink-500 bg-clip-text text-transparent">
+                Cepat, Elegan & Fungsional
+              </span>
+            </h1>
+
+            <!-- Bio Description -->
+            <p class="text-base sm:text-lg text-slate-600 dark:text-slate-300 max-w-2xl mx-auto lg:mx-0 leading-relaxed">
+              Halo! Saya <strong>Aksan Zulkarnain</strong>, seorang Full-Stack Web Developer & UI/UX enthusiast dengan fokus pada pembuatan aplikasi web performa tinggi, sistem manajemen responsif, dan pengalaman pengguna yang memikat.
+            </p>
+
+            <!-- CTA & Social Buttons -->
+            <div class="flex flex-wrap items-center justify-center lg:justify-start gap-4 pt-2">
+              <a href="#proyek" class="px-7 py-3.5 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white font-semibold text-sm transition-all shadow-lg shadow-indigo-600/30 hover:-translate-y-0.5">
+                Lihat Portofolio Saya
+              </a>
+              <a href="#kontak" class="px-7 py-3.5 rounded-xl bg-white dark:bg-slate-900 text-slate-800 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 font-semibold text-sm border border-slate-300 dark:border-slate-800 transition-all hover:-translate-y-0.5">
+                Hubungi Saya
+              </a>
+            </div>
+
+            <!-- Quick Metrics -->
+            <div class="grid grid-cols-3 gap-4 pt-6 border-t border-slate-200 dark:border-slate-800 max-w-lg mx-auto lg:mx-0">
+              <div>
+                <p class="text-2xl sm:text-3xl font-bold text-slate-900 dark:text-white">5+ <span class="text-indigo-600">Tahun</span></p>
+                <p class="text-xs sm:text-sm text-slate-500 dark:text-slate-400">Pengalaman Dev</p>
+              </div>
+              <div>
+                <p class="text-2xl sm:text-3xl font-bold text-slate-900 dark:text-white">40+ <span class="text-indigo-600">Proyek</span></p>
+                <p class="text-xs sm:text-sm text-slate-500 dark:text-slate-400">Selesai Berhasil</p>
+              </div>
+              <div>
+                <p class="text-2xl sm:text-3xl font-bold text-slate-900 dark:text-white">99%</p>
+                <p class="text-xs sm:text-sm text-slate-500 dark:text-slate-400">Kepuasan Klien</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right Column: Interactive Profile Card -->
+          <div class="lg:col-span-5 flex justify-center">
+            <div class="relative w-full max-w-sm">
+              <!-- Decorative background card -->
+              <div class="absolute -inset-1.5 bg-gradient-to-r from-indigo-500 to-pink-500 rounded-3xl blur opacity-30 group-hover:opacity-100 transition duration-1000"></div>
+              
+              <div class="relative bg-white dark:bg-slate-900 rounded-3xl p-6 shadow-xl border border-slate-100 dark:border-slate-800">
+                <!-- Profile Image -->
+                <div class="relative overflow-hidden rounded-2xl aspect-square bg-slate-100 dark:bg-slate-800 mb-6 group">
+                  <img 
+                    src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=700&q=80" 
+                    alt="Foto Profil Aksan Zulkarnain"
+                    class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    onerror="this.src='https://placehold.co/600x600/4f46e5/ffffff?text=Aksan+Zulkarnain'"
+                  >
+                  <div class="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-transparent to-transparent opacity-60"></div>
+                  <div class="absolute bottom-4 left-4 right-4 text-white">
+                    <p class="text-xs uppercase tracking-wider text-indigo-300 font-semibold">Berbasis di Jakarta, ID</p>
+                    <p class="text-lg font-bold">Software Engineer & Web Architect</p>
+                  </div>
+                </div>
+
+                <!-- Interactive Floating Tags -->
+                <div class="flex flex-wrap gap-2 text-xs font-medium">
+                  <span class="px-3 py-1.5 rounded-lg bg-indigo-50 text-indigo-600 dark:bg-indigo-950/60 dark:text-indigo-300">
+                    <i class="fa-brands fa-react mr-1"></i> React & Next.js
+                  </span>
+                  <span class="px-3 py-1.5 rounded-lg bg-emerald-50 text-emerald-600 dark:bg-emerald-950/60 dark:text-emerald-300">
+                    <i class="fa-brands fa-node-js mr-1"></i> Node.js
+                  </span>
+                  <span class="px-3 py-1.5 rounded-lg bg-sky-50 text-sky-600 dark:bg-sky-950/60 dark:text-sky-300">
+                    <i class="fa-solid fa-wind mr-1"></i> Tailwind CSS
+                  </span>
+                  <span class="px-3 py-1.5 rounded-lg bg-amber-50 text-amber-600 dark:bg-amber-950/60 dark:text-amber-300">
+                    <i class="fa-solid fa-database mr-1"></i> PostgreSQL
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <section id="tentang" class="py-20 bg-slate-100/70 dark:bg-slate-900/50 border-y border-slate-200 dark:border-slate-800">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="text-center max-w-3xl mx-auto mb-16">
+          <h2 class="text-xs font-bold uppercase tracking-widest text-indigo-600 dark:text-indigo-400 mb-2">Tentang Saya</h2>
+          <p class="text-3xl font-extrabold text-slate-900 dark:text-white sm:text-4xl">
+            Menghubungkan Ide Kreatif dengan Baris Kode Berkualitas
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <!-- Card 1 -->
+          <div class="bg-white dark:bg-slate-900 p-8 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-800 hover:border-indigo-500 dark:hover:border-indigo-500 transition-all group">
+            <div class="w-14 h-14 rounded-xl bg-indigo-50 dark:bg-indigo-950/60 text-indigo-600 dark:text-indigo-400 flex items-center justify-center text-2xl mb-6 group-hover:scale-110 transition-transform">
+              <i class="fa-solid fa-code"></i>
+            </div>
+            <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-3">Clean & Scalable Code</h3>
+            <p class="text-slate-600 dark:text-slate-300 text-sm leading-relaxed">
+              Menulis kode terstruktur, mudah dirawat, dan mengikuti best-practice industri. Mengutamakan performa loading optimal dan arsitektur modular.
+            </p>
+          </div>
+
+          <!-- Card 2 -->
+          <div class="bg-white dark:bg-slate-900 p-8 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-800 hover:border-indigo-500 dark:hover:border-indigo-500 transition-all group">
+            <div class="w-14 h-14 rounded-xl bg-violet-50 dark:bg-violet-950/60 text-violet-600 dark:text-violet-400 flex items-center justify-center text-2xl mb-6 group-hover:scale-110 transition-transform">
+              <i class="fa-solid fa-layer-group"></i>
+            </div>
+            <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-3">UI/UX & Desain Modern</h3>
+            <p class="text-slate-600 dark:text-slate-300 text-sm leading-relaxed">
+              Merancang antarmuka ramah pengguna, responsif pada ponsel maupun monitor resolusi tinggi, serta mempertimbangkan aksesibilitas pengguna.
+            </p>
+          </div>
+
+          <!-- Card 3 -->
+          <div class="bg-white dark:bg-slate-900 p-8 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-800 hover:border-indigo-500 dark:hover:border-indigo-500 transition-all group">
+            <div class="w-14 h-14 rounded-xl bg-emerald-50 dark:bg-emerald-950/60 text-emerald-600 dark:text-emerald-400 flex items-center justify-center text-2xl mb-6 group-hover:scale-110 transition-transform">
+              <i class="fa-solid fa-rocket"></i>
+            </div>
+            <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-3">Solusi Bisnis Nyata</h3>
+            <p class="text-slate-600 dark:text-slate-300 text-sm leading-relaxed">
+              Bukan sekadar kode estetis, tetapi juga sistem yang menjawab tantangan konversi, efisiensi operasional, dan kepuasan pelanggan bisnis Anda.
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <section id="keahlian" class="py-20">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="text-center max-w-3xl mx-auto mb-16">
+          <h2 class="text-xs font-bold uppercase tracking-widest text-indigo-600 dark:text-indigo-400 mb-2">Keahlian & Teknologi</h2>
+          <p class="text-3xl font-extrabold text-slate-900 dark:text-white sm:text-4xl">
+            Teknologi yang Biasa Saya Gunakan
+          </p>
+          <p class="mt-4 text-slate-600 dark:text-slate-400 text-sm sm:text-base">
+            Perangkat dan bahasa pemrograman yang saya manfaatkan untuk membangun produk digital tangguh.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-10">
+          
+          <!-- Column 1: Progress Indicators -->
+          <div class="bg-white dark:bg-slate-900 p-8 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm space-y-6">
+            <h3 class="text-lg font-bold text-slate-900 dark:text-white mb-4 flex items-center gap-2">
+              <i class="fa-solid fa-sliders text-indigo-600"></i> Tingkat Kemahiran Utama
+            </h3>
+
+            <!-- Skill 1 -->
+            <div>
+              <div class="flex justify-between text-sm font-medium mb-1">
+                <span class="text-slate-800 dark:text-slate-200">Frontend (React, Next.js, Tailwind CSS)</span>
+                <span class="text-indigo-600 dark:text-indigo-400 font-semibold">95%</span>
+              </div>
+              <div class="w-full h-2.5 bg-slate-100 dark:bg-slate-800 rounded-full overflow-hidden">
+                <div class="h-full bg-indigo-600 rounded-full" style="width: 95%"></div>
+              </div>
+            </div>
+
+            <!-- Skill 2 -->
+            <div>
+              <div class="flex justify-between text-sm font-medium mb-1">
+                <span class="text-slate-800 dark:text-slate-200">Backend & API (Node.js, Express, REST/GraphQL)</span>
+                <span class="text-indigo-600 dark:text-indigo-400 font-semibold">90%</span>
+              </div>
+              <div class="w-full h-2.5 bg-slate-100 dark:bg-slate-800 rounded-full overflow-hidden">
+                <div class="h-full bg-violet-600 rounded-full" style="width: 90%"></div>
+              </div>
+            </div>
+
+            <!-- Skill 3 -->
+            <div>
+              <div class="flex justify-between text-sm font-medium mb-1">
+                <span class="text-slate-800 dark:text-slate-200">Database (PostgreSQL, MongoDB, Redis)</span>
+                <span class="text-indigo-600 dark:text-indigo-400 font-semibold">85%</span>
+              </div>
+              <div class="w-full h-2.5 bg-slate-100 dark:bg-slate-800 rounded-full overflow-hidden">
+                <div class="h-full bg-emerald-600 rounded-full" style="width: 85%"></div>
+              </div>
+            </div>
+
+            <!-- Skill 4 -->
+            <div>
+              <div class="flex justify-between text-sm font-medium mb-1">
+                <span class="text-slate-800 dark:text-slate-200">DevOps & Cloud (Docker, CI/CD, AWS, Vercel)</span>
+                <span class="text-indigo-600 dark:text-indigo-400 font-semibold">80%</span>
+              </div>
+              <div class="w-full h-2.5 bg-slate-100 dark:bg-slate-800 rounded-full overflow-hidden">
+                <div class="h-full bg-amber-500 rounded-full" style="width: 80%"></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Column 2: Tech Badges Grid -->
+          <div class="grid grid-cols-2 sm:grid-cols-3 gap-4">
+            
+            <div class="bg-white dark:bg-slate-900 p-4 rounded-xl border border-slate-200 dark:border-slate-800 flex flex-col items-center justify-center text-center transition-all hover:scale-105 hover:border-indigo-500">
+              <i class="fa-brands fa-react text-4xl text-sky-400 mb-2"></i>
+              <span class="font-semibold text-sm">React.js</span>
+              <span class="text-xs text-slate-500 dark:text-slate-400">Frontend Lib</span>
+            </div>
+
+            <div class="bg-white dark:bg-slate-900 p-4 rounded-xl border border-slate-200 dark:border-slate-800 flex flex-col items-center justify-center text-center transition-all hover:scale-105 hover:border-indigo-500">
+              <i class="fa-brands fa-node-js text-4xl text-emerald-500 mb-2"></i>
+              <span class="font-semibold text-sm">Node.js</span>
+              <span class="text-xs text-slate-500 dark:text-slate-400">Runtime Env</span>
+            </div>
+
+            <div class="bg-white dark:bg-slate-900 p-4 rounded-xl border border-slate-200 dark:border-slate-800 flex flex-col items-center justify-center text-center transition-all hover:scale-105 hover:border-indigo-500">
+              <i class="fa-brands fa-js text-4xl text-yellow-400 mb-2"></i>
+              <span class="font-semibold text-sm">TypeScript</span>
+              <span class="text-xs text-slate-500 dark:text-slate-400">Type-Safety</span>
+            </div>
+
+            <div class="bg-white dark:bg-slate-900 p-4 rounded-xl border border-slate-200 dark:border-slate-800 flex flex-col items-center justify-center text-center transition-all hover:scale-105 hover:border-indigo-500">
+              <i class="fa-brands fa-python text-4xl text-blue-500 mb-2"></i>
+              <span class="font-semibold text-sm">Python</span>
+              <span class="text-xs text-slate-500 dark:text-slate-400">Data & Scripts</span>
+            </div>
+
+            <div class="bg-white dark:bg-slate-900 p-4 rounded-xl border border-slate-200 dark:border-slate-800 flex flex-col items-center justify-center text-center transition-all hover:scale-105 hover:border-indigo-500">
+              <i class="fa-brands fa-docker text-4xl text-blue-400 mb-2"></i>
+              <span class="font-semibold text-sm">Docker</span>
+              <span class="text-xs text-slate-500 dark:text-slate-400">Container</span>
+            </div>
+
+            <div class="bg-white dark:bg-slate-900 p-4 rounded-xl border border-slate-200 dark:border-slate-800 flex flex-col items-center justify-center text-center transition-all hover:scale-105 hover:border-indigo-500">
+              <i class="fa-brands fa-figma text-4xl text-pink-500 mb-2"></i>
+              <span class="font-semibold text-sm">Figma</span>
+              <span class="text-xs text-slate-500 dark:text-slate-400">UI/UX Prototype</span>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <section id="proyek" class="py-20 bg-slate-100/70 dark:bg-slate-900/50 border-y border-slate-200 dark:border-slate-800">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="text-center max-w-3xl mx-auto mb-12">
+          <h2 class="text-xs font-bold uppercase tracking-widest text-indigo-600 dark:text-indigo-400 mb-2">Portofolio Pilihan</h2>
+          <p class="text-3xl font-extrabold text-slate-900 dark:text-white sm:text-4xl">
+            Hasil Karya & Proyek Nyata
+          </p>
+          <p class="mt-4 text-slate-600 dark:text-slate-400 text-sm sm:text-base">
+            Berikut beberapa proyek terpilih yang mencakup web app SaaS, platform e-commerce, dan dashboard analitik.
+          </p>
+        </div>
+
+        <!-- Filter Buttons -->
+        <div class="flex flex-wrap items-center justify-center gap-2 mb-12">
+          <button data-filter="all" class="filter-btn active px-4 py-2 rounded-xl text-sm font-semibold transition-all bg-indigo-600 text-white shadow-sm">
+            Semua
+          </button>
+          <button data-filter="web" class="filter-btn px-4 py-2 rounded-xl text-sm font-semibold transition-all bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700">
+            Aplikasi Web
+          </button>
+          <button data-filter="mobile" class="filter-btn px-4 py-2 rounded-xl text-sm font-semibold transition-all bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700">
+            Mobile / PWA
+          </button>
+          <button data-filter="uiux" class="filter-btn px-4 py-2 rounded-xl text-sm font-semibold transition-all bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700">
+            Desain UI/UX
+          </button>
+        </div>
+
+        <!-- Project Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="projectsGrid">
+          
+          <!-- Project Card 1 -->
+          <div class="project-card bg-white dark:bg-slate-900 rounded-2xl overflow-hidden border border-slate-200 dark:border-slate-800 shadow-sm hover:shadow-xl transition-all group" data-category="web">
+            <div class="relative overflow-hidden aspect-video bg-slate-200 dark:bg-slate-800">
+              <img 
+                src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=80" 
+                alt="FinTrack SaaS Dashboard" 
+                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                onerror="this.src='https://placehold.co/800x450/4f46e5/ffffff?text=FinTrack+Dashboard'"
+              >
+              <span class="absolute top-3 right-3 bg-indigo-600 text-white text-xs px-2.5 py-1 rounded-full font-semibold">Web App</span>
+            </div>
+            <div class="p-6">
+              <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-2">FinTrack - Dashboard Keuangan</h3>
+              <p class="text-slate-600 dark:text-slate-300 text-sm mb-4 line-clamp-2">
+                Aplikasi pencatatan arus kas dan analitik finansial UKM dengan visualisasi diagram interaktif secara real-time.
+              </p>
+              <div class="flex flex-wrap gap-2 mb-6">
+                <span class="text-xs px-2.5 py-1 rounded-md bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300">Next.js</span>
+                <span class="text-xs px-2.5 py-1 rounded-md bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300">Tailwind</span>
+                <span class="text-xs px-2.5 py-1 rounded-md bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300">PostgreSQL</span>
+              </div>
+              <div class="flex items-center justify-between pt-4 border-t border-slate-100 dark:border-slate-800">
+                <button onclick="openModal('FinTrack - Dashboard Keuangan', 'Platform analitik kas masuk dan kas keluar untuk pemilik UMKM. Dilengkapi autentikasi multi-tenant, ekspor laporan PDF/Excel instan, dan integrasi webhook pembayaran.', ['Next.js 14', 'PostgreSQL', 'Tailwind CSS', 'Chart.js'], 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=80')" class="text-indigo-600 dark:text-indigo-400 font-semibold text-sm hover:underline flex items-center gap-1">
+                  <span>Detail Lengkap</span>
+                  <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
+                </button>
+                <div class="flex space-x-3 text-slate-400">
+                  <span class="hover:text-slate-800 dark:hover:text-white cursor-pointer" title="Kode Sumber"><i class="fa-brands fa-github text-base"></i></span>
+                  <span class="hover:text-slate-800 dark:hover:text-white cursor-pointer" title="Pratinjau Live"><i class="fa-solid fa-arrow-up-right-from-square text-base"></i></span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project Card 2 -->
+          <div class="project-card bg-white dark:bg-slate-900 rounded-2xl overflow-hidden border border-slate-200 dark:border-slate-800 shadow-sm hover:shadow-xl transition-all group" data-category="mobile">
+            <div class="relative overflow-hidden aspect-video bg-slate-200 dark:bg-slate-800">
+              <img 
+                src="https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&w=800&q=80" 
+                alt="HealthPulse PWA" 
+                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                onerror="this.src='https://placehold.co/800x450/10b981/ffffff?text=HealthPulse+PWA'"
+              >
+              <span class="absolute top-3 right-3 bg-emerald-600 text-white text-xs px-2.5 py-1 rounded-full font-semibold">Mobile App</span>
+            </div>
+            <div class="p-6">
+              <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-2">HealthPulse - Medical PWA</h3>
+              <p class="text-slate-600 dark:text-slate-300 text-sm mb-4 line-clamp-2">
+                Aplikasi web progresif untuk pemesanan jadwal dokter dan pengingat konsumsi obat harian dengan notifikasi push offline.
+              </p>
+              <div class="flex flex-wrap gap-2 mb-6">
+                <span class="text-xs px-2.5 py-1 rounded-md bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300">React PWA</span>
+                <span class="text-xs px-2.5 py-1 rounded-md bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300">Node.js</span>
+                <span class="text-xs px-2.5 py-1 rounded-md bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300">Workbox</span>
+              </div>
+              <div class="flex items-center justify-between pt-4 border-t border-slate-100 dark:border-slate-800">
+                <button onclick="openModal('HealthPulse - Medical PWA', 'HealthPulse memungkinkan pasien berkonsultasi secara async dengan dokter spesialis, menyinkronkan rekam medis offline, serta mengatur alarm pengingat obat dengan service worker.', ['React', 'Workbox', 'Firebase', 'Tailwind CSS'], 'https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&w=1200&q=80')" class="text-indigo-600 dark:text-indigo-400 font-semibold text-sm hover:underline flex items-center gap-1">
+                  <span>Detail Lengkap</span>
+                  <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
+                </button>
+                <div class="flex space-x-3 text-slate-400">
+                  <span class="hover:text-slate-800 dark:hover:text-white cursor-pointer" title="Kode Sumber"><i class="fa-brands fa-github text-base"></i></span>
+                  <span class="hover:text-slate-800 dark:hover:text-white cursor-pointer" title="Pratinjau Live"><i class="fa-solid fa-arrow-up-right-from-square text-base"></i></span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project Card 3 -->
+          <div class="project-card bg-white dark:bg-slate-900 rounded-2xl overflow-hidden border border-slate-200 dark:border-slate-800 shadow-sm hover:shadow-xl transition-all group" data-category="uiux">
+            <div class="relative overflow-hidden aspect-video bg-slate-200 dark:bg-slate-800">
+              <img 
+                src="https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?auto=format&fit=crop&w=800&q=80" 
+                alt="Lumina E-Commerce Redesign" 
+                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                onerror="this.src='https://placehold.co/800x450/8b5cf6/ffffff?text=Lumina+Design+System'"
+              >
+              <span class="absolute top-3 right-3 bg-violet-600 text-white text-xs px-2.5 py-1 rounded-full font-semibold">UI/UX</span>
+            </div>
+            <div class="p-6">
+              <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-2">Lumina - Design System</h3>
+              <p class="text-slate-600 dark:text-slate-300 text-sm mb-4 line-clamp-2">
+                Perancangan sistem desain terpadu, wireframing, dan prototipe interaktif untuk platform marketplace produk fesyen berkelanjutan.
+              </p>
+              <div class="flex flex-wrap gap-2 mb-6">
+                <span class="text-xs px-2.5 py-1 rounded-md bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300">Figma</span>
+                <span class="text-xs px-2.5 py-1 rounded-md bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300">Prototyping</span>
+                <span class="text-xs px-2.5 py-1 rounded-md bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300">Design System</span>
+              </div>
+              <div class="flex items-center justify-between pt-4 border-t border-slate-100 dark:border-slate-800">
+                <button onclick="openModal('Lumina - E-Commerce Design System', 'Studi kasus desain komprehensif mulai dari user interview, persona analysis, information architecture, hingga pembuatan 150+ komponen tokenized di Figma yang siap didevelop.', ['Figma Tokens', 'User Journey Mapping', 'A/B Test Prototype'], 'https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?auto=format&fit=crop&w=1200&q=80')" class="text-indigo-600 dark:text-indigo-400 font-semibold text-sm hover:underline flex items-center gap-1">
+                  <span>Detail Lengkap</span>
+                  <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
+                </button>
+                <div class="flex space-x-3 text-slate-400">
+                  <span class="hover:text-slate-800 dark:hover:text-white cursor-pointer" title="Pratinjau Figma"><i class="fa-brands fa-figma text-base"></i></span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project Card 4 -->
+          <div class="project-card bg-white dark:bg-slate-900 rounded-2xl overflow-hidden border border-slate-200 dark:border-slate-800 shadow-sm hover:shadow-xl transition-all group" data-category="web">
+            <div class="relative overflow-hidden aspect-video bg-slate-200 dark:bg-slate-800">
+              <img 
+                src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80" 
+                alt="EduSpark LMS" 
+                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                onerror="this.src='https://placehold.co/800x450/f59e0b/ffffff?text=EduSpark+LMS'"
+              >
+              <span class="absolute top-3 right-3 bg-indigo-600 text-white text-xs px-2.5 py-1 rounded-full font-semibold">Web App</span>
+            </div>
+            <div class="p-6">
+              <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-2">EduSpark - Learning Platform</h3>
+              <p class="text-slate-600 dark:text-slate-300 text-sm mb-4 line-clamp-2">
+                Platform kursus daring dengan video streaming adaptive bitrate, quiz interaktif, dan sertifikat otomatis ber-barcode.
+              </p>
+              <div class="flex flex-wrap gap-2 mb-6">
+                <span class="text-xs px-2.5 py-1 rounded-md bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300">Vue 3</span>
+                <span class="text-xs px-2.5 py-1 rounded-md bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300">Express</span>
+                <span class="text-xs px-2.5 py-1 rounded-md bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300">AWS S3</span>
+              </div>
+              <div class="flex items-center justify-between pt-4 border-t border-slate-100 dark:border-slate-800">
+                <button onclick="openModal('EduSpark - Learning Platform', 'Platform kursus online dengan sistem payment gateway Midtrans, streaming video proteksi HLS, modul kuis otomatis, dan penerbitan verifikasi e-sertifikat.', ['Vue 3', 'Node.js', 'Redis', 'AWS CloudFront'], 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1200&q=80')" class="text-indigo-600 dark:text-indigo-400 font-semibold text-sm hover:underline flex items-center gap-1">
+                  <span>Detail Lengkap</span>
+                  <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
+                </button>
+                <div class="flex space-x-3 text-slate-400">
+                  <span class="hover:text-slate-800 dark:hover:text-white cursor-pointer"><i class="fa-brands fa-github text-base"></i></span>
+                  <span class="hover:text-slate-800 dark:hover:text-white cursor-pointer"><i class="fa-solid fa-arrow-up-right-from-square text-base"></i></span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project Card 5 -->
+          <div class="project-card bg-white dark:bg-slate-900 rounded-2xl overflow-hidden border border-slate-200 dark:border-slate-800 shadow-sm hover:shadow-xl transition-all group" data-category="mobile">
+            <div class="relative overflow-hidden aspect-video bg-slate-200 dark:bg-slate-800">
+              <img 
+                src="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?auto=format&fit=crop&w=800&q=80" 
+                alt="FoodDash Driver App" 
+                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                onerror="this.src='https://placehold.co/800x450/ef4444/ffffff?text=FoodDash+Driver'"
+              >
+              <span class="absolute top-3 right-3 bg-emerald-600 text-white text-xs px-2.5 py-1 rounded-full font-semibold">Mobile App</span>
+            </div>
+            <div class="p-6">
+              <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-2">FoodDash - Kurir Pintar</h3>
+              <p class="text-slate-600 dark:text-slate-300 text-sm mb-4 line-clamp-2">
+                Aplikasi pelacakan rute pengantaran makanan dengan optimasi jalur geolokasi berbasis algoritma Dijkstra.
+              </p>
+              <div class="flex flex-wrap gap-2 mb-6">
+                <span class="text-xs px-2.5 py-1 rounded-md bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300">React Native</span>
+                <span class="text-xs px-2.5 py-1 rounded-md bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300">Socket.io</span>
+                <span class="text-xs px-2.5 py-1 rounded-md bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300">Mapbox</span>
+              </div>
+              <div class="flex items-center justify-between pt-4 border-t border-slate-100 dark:border-slate-800">
+                <button onclick="openModal('FoodDash - Kurir Pintar', 'Solusi pengantaran cepat makanan lokal dengan peta GPS live update tiap 3 detik via WebSocket, hemat konsumsi baterai, dan integrasi chatting real-time dengan pelanggan.', ['React Native', 'Socket.IO', 'Mapbox SDK', 'MongoDB'], 'https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?auto=format&fit=crop&w=1200&q=80')" class="text-indigo-600 dark:text-indigo-400 font-semibold text-sm hover:underline flex items-center gap-1">
+                  <span>Detail Lengkap</span>
+                  <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
+                </button>
+                <div class="flex space-x-3 text-slate-400">
+                  <span class="hover:text-slate-800 dark:hover:text-white cursor-pointer"><i class="fa-brands fa-github text-base"></i></span>
+                  <span class="hover:text-slate-800 dark:hover:text-white cursor-pointer"><i class="fa-solid fa-arrow-up-right-from-square text-base"></i></span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project Card 6 -->
+          <div class="project-card bg-white dark:bg-slate-900 rounded-2xl overflow-hidden border border-slate-200 dark:border-slate-800 shadow-sm hover:shadow-xl transition-all group" data-category="uiux">
+            <div class="relative overflow-hidden aspect-video bg-slate-200 dark:bg-slate-800">
+              <img 
+                src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=800&q=80" 
+                alt="CryptoSphere Wallet Concept" 
+                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                onerror="this.src='https://placehold.co/800x450/6366f1/ffffff?text=Crypto+Wallet+UI'"
+              >
+              <span class="absolute top-3 right-3 bg-violet-600 text-white text-xs px-2.5 py-1 rounded-full font-semibold">UI/UX</span>
+            </div>
+            <div class="p-6">
+              <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-2">CryptoSphere - Web3 Wallet</h3>
+              <p class="text-slate-600 dark:text-slate-300 text-sm mb-4 line-clamp-2">
+                Eksplorasi antarmuka dompet crypto yang memudahkan pemula memahami gas fee, transfer token, dan staking aset digital.
+              </p>
+              <div class="flex flex-wrap gap-2 mb-6">
+                <span class="text-xs px-2.5 py-1 rounded-md bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300">Figma</span>
+                <span class="text-xs px-2.5 py-1 rounded-md bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300">Micro-interactions</span>
+              </div>
+              <div class="flex items-center justify-between pt-4 border-t border-slate-100 dark:border-slate-800">
+                <button onclick="openModal('CryptoSphere - Web3 Wallet Concept', 'Konsep antarmuka berfokus pada kesederhanaan onboarding Web3. Menghilangkan kerumitan frase teknis dengan microcopy yang bersahabat dan proteksi konfirmasi transaksi 2 langkah.', ['Figma', 'Principle', 'Design System'], 'https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=1200&q=80')" class="text-indigo-600 dark:text-indigo-400 font-semibold text-sm hover:underline flex items-center gap-1">
+                  <span>Detail Lengkap</span>
+                  <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
+                </button>
+                <div class="flex space-x-3 text-slate-400">
+                  <span class="hover:text-slate-800 dark:hover:text-white cursor-pointer"><i class="fa-brands fa-figma text-base"></i></span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <section id="pengalaman" class="py-20">
+      <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="text-center max-w-3xl mx-auto mb-16">
+          <h2 class="text-xs font-bold uppercase tracking-widest text-indigo-600 dark:text-indigo-400 mb-2">Riwayat Karier</h2>
+          <p class="text-3xl font-extrabold text-slate-900 dark:text-white sm:text-4xl">
+            Pengalaman Kerja & Kontribusi
+          </p>
+        </div>
+
+        <!-- Vertical Timeline -->
+        <div class="relative border-l-2 border-indigo-200 dark:border-slate-800 ml-4 md:ml-32 space-y-12">
+          
+          <!-- Experience Item 1 -->
+          <div class="relative pl-8 group">
+            <div class="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full bg-indigo-600 border-4 border-white dark:border-slate-950"></div>
+            <div class="md:absolute md:-left-36 md:top-1 text-sm font-semibold text-indigo-600 dark:text-indigo-400 mb-1 md:mb-0">
+              2023 - Sekarang
+            </div>
+            <div class="bg-white dark:bg-slate-900 p-6 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm">
+              <h3 class="text-lg font-bold text-slate-900 dark:text-white">Senior Frontend Engineer</h3>
+              <p class="text-sm font-medium text-slate-500 dark:text-slate-400 mb-3">TechNova Solusindo • Penuh Waktu</p>
+              <p class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+                Memimpin tim 6 developer dalam migrasi aplikasi monolitis ke arsitektur micro-frontend berbasis Next.js. Berhasil meningkatkan kecepatan loading hingga 42% dan menaikkan skor Core Web Vitals ke angka 98.
+              </p>
+            </div>
+          </div>
+
+          <!-- Experience Item 2 -->
+          <div class="relative pl-8 group">
+            <div class="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full bg-slate-300 dark:bg-slate-700 border-4 border-white dark:border-slate-950 group-hover:bg-indigo-600 transition-colors"></div>
+            <div class="md:absolute md:-left-36 md:top-1 text-sm font-semibold text-slate-500 dark:text-slate-400 mb-1 md:mb-0">
+              2021 - 2023
+            </div>
+            <div class="bg-white dark:bg-slate-900 p-6 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm">
+              <h3 class="text-lg font-bold text-slate-900 dark:text-white">Full-Stack Developer</h3>
+              <p class="text-sm font-medium text-slate-500 dark:text-slate-400 mb-3">KaryaDigital Studio • Jakarta</p>
+              <p class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+                Membangun lebih dari 15 aplikasi web komersial untuk klien lokal dan internasional menggunakan React, Node.js, dan PostgreSQL. Mengintegrasikan payment gateway dan automated testing pipeline.
+              </p>
+            </div>
+          </div>
+
+          <!-- Experience Item 3 -->
+          <div class="relative pl-8 group">
+            <div class="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full bg-slate-300 dark:bg-slate-700 border-4 border-white dark:border-slate-950 group-hover:bg-indigo-600 transition-colors"></div>
+            <div class="md:absolute md:-left-36 md:top-1 text-sm font-semibold text-slate-500 dark:text-slate-400 mb-1 md:mb-0">
+              2019 - 2021
+            </div>
+            <div class="bg-white dark:bg-slate-900 p-6 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm">
+              <h3 class="text-lg font-bold text-slate-900 dark:text-white">Junior Web Developer & UI Designer</h3>
+              <p class="text-sm font-medium text-slate-500 dark:text-slate-400 mb-3">CreativeLabs Agency</p>
+              <p class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+                Membuat landing page interaktif dengan animasi halus, mendesain wireframe dan prototipe di Figma, serta melakukan pemeliharaan database klien.
+              </p>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <section id="kontak" class="py-20 bg-slate-100/70 dark:bg-slate-900/50 border-t border-slate-200 dark:border-slate-800 relative">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="text-center max-w-3xl mx-auto mb-16">
+          <h2 class="text-xs font-bold uppercase tracking-widest text-indigo-600 dark:text-indigo-400 mb-2">Kontak Saya</h2>
+          <p class="text-3xl font-extrabold text-slate-900 dark:text-white sm:text-4xl">
+            Mari Bicarakan Proyek Impian Anda
+          </p>
+          <p class="mt-4 text-slate-600 dark:text-slate-400 text-sm sm:text-base">
+            Punya ide produk, tawaran kerja sama, atau sekadar ingin menyapa? Kirim pesan dan saya akan membalasnya sesegera mungkin.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-10">
+          
+          <!-- Contact Details (Left) -->
+          <div class="lg:col-span-5 space-y-6">
+            <div class="bg-white dark:bg-slate-900 p-8 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm space-y-6">
+              <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-2">Informasi Kontak</h3>
+              
+              <!-- Item: Email -->
+              <div class="flex items-start gap-4">
+                <div class="w-12 h-12 rounded-xl bg-indigo-50 dark:bg-indigo-950/60 text-indigo-600 dark:text-indigo-400 flex items-center justify-center text-xl shrink-0">
+                  <i class="fa-solid fa-envelope"></i>
+                </div>
+                <div class="flex-1">
+                  <p class="text-xs text-slate-500 dark:text-slate-400 font-medium">Kirim Email</p>
+                  <p class="text-sm font-semibold text-slate-800 dark:text-slate-200 select-all" id="emailText">aksan.zulkarnain.dev@example.com</p>
+                  <button type="button" onclick="copyEmail()" class="text-xs text-indigo-600 dark:text-indigo-400 font-medium hover:underline mt-1 flex items-center gap-1">
+                    <i class="fa-regular fa-copy"></i> Salin Email
+                  </button>
+                </div>
+              </div>
+
+              <!-- Item: WhatsApp / Phone -->
+              <div class="flex items-start gap-4">
+                <div class="w-12 h-12 rounded-xl bg-emerald-50 dark:bg-emerald-950/60 text-emerald-600 dark:text-emerald-400 flex items-center justify-center text-xl shrink-0">
+                  <i class="fa-brands fa-whatsapp"></i>
+                </div>
+                <div>
+                  <p class="text-xs text-slate-500 dark:text-slate-400 font-medium">WhatsApp / Telepon</p>
+                  <p class="text-sm font-semibold text-slate-800 dark:text-slate-200">+62 812-3456-7890</p>
+                  <span class="text-xs text-slate-500 dark:text-slate-400">Tersedia pada jam kerja (WIB)</span>
+                </div>
+              </div>
+
+              <!-- Item: Location -->
+              <div class="flex items-start gap-4">
+                <div class="w-12 h-12 rounded-xl bg-sky-50 dark:bg-sky-950/60 text-sky-600 dark:text-sky-400 flex items-center justify-center text-xl shrink-0">
+                  <i class="fa-solid fa-location-dot"></i>
+                </div>
+                <div>
+                  <p class="text-xs text-slate-500 dark:text-slate-400 font-medium">Lokasi</p>
+                  <p class="text-sm font-semibold text-slate-800 dark:text-slate-200">Jakarta Selatan, Indonesia</p>
+                  <span class="text-xs text-slate-500 dark:text-slate-400">Siap kerja Remote & Hybrid</span>
+                </div>
+              </div>
+
+              <!-- Social Links -->
+              <div class="pt-6 border-t border-slate-100 dark:border-slate-800">
+                <p class="text-xs font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-3">Ikuti Media Sosial</p>
+                <div class="flex space-x-3">
+                  <a href="#" class="w-10 h-10 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:text-white hover:bg-indigo-600 dark:hover:bg-indigo-600 flex items-center justify-center transition-all">
+                    <i class="fa-brands fa-github"></i>
+                  </a>
+                  <a href="#" class="w-10 h-10 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:text-white hover:bg-blue-600 dark:hover:bg-blue-600 flex items-center justify-center transition-all">
+                    <i class="fa-brands fa-linkedin-in"></i>
+                  </a>
+                  <a href="#" class="w-10 h-10 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:text-white hover:bg-sky-500 dark:hover:bg-sky-500 flex items-center justify-center transition-all">
+                    <i class="fa-brands fa-twitter"></i>
+                  </a>
+                  <a href="#" class="w-10 h-10 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:text-white hover:bg-pink-600 dark:hover:bg-pink-600 flex items-center justify-center transition-all">
+                    <i class="fa-brands fa-instagram"></i>
+                  </a>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          <!-- Contact Form (Right) -->
+          <div class="lg:col-span-7">
+            <div class="bg-white dark:bg-slate-900 p-8 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm">
+              <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-6">Kirim Pesan Langsung</h3>
+              
+              <form id="contactForm" onsubmit="handleFormSubmit(event)" class="space-y-4">
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div>
+                    <label for="name" class="block text-xs font-semibold text-slate-700 dark:text-slate-300 uppercase tracking-wider mb-2">Nama Lengkap *</label>
+                    <input type="text" id="name" required placeholder="Contoh: Budi Santoso" class="w-full px-4 py-3 rounded-xl bg-slate-50 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 text-slate-900 dark:text-white text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 transition-all">
+                  </div>
+                  <div>
+                    <label for="email" class="block text-xs font-semibold text-slate-700 dark:text-slate-300 uppercase tracking-wider mb-2">Alamat Email *</label>
+                    <input type="email" id="email" required placeholder="budi@perusahaan.com" class="w-full px-4 py-3 rounded-xl bg-slate-50 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 text-slate-900 dark:text-white text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 transition-all">
+                  </div>
+                </div>
+
+                <div>
+                  <label for="subject" class="block text-xs font-semibold text-slate-700 dark:text-slate-300 uppercase tracking-wider mb-2">Subjek Pesan</label>
+                  <input type="text" id="subject" placeholder="Penawaran Proyek / Pertanyaan Kerja Sama" class="w-full px-4 py-3 rounded-xl bg-slate-50 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 text-slate-900 dark:text-white text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 transition-all">
+                </div>
+
+                <div>
+                  <label for="message" class="block text-xs font-semibold text-slate-700 dark:text-slate-300 uppercase tracking-wider mb-2">Pesan Anda *</label>
+                  <textarea id="message" rows="5" required placeholder="Ceritakan detail proyek atau kebutuhan Anda di sini..." class="w-full px-4 py-3 rounded-xl bg-slate-50 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 text-slate-900 dark:text-white text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 transition-all"></textarea>
+                </div>
+
+                <button type="submit" id="submitBtn" class="w-full sm:w-auto px-8 py-3.5 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white font-semibold text-sm transition-all shadow-md shadow-indigo-600/30 flex items-center justify-center gap-2">
+                  <span>Kirim Pesan Sekarang</span>
+                  <i class="fa-solid fa-paper-plane text-xs"></i>
+                </button>
+              </form>
+
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <footer class="bg-white dark:bg-slate-950 border-t border-slate-200 dark:border-slate-800 py-10 transition-colors">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+      <div class="flex items-center space-x-2">
+        <div class="w-7 h-7 rounded-lg bg-indigo-600 text-white font-bold flex items-center justify-center text-sm">
+          A
+        </div>
+        <p class="text-sm text-slate-500 dark:text-slate-400">
+          © <span id="currentYear"></span> Aksan Zulkarnain. Dibuat dengan dedikasi & performa tinggi.
+        </p>
+      </div>
+
+      <div class="flex space-x-6 text-sm text-slate-500 dark:text-slate-400">
+        <a href="#hero" class="hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">Kembali ke Atas ↑</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Project Detail Modal -->
+  <div id="projectModal" class="fixed inset-0 z-50 bg-slate-950/70 backdrop-blur-sm hidden items-center justify-center p-4 transition-opacity duration-300">
+    <div class="bg-white dark:bg-slate-900 max-w-2xl w-full rounded-2xl overflow-hidden shadow-2xl border border-slate-200 dark:border-slate-800 transition-all transform scale-95" id="modalCard">
+      <div class="relative h-60 w-full overflow-hidden bg-slate-200 dark:bg-slate-800">
+        <img id="modalImage" src="" alt="Pratinjau Proyek" class="w-full h-full object-cover">
+        <button onclick="closeModal()" class="absolute top-4 right-4 w-9 h-9 rounded-full bg-slate-900/70 text-white hover:bg-slate-900 flex items-center justify-center transition-colors">
+          <i class="fa-solid fa-xmark text-lg"></i>
+        </button>
+      </div>
+      <div class="p-6 sm:p-8 space-y-4">
+        <h3 id="modalTitle" class="text-2xl font-bold text-slate-900 dark:text-white"></h3>
+        <p id="modalDesc" class="text-slate-600 dark:text-slate-300 text-sm leading-relaxed"></p>
+        
+        <div>
+          <h4 class="text-xs font-bold uppercase tracking-wider text-slate-400 mb-2">Teknologi yang Digunakan</h4>
+          <div id="modalTags" class="flex flex-wrap gap-2"></div>
+        </div>
+
+        <div class="pt-4 flex justify-end gap-3 border-t border-slate-100 dark:border-slate-800">
+          <button onclick="closeModal()" class="px-5 py-2.5 rounded-xl border border-slate-300 dark:border-slate-700 text-sm font-semibold hover:bg-slate-100 dark:hover:bg-slate-800">
+            Tutup
+          </button>
+          <a href="#kontak" onclick="closeModal()" class="px-5 py-2.5 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white text-sm font-semibold shadow-md">
+            Konsultasi Serupa
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Custom Toast Notification Box -->
+  <div id="toast" class="fixed bottom-6 right-6 z-50 transform translate-y-24 opacity-0 transition-all duration-300 pointer-events-none bg-slate-900 dark:bg-white text-white dark:text-slate-900 px-5 py-3.5 rounded-xl shadow-2xl flex items-center gap-3 border border-slate-700 dark:border-slate-200">
+    <div id="toastIcon" class="text-emerald-400 dark:text-emerald-600 text-lg">
+      <i class="fa-solid fa-circle-check"></i>
+    </div>
+    <div>
+      <p id="toastTitle" class="text-sm font-bold">Pesan Terkirim!</p>
+      <p id="toastMessage" class="text-xs text-slate-300 dark:text-slate-600">Terima kasih, saya akan segera menghubungi Anda.</p>
+    </div>
+  </div>
+
+  <script>
+    // Set dynamic current year in footer
+    document.getElementById('currentYear').textContent = new Date().getFullYear();
+
+    // Theme Toggle Logic (Dark / Light mode)
+    const themeToggleBtn = document.getElementById('themeToggleBtn');
+    const mobileThemeToggleBtn = document.getElementById('mobileThemeToggleBtn');
+    const html = document.documentElement;
+
+    function initTheme() {
+      const savedTheme = localStorage.getItem('theme');
+      if (savedTheme === 'dark' || (!savedTheme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+        html.classList.add('dark');
+      } else {
+        html.classList.remove('dark');
+      }
+    }
+
+    function toggleTheme() {
+      if (html.classList.contains('dark')) {
+        html.classList.remove('dark');
+        localStorage.setItem('theme', 'light');
+      } else {
+        html.classList.add('dark');
+        localStorage.setItem('theme', 'dark');
+      }
+    }
+
+    if (themeToggleBtn) themeToggleBtn.addEventListener('click', toggleTheme);
+    if (mobileThemeToggleBtn) mobileThemeToggleBtn.addEventListener('click', toggleTheme);
+    initTheme();
+
+    // Mobile Menu Toggle
+    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    const menuOpenIcon = document.getElementById('menuOpenIcon');
+    const menuCloseIcon = document.getElementById('menuCloseIcon');
+    const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
+
+    if (mobileMenuBtn) {
+      mobileMenuBtn.addEventListener('click', () => {
+        const isHidden = mobileMenu.classList.toggle('hidden');
+        menuOpenIcon.classList.toggle('hidden', !isHidden);
+        menuCloseIcon.classList.toggle('hidden', isHidden);
+      });
+    }
+
+    mobileNavLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        mobileMenu.classList.add('hidden');
+        menuOpenIcon.classList.remove('hidden');
+        menuCloseIcon.classList.add('hidden');
+      });
+    });
+
+    // Project Category Filtering
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    const projectCards = document.querySelectorAll('.project-card');
+
+    filterBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        // Active button styles
+        filterBtns.forEach(b => {
+          b.classList.remove('active', 'bg-indigo-600', 'text-white');
+          b.classList.add('bg-white', 'dark:bg-slate-800', 'text-slate-600', 'dark:text-slate-300');
+        });
+        btn.classList.add('active', 'bg-indigo-600', 'text-white');
+        btn.classList.remove('bg-white', 'dark:bg-slate-800', 'text-slate-600', 'dark:text-slate-300');
+
+        const filter = btn.getAttribute('data-filter');
+        projectCards.forEach(card => {
+          const category = card.getAttribute('data-category');
+          if (filter === 'all' || category === filter) {
+            card.classList.remove('hidden');
+          } else {
+            card.classList.add('hidden');
+          }
+        });
+      });
+    });
+
+    // Project Detail Modal Functions
+    const modal = document.getElementById('projectModal');
+    const modalCard = document.getElementById('modalCard');
+    const modalTitle = document.getElementById('modalTitle');
+    const modalDesc = document.getElementById('modalDesc');
+    const modalImage = document.getElementById('modalImage');
+    const modalTags = document.getElementById('modalTags');
+
+    function openModal(title, desc, tags, imageUrl) {
+      modalTitle.textContent = title;
+      modalDesc.textContent = desc;
+      modalImage.src = imageUrl;
+      modalImage.onerror = () => {
+        modalImage.src = 'https://placehold.co/800x450/4f46e5/ffffff?text=' + encodeURIComponent(title);
+      };
+
+      // Populate tags
+      modalTags.innerHTML = '';
+      tags.forEach(tag => {
+        const badge = document.createElement('span');
+        badge.className = 'text-xs px-2.5 py-1 rounded-md bg-indigo-50 dark:bg-indigo-950/60 text-indigo-600 dark:text-indigo-400 font-medium';
+        badge.textContent = tag;
+        modalTags.appendChild(badge);
+      });
+
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+      setTimeout(() => {
+        modalCard.classList.remove('scale-95');
+        modalCard.classList.add('scale-100');
+      }, 10);
+    }
+
+    function closeModal() {
+      modalCard.classList.remove('scale-100');
+      modalCard.classList.add('scale-95');
+      setTimeout(() => {
+        modal.classList.add('hidden');
+        modal.classList.remove('flex');
+      }, 150);
+    }
+
+    // Close modal on click backdrop
+    if (modal) {
+      modal.addEventListener('click', (e) => {
+        if (e.target === modal) closeModal();
+      });
+    }
+
+    // Toast Notification System
+    function showToast(title, message, isSuccess = true) {
+      const toast = document.getElementById('toast');
+      const toastTitle = document.getElementById('toastTitle');
+      const toastMessage = document.getElementById('toastMessage');
+      const toastIcon = document.getElementById('toastIcon');
+
+      toastTitle.textContent = title;
+      toastMessage.textContent = message;
+
+      if (isSuccess) {
+        toastIcon.innerHTML = '<i class="fa-solid fa-circle-check"></i>';
+        toastIcon.className = 'text-emerald-400 dark:text-emerald-600 text-lg';
+      } else {
+        toastIcon.innerHTML = '<i class="fa-solid fa-circle-exclamation"></i>';
+        toastIcon.className = 'text-rose-400 dark:text-rose-600 text-lg';
+      }
+
+      toast.classList.remove('translate-y-24', 'opacity-0', 'pointer-events-none');
+      toast.classList.add('translate-y-0', 'opacity-100');
+
+      setTimeout(() => {
+        toast.classList.add('translate-y-24', 'opacity-0', 'pointer-events-none');
+        toast.classList.remove('translate-y-0', 'opacity-100');
+      }, 4000);
+    }
+
+    // Copy Email to Clipboard
+    function copyEmail() {
+      const email = document.getElementById('emailText').textContent.trim();
+      const tempInput = document.createElement('input');
+      tempInput.value = email;
+      document.body.appendChild(tempInput);
+      tempInput.select();
+      try {
+        document.execCommand('copy');
+        showToast('Email Disalin!', 'Alamat email telah disalin ke papan klip Anda.');
+      } catch (err) {
+        showToast('Gagal Menyalin', 'Silakan salin alamat email secara manual.', false);
+      }
+      document.body.removeChild(tempInput);
+    }
+
+    // Contact Form Handler
+    function handleFormSubmit(e) {
+      e.preventDefault();
+      const submitBtn = document.getElementById('submitBtn');
+      const originalText = submitBtn.innerHTML;
+
+      submitBtn.disabled = true;
+      submitBtn.innerHTML = '<i class="fa-solid fa-circle-notch fa-spin"></i> Mengirim...';
+
+      // Simulate sending data without refreshing page
+      setTimeout(() => {
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = originalText;
+        document.getElementById('contactForm').reset();
+        showToast('Pesan Berhasil Terkirim!', 'Terima kasih atas pesannya, saya akan merespons dalam kurun 24 jam.');
+      }, 1000);
+    }
+  </script>
+</body>
+</html>
