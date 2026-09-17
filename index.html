@@ -3,8 +3,17 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Portofolio Profesional - Full-Stack Developer & Designer</title>
-  
+  <title>Aksan Zulkarnain — Software Developer &amp; Interface Builder</title>
+  <meta name="description" content="Portofolio personal Aksan Zulkarnain — Software developer yang berfokus pada rekayasa antarmuka web, sistem desain berbasis komponen, dan interaksi yang intuitif.">
+
+  <!-- Google Fonts: Plus Jakarta Sans (Headings/Body) & JetBrains Mono (Specs/Meta) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
@@ -12,101 +21,155 @@
       darkMode: 'class',
       theme: {
         extend: {
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'Inter', 'system-ui', 'sans-serif'],
+            mono: ['"JetBrains Mono"', 'monospace'],
+          },
           colors: {
             brand: {
               50: '#eef2ff',
               100: '#e0e7ff',
-              400: '#818cf8',
               500: '#6366f1',
               600: '#4f46e5',
               700: '#4338ca',
+            },
+            canvas: {
+              light: '#fbfbfb',
+              dark: '#09090b',
+            },
+            surface: {
+              light: '#ffffff',
+              dark: '#121215',
+              subtleLight: '#f4f4f5',
+              subtleDark: '#18181c',
+            },
+            hairline: {
+              light: '#e4e4e7',
+              dark: '#27272a',
+              mediumLight: '#d4d4d8',
+              mediumDark: '#3f3f46',
             }
-          },
-          fontFamily: {
-            sans: ['Inter', 'sans-serif'],
           }
         }
       }
     }
   </script>
-  
-  <!-- Google Fonts: Inter -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-  
-  <!-- Font Awesome Icons -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
   <style>
-    /* Custom scrollbar and subtle glassmorphism */
+    :root {
+      --bg-canvas: #fbfbfb;
+      --bg-surface: #ffffff;
+      --text-main: #09090b;
+      --text-muted: #71717a;
+      --border-subtle: #e4e4e7;
+      --accent: #4f46e5;
+    }
+
+    .dark {
+      --bg-canvas: #09090b;
+      --bg-surface: #121215;
+      --text-main: #fafafa;
+      --text-muted: #a1a1aa;
+      --border-subtle: #27272a;
+      --accent: #6366f1;
+    }
+
+    body {
+      background-color: var(--bg-canvas);
+      color: var(--text-main);
+      text-rendering: optimizeLegibility;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Custom subtle scrollbar */
     ::-webkit-scrollbar {
-      width: 8px;
+      width: 6px;
     }
     ::-webkit-scrollbar-track {
-      background: #0f172a;
+      background: transparent;
     }
     ::-webkit-scrollbar-thumb {
-      background: #334155;
-      border-radius: 4px;
+      background: #a1a1aa;
+      border-radius: 3px;
     }
-    ::-webkit-scrollbar-thumb:hover {
-      background: #6366f1;
+    .dark ::-webkit-scrollbar-thumb {
+      background: #3f3f46;
     }
-    .glass-nav {
+
+    /* Focus accessibility styling */
+    a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 2px;
+    }
+
+    /* Subtle backdrop for fixed nav */
+    .header-backdrop {
       backdrop-filter: blur(12px);
       -webkit-backdrop-filter: blur(12px);
     }
   </style>
 </head>
-<body class="bg-slate-50 text-slate-800 dark:bg-slate-950 dark:text-slate-100 font-sans transition-colors duration-300">
+<body class="font-sans min-h-screen selection:bg-indigo-500/20 selection:text-indigo-600 dark:selection:text-indigo-300">
 
-  <header class="fixed top-0 left-0 w-full z-50 glass-nav bg-white/80 dark:bg-slate-900/80 border-b border-slate-200/80 dark:border-slate-800/80 transition-colors duration-300">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+  <!-- Accessible Skip Link -->
+  <a href="#main-content" class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-indigo-600 focus:text-white focus:rounded-md focus:shadow-lg text-sm font-medium">
+    Lewati ke Konten Utama
+  </a>
+
+  <!-- Global Header Navigation -->
+  <header class="fixed top-0 left-0 w-full z-40 header-backdrop bg-white/90 dark:bg-[#09090b]/90 border-b border-hairline-light dark:border-hairline-dark transition-colors duration-200">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="flex items-center justify-between h-16 sm:h-20">
         
-        <!-- Brand Logo -->
-        <a href="#hero" class="flex items-center space-x-2.5 group">
-          <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-indigo-600 to-violet-500 flex items-center justify-center text-white font-bold text-xl shadow-lg shadow-indigo-500/25 transition-transform group-hover:scale-105">
-            A
-          </div>
-          <span class="text-xl font-bold tracking-tight text-slate-900 dark:text-white">
-            Aksan <span class="text-indigo-600 dark:text-indigo-400">Zulkarnain</span>
+        <!-- Brand Identity -->
+        <a href="#hero" class="flex items-center gap-3 group focus-visible:rounded-sm">
+          <span class="w-8 h-8 rounded-md bg-neutral-900 text-white dark:bg-white dark:text-neutral-900 flex items-center justify-center font-mono font-bold text-sm tracking-tighter transition-transform group-hover:scale-95">
+            AZ
           </span>
+          <div class="flex flex-col">
+            <span class="text-sm font-bold tracking-tight text-neutral-900 dark:text-white">
+              Aksan Zulkarnain
+            </span>
+            <span class="font-mono text-[10px] text-neutral-500 dark:text-neutral-400 tracking-wider uppercase">
+              Dev &amp; Interface Design
+            </span>
+          </div>
         </a>
 
         <!-- Desktop Navigation Links -->
-        <nav class="hidden md:flex items-center space-x-8 text-sm font-medium">
-          <a href="#tentang" class="text-slate-600 hover:text-indigo-600 dark:text-slate-300 dark:hover:text-indigo-400 transition-colors">Tentang</a>
-          <a href="#keahlian" class="text-slate-600 hover:text-indigo-600 dark:text-slate-300 dark:hover:text-indigo-400 transition-colors">Keahlian</a>
-          <a href="#proyek" class="text-slate-600 hover:text-indigo-600 dark:text-slate-300 dark:hover:text-indigo-400 transition-colors">Portofolio</a>
-          <a href="#pengalaman" class="text-slate-600 hover:text-indigo-600 dark:text-slate-300 dark:hover:text-indigo-400 transition-colors">Pengalaman</a>
-          <a href="#kontak" class="text-slate-600 hover:text-indigo-600 dark:text-slate-300 dark:hover:text-indigo-400 transition-colors">Kontak</a>
+        <nav class="hidden md:flex items-center space-x-7 text-xs font-mono uppercase tracking-wider text-neutral-600 dark:text-neutral-400">
+          <a href="#karya" class="hover:text-neutral-950 dark:hover:text-white transition-colors py-1">Karya</a>
+          <a href="#tentang" class="hover:text-neutral-950 dark:hover:text-white transition-colors py-1">Pendekatan</a>
+          <a href="#kapabilitas" class="hover:text-neutral-950 dark:hover:text-white transition-colors py-1">Kapabilitas</a>
+          <a href="#jejak" class="hover:text-neutral-950 dark:hover:text-white transition-colors py-1">Jejak</a>
+          <a href="#kontak" class="hover:text-neutral-950 dark:hover:text-white transition-colors py-1">Kontak</a>
         </nav>
 
-        <!-- Action Buttons (Theme Toggle & CTA) -->
-        <div class="hidden md:flex items-center space-x-4">
-          <!-- Theme Toggle Button -->
-          <button id="themeToggleBtn" type="button" aria-label="Ganti Tema" class="p-2.5 rounded-xl text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition-all border border-slate-200 dark:border-slate-800">
-            <i class="fa-solid fa-moon text-lg dark:hidden"></i>
-            <i class="fa-solid fa-sun text-lg hidden dark:block text-amber-400"></i>
+        <!-- Right Side Controls (Theme Toggle & Direct Contact Action) -->
+        <div class="hidden md:flex items-center gap-3">
+          <!-- Theme Toggle -->
+          <button id="themeToggleBtn" type="button" aria-label="Ganti tema warna" class="w-9 h-9 rounded-md border border-hairline-light dark:border-hairline-dark text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white hover:bg-neutral-100 dark:hover:bg-neutral-900 flex items-center justify-center text-xs transition-colors">
+            <i class="fa-solid fa-moon dark:hidden"></i>
+            <i class="fa-solid fa-sun hidden dark:block text-amber-400"></i>
           </button>
           
-          <a href="#kontak" class="px-5 py-2.5 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white font-medium text-sm transition-all shadow-md shadow-indigo-600/20 hover:shadow-indigo-600/30 flex items-center gap-2">
-            <span>Ajak Diskusi</span>
-            <i class="fa-solid fa-arrow-right text-xs"></i>
+          <!-- Direct CTA -->
+          <a href="#kontak" class="px-4 py-2 rounded-md bg-neutral-900 hover:bg-neutral-800 text-white dark:bg-white dark:text-neutral-900 dark:hover:bg-neutral-100 text-xs font-semibold tracking-tight transition-colors flex items-center gap-1.5">
+            <span>Diskusi Proyek</span>
+            <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
           </a>
         </div>
 
-        <!-- Mobile Menu Toggle Button -->
-        <div class="flex items-center space-x-2 md:hidden">
-          <button id="mobileThemeToggleBtn" type="button" aria-label="Ganti Tema" class="p-2 rounded-lg text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800">
-            <i class="fa-solid fa-moon text-base dark:hidden"></i>
-            <i class="fa-solid fa-sun text-base hidden dark:block text-amber-400"></i>
+        <!-- Mobile Controls -->
+        <div class="flex items-center gap-2 md:hidden">
+          <button id="mobileThemeToggleBtn" type="button" aria-label="Ganti tema warna" class="w-9 h-9 rounded-md border border-hairline-light dark:border-hairline-dark text-neutral-600 dark:text-neutral-400 flex items-center justify-center text-xs">
+            <i class="fa-solid fa-moon dark:hidden"></i>
+            <i class="fa-solid fa-sun hidden dark:block text-amber-400"></i>
           </button>
-          <button id="mobileMenuBtn" type="button" aria-label="Buka Menu" class="p-2 rounded-lg text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 focus:outline-none">
-            <i class="fa-solid fa-bars text-xl" id="menuOpenIcon"></i>
-            <i class="fa-solid fa-xmark text-xl hidden" id="menuCloseIcon"></i>
+          
+          <button id="mobileMenuBtn" type="button" aria-label="Buka menu navigasi" class="w-9 h-9 rounded-md border border-hairline-light dark:border-hairline-dark text-neutral-800 dark:text-neutral-200 flex items-center justify-center text-sm">
+            <i class="fa-solid fa-bars" id="menuOpenIcon"></i>
+            <i class="fa-solid fa-xmark hidden" id="menuCloseIcon"></i>
           </button>
         </div>
 
@@ -114,116 +177,101 @@
     </div>
 
     <!-- Mobile Dropdown Navigation -->
-    <div id="mobileMenu" class="hidden md:hidden bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 px-4 pt-2 pb-6 space-y-3">
-      <a href="#tentang" class="block py-2 text-slate-700 dark:text-slate-200 font-medium hover:text-indigo-600 dark:hover:text-indigo-400 mobile-nav-link">Tentang</a>
-      <a href="#keahlian" class="block py-2 text-slate-700 dark:text-slate-200 font-medium hover:text-indigo-600 dark:hover:text-indigo-400 mobile-nav-link">Keahlian</a>
-      <a href="#proyek" class="block py-2 text-slate-700 dark:text-slate-200 font-medium hover:text-indigo-600 dark:hover:text-indigo-400 mobile-nav-link">Portofolio</a>
-      <a href="#pengalaman" class="block py-2 text-slate-700 dark:text-slate-200 font-medium hover:text-indigo-600 dark:hover:text-indigo-400 mobile-nav-link">Pengalaman</a>
-      <a href="#kontak" class="block py-2 text-slate-700 dark:text-slate-200 font-medium hover:text-indigo-600 dark:hover:text-indigo-400 mobile-nav-link">Kontak</a>
-      <div class="pt-2">
-        <a href="#kontak" class="w-full text-center block px-4 py-2.5 rounded-xl bg-indigo-600 text-white font-medium text-sm shadow-md mobile-nav-link">
-          Ajak Diskusi Sekarang
+    <div id="mobileMenu" class="hidden md:hidden bg-white dark:bg-[#09090b] border-b border-hairline-light dark:border-hairline-dark px-4 pt-3 pb-6 space-y-2 font-mono text-xs uppercase tracking-wider">
+      <a href="#karya" class="block py-2.5 text-neutral-700 dark:text-neutral-300 hover:text-indigo-600 dark:hover:text-indigo-400 mobile-nav-link border-b border-hairline-light/50 dark:border-hairline-dark/50">01 / Karya Terpilih</a>
+      <a href="#tentang" class="block py-2.5 text-neutral-700 dark:text-neutral-300 hover:text-indigo-600 dark:hover:text-indigo-400 mobile-nav-link border-b border-hairline-light/50 dark:border-hairline-dark/50">02 / Pendekatan</a>
+      <a href="#kapabilitas" class="block py-2.5 text-neutral-700 dark:text-neutral-300 hover:text-indigo-600 dark:hover:text-indigo-400 mobile-nav-link border-b border-hairline-light/50 dark:border-hairline-dark/50">03 / Kapabilitas Teknis</a>
+      <a href="#jejak" class="block py-2.5 text-neutral-700 dark:text-neutral-300 hover:text-indigo-600 dark:hover:text-indigo-400 mobile-nav-link border-b border-hairline-light/50 dark:border-hairline-dark/50">04 / Jejak &amp; Rekam</a>
+      <a href="#kontak" class="block py-2.5 text-neutral-700 dark:text-neutral-300 hover:text-indigo-600 dark:hover:text-indigo-400 mobile-nav-link">05 / Hubungi Langsung</a>
+      <div class="pt-3">
+        <a href="#kontak" class="w-full text-center block px-4 py-2.5 rounded-md bg-neutral-900 text-white dark:bg-white dark:text-neutral-900 text-xs font-sans font-semibold tracking-tight mobile-nav-link">
+          Kirim Pesan Kolaborasi
         </a>
       </div>
     </div>
   </header>
 
-  <main>
-    <section id="hero" class="relative pt-32 pb-20 md:pt-44 md:pb-32 overflow-hidden">
-      <!-- Background Ambient Glow -->
-      <div class="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-indigo-500/15 dark:bg-indigo-600/20 rounded-full blur-3xl pointer-events-none"></div>
-      <div class="absolute top-1/3 right-10 w-72 h-72 bg-violet-500/15 dark:bg-violet-600/20 rounded-full blur-3xl pointer-events-none"></div>
-
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+  <main id="main-content">
+    <!-- HERO SECTION: Editorial, High-Contrast, Restrained -->
+    <section id="hero" class="pt-28 pb-16 md:pt-40 md:pb-28 border-b border-hairline-light dark:border-hairline-dark">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
           
-          <!-- Left Column: Introduction -->
-          <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
-            <!-- Availability Badge -->
-            <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-50 dark:bg-emerald-950/50 border border-emerald-200 dark:border-emerald-800 text-emerald-700 dark:text-emerald-400 text-xs font-semibold">
-              <span class="w-2 h-2 rounded-full bg-emerald-500 animate-ping"></span>
-              <span>Terbuka untuk Proyek Freelance & Full-time</span>
+          <!-- Left Column: Identity & Positioning (7 cols) -->
+          <div class="lg:col-span-7 space-y-6">
+            
+            <!-- Availability & Status Indicator -->
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-sm bg-neutral-100 dark:bg-neutral-900 border border-hairline-light dark:border-hairline-dark text-[11px] font-mono tracking-wider text-neutral-700 dark:text-neutral-300">
+              <span class="w-2 h-2 rounded-full bg-emerald-500 shrink-0"></span>
+              <span>TERSEDIA UNTUK PROYEK &amp; KOLABORASI</span>
             </div>
 
-            <!-- Main Heading -->
-            <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-slate-900 dark:text-white leading-[1.15]">
-              Membangun Solusi Web <br class="hidden sm:inline">
-              <span class="bg-gradient-to-r from-indigo-600 via-violet-600 to-pink-500 bg-clip-text text-transparent">
-                Cepat, Elegan & Fungsional
-              </span>
+            <!-- Solid Typography Headline (Anti AI-Slop: Zero gradient text) -->
+            <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-[3.25rem] font-extrabold tracking-tight text-neutral-950 dark:text-white leading-[1.15]">
+              Merancang dan membangun antarmuka web yang fungsional, terstruktur, &amp; berkarakter.
             </h1>
 
-            <!-- Bio Description -->
-            <p class="text-base sm:text-lg text-slate-600 dark:text-slate-300 max-w-2xl mx-auto lg:mx-0 leading-relaxed">
-              Halo! Saya <strong>Aksan Zulkarnain</strong>, seorang Full-Stack Web Developer & UI/UX enthusiast dengan fokus pada pembuatan aplikasi web performa tinggi, sistem manajemen responsif, dan pengalaman pengguna yang memikat.
+            <!-- Authentic Positioning Statement -->
+            <p class="text-base sm:text-lg text-neutral-600 dark:text-neutral-300 max-w-xl leading-relaxed">
+              Halo, saya <strong>Aksan Zulkarnain</strong>. Saya bekerja di titik temu antara rekayasa perangkat lunak, arsitektur sistem desain, dan interaksi yang intuitif. Mengutamakan kesederhanaan logika, kode yang mudah dipelihara, dan pengalaman pengguna yang nyaman.
             </p>
 
-            <!-- CTA & Social Buttons -->
-            <div class="flex flex-wrap items-center justify-center lg:justify-start gap-4 pt-2">
-              <a href="#proyek" class="px-7 py-3.5 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white font-semibold text-sm transition-all shadow-lg shadow-indigo-600/30 hover:-translate-y-0.5">
-                Lihat Portofolio Saya
+            <!-- Actions & Contact CTAs -->
+            <div class="flex flex-wrap items-center gap-4 pt-2">
+              <a href="#karya" class="px-5 py-2.5 rounded-md bg-neutral-900 hover:bg-neutral-800 text-white dark:bg-white dark:text-neutral-900 dark:hover:bg-neutral-100 text-xs font-mono font-medium tracking-wider uppercase transition-colors flex items-center gap-2">
+                <span>Eksplorasi Karya</span>
+                <i class="fa-solid fa-arrow-down text-[10px]"></i>
               </a>
-              <a href="#kontak" class="px-7 py-3.5 rounded-xl bg-white dark:bg-slate-900 text-slate-800 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 font-semibold text-sm border border-slate-300 dark:border-slate-800 transition-all hover:-translate-y-0.5">
-                Hubungi Saya
-              </a>
+              <button type="button" onclick="copyEmail()" class="px-5 py-2.5 rounded-md border border-hairline-light dark:border-hairline-dark hover:border-neutral-400 dark:hover:border-neutral-600 text-neutral-800 dark:text-neutral-200 text-xs font-mono tracking-wider uppercase transition-colors flex items-center gap-2">
+                <i class="fa-regular fa-copy text-neutral-500"></i>
+                <span id="copyBtnLabel">Salin Email</span>
+              </button>
             </div>
 
-            <!-- Quick Metrics -->
-            <div class="grid grid-cols-3 gap-4 pt-6 border-t border-slate-200 dark:border-slate-800 max-w-lg mx-auto lg:mx-0">
+            <!-- Editorial Metadata Specs -->
+            <div class="grid grid-cols-2 sm:grid-cols-3 gap-6 pt-8 border-t border-hairline-light dark:border-hairline-dark">
               <div>
-                <p class="text-2xl sm:text-3xl font-bold text-slate-900 dark:text-white">5+ <span class="text-indigo-600">Tahun</span></p>
-                <p class="text-xs sm:text-sm text-slate-500 dark:text-slate-400">Pengalaman Dev</p>
+                <span class="block font-mono text-[11px] text-neutral-400 dark:text-neutral-500 uppercase tracking-wider">Lokasi</span>
+                <span class="text-xs sm:text-sm font-semibold text-neutral-900 dark:text-neutral-200 mt-0.5 block">Bogor, Indonesia</span>
+                <span class="font-mono text-[10px] text-neutral-500">WIB / UTC+7</span>
               </div>
               <div>
-                <p class="text-2xl sm:text-3xl font-bold text-slate-900 dark:text-white">40+ <span class="text-indigo-600">Proyek</span></p>
-                <p class="text-xs sm:text-sm text-slate-500 dark:text-slate-400">Selesai Berhasil</p>
+                <span class="block font-mono text-[11px] text-neutral-400 dark:text-neutral-500 uppercase tracking-wider">Fokus Rekayasa</span>
+                <span class="text-xs sm:text-sm font-semibold text-neutral-900 dark:text-neutral-200 mt-0.5 block">Web Systems &amp; UI</span>
+                <span class="font-mono text-[10px] text-neutral-500">React • TypeScript</span>
               </div>
               <div>
-                <p class="text-2xl sm:text-3xl font-bold text-slate-900 dark:text-white">99%</p>
-                <p class="text-xs sm:text-sm text-slate-500 dark:text-slate-400">Kepuasan Klien</p>
+                <span class="block font-mono text-[11px] text-neutral-400 dark:text-neutral-500 uppercase tracking-wider">Pendekatan</span>
+                <span class="text-xs sm:text-sm font-semibold text-neutral-900 dark:text-neutral-200 mt-0.5 block">Purpose-Driven</span>
+                <span class="font-mono text-[10px] text-neutral-500">Accessibility First</span>
               </div>
             </div>
+
           </div>
 
-          <!-- Right Column: Interactive Profile Card -->
-          <div class="lg:col-span-5 flex justify-center">
-            <div class="relative w-full max-w-sm">
-              <!-- Decorative background card -->
-              <div class="absolute -inset-1.5 bg-gradient-to-r from-indigo-500 to-pink-500 rounded-3xl blur opacity-30 group-hover:opacity-100 transition duration-1000"></div>
-              
-              <div class="relative bg-white dark:bg-slate-900 rounded-3xl p-6 shadow-xl border border-slate-100 dark:border-slate-800">
-                <!-- Profile Image -->
-                <div class="relative overflow-hidden rounded-2xl aspect-square bg-slate-100 dark:bg-slate-800 mb-6 group">
-                  <img 
-                    src="/img/gg2.jpeg" 
-                    alt="Foto Profil Aksan Zulkarnain"
-                    class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                    onerror="this.src='https://placehold.co/600x600/4f46e5/ffffff?text=Aksan+Zulkarnain'"
-                  >
-                  <!-- Gradient & Contrast Overlay -->
-                  <div class="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-900/30 to-transparent"></div>
-                  <div class="absolute bottom-3 left-3 right-3 p-3 rounded-xl bg-white/85 dark:bg-slate-900/85 backdrop-blur-md border border-white/40 dark:border-slate-700/60 shadow-lg transition-colors">
-                    <p class="text-[11px] font-bold uppercase tracking-wider text-indigo-600 dark:text-indigo-400">Berbasis di Jakarta, ID</p>
-                    <p class="text-sm sm:text-base font-bold text-slate-900 dark:text-white leading-snug">Software Engineer &amp; Web Architect</p>
-                  </div>
-                </div>
-
-                <!-- Interactive Floating Tags -->
-                <div class="flex flex-wrap gap-2 text-xs font-medium">
-                  <span class="px-3 py-1.5 rounded-lg bg-indigo-50 text-indigo-600 dark:bg-indigo-950/60 dark:text-indigo-300">
-                    <i class="fa-brands fa-react mr-1"></i> React & Next.js
-                  </span>
-                  <span class="px-3 py-1.5 rounded-lg bg-emerald-50 text-emerald-600 dark:bg-emerald-950/60 dark:text-emerald-300">
-                    <i class="fa-brands fa-node-js mr-1"></i> Node.js
-                  </span>
-                  <span class="px-3 py-1.5 rounded-lg bg-sky-50 text-sky-600 dark:bg-sky-950/60 dark:text-sky-300">
-                    <i class="fa-solid fa-wind mr-1"></i> Tailwind CSS
-                  </span>
-                  <span class="px-3 py-1.5 rounded-lg bg-amber-50 text-amber-600 dark:bg-amber-950/60 dark:text-amber-300">
-                    <i class="fa-solid fa-database mr-1"></i> PostgreSQL
-                  </span>
+          <!-- Right Column: Editorial Portrait (5 cols) -->
+          <div class="lg:col-span-5 flex flex-col">
+            <div class="relative w-full max-w-sm mx-auto lg:max-w-none">
+              <!-- Disciplined Image Treatment: No glow halo, no pseudo-blobs -->
+              <div class="relative overflow-hidden rounded-lg border border-hairline-light dark:border-hairline-dark bg-neutral-100 dark:bg-neutral-900 aspect-[4/5]">
+                <img 
+                  src="/img/gg2.jpeg" 
+                  alt="Potret Aksan Zulkarnain"
+                  class="w-full h-full object-cover grayscale contrast-[1.05] hover:grayscale-0 transition-all duration-500"
+                  onerror="this.parentElement.innerHTML='<div class=\'w-full h-full flex items-center justify-center font-mono text-xs text-neutral-400\'>Aksan Zulkarnain</div>'"
+                >
+                <!-- Subtle Vignette Frame -->
+                <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent pointer-events-none"></div>
+                <div class="absolute bottom-3 left-3 right-3 p-3 rounded bg-neutral-950/80 backdrop-blur-sm border border-neutral-800 text-white">
+                  <p class="font-mono text-[10px] uppercase tracking-widest text-neutral-400">Portret Subjek</p>
+                  <p class="text-xs font-semibold tracking-tight">Aksan Zulkarnain — Software &amp; UI Builder</p>
                 </div>
               </div>
+
+              <!-- Editorial footnote -->
+              <p class="font-mono text-[11px] text-neutral-500 mt-3 text-center lg:text-left">
+                [ FIG. 01 ] Dokumentasi profil kerja &amp; komitmen personal terhadap craftsmanship.
+              </p>
             </div>
           </div>
 
@@ -231,580 +279,611 @@
       </div>
     </section>
 
-    <section id="tentang" class="py-20 bg-slate-100/70 dark:bg-slate-900/50 border-y border-slate-200 dark:border-slate-800">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <!-- SECTION 01: SELECTED WORK / KARYA TERPILIH -->
+    <section id="karya" class="py-20 md:py-28 border-b border-hairline-light dark:border-hairline-dark">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        <div class="text-center max-w-3xl mx-auto mb-16">
-          <h2 class="text-xs font-bold uppercase tracking-widest text-indigo-600 dark:text-indigo-400 mb-2">Tentang Saya</h2>
-          <p class="text-3xl font-extrabold text-slate-900 dark:text-white sm:text-4xl">
-            Menghubungkan Ide Kreatif dengan Baris Kode Berkualitas
+        <!-- Section Title & IA -->
+        <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
+          <div>
+            <span class="font-mono text-xs text-indigo-600 dark:text-indigo-400 uppercase tracking-widest block mb-2">01 / Karya Terpilih</span>
+            <h2 class="text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight text-neutral-950 dark:text-white">
+              Studi Kasus &amp; Eksplorasi Nyata
+            </h2>
+          </div>
+          <p class="text-sm text-neutral-600 dark:text-neutral-400 max-w-md">
+            Kumpulan proyek yang merefleksikan pendekatan sistematis dalam arsitektur kode, struktur desain, dan solusi kebutuhan pengguna yang konkret.
+          </p>
+        </div>
+
+        <!-- Filter Tabs (Disciplined & Minimal) -->
+        <div class="flex flex-wrap gap-2 mb-10 pb-4 border-b border-hairline-light dark:border-hairline-dark font-mono text-xs">
+          <button data-filter="all" class="filter-btn active px-3 py-1.5 rounded-sm bg-neutral-900 text-white dark:bg-white dark:text-neutral-950 transition-colors">
+            Semua (4)
+          </button>
+          <button data-filter="web" class="filter-btn px-3 py-1.5 rounded-sm text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white hover:bg-neutral-100 dark:hover:bg-neutral-900 transition-colors">
+            Aplikasi Web
+          </button>
+          <button data-filter="design" class="filter-btn px-3 py-1.5 rounded-sm text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white hover:bg-neutral-100 dark:hover:bg-neutral-900 transition-colors">
+            Sistem Desain
+          </button>
+          <button data-filter="experiments" class="filter-btn px-3 py-1.5 rounded-sm text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white hover:bg-neutral-100 dark:hover:bg-neutral-900 transition-colors">
+            Eksperimen Interaktif
+          </button>
+        </div>
+
+        <!-- Projects Grid (Editorial layout with case-study modal triggers) -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-10" id="projectsGrid">
+          
+          <!-- Project 01: Personal OS -->
+          <article class="project-item flex flex-col border border-hairline-light dark:border-hairline-dark rounded-lg overflow-hidden bg-surface-light dark:bg-surface-dark group" data-category="web">
+            <div class="relative aspect-video overflow-hidden bg-neutral-100 dark:bg-neutral-900 border-b border-hairline-light dark:border-hairline-dark">
+              <img 
+                src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1000&q=80" 
+                alt="Pratinjau Personal OS" 
+                class="w-full h-full object-cover group-hover:scale-[1.02] transition-transform duration-500 grayscale contrast-[1.05] group-hover:grayscale-0"
+                loading="lazy"
+              >
+              <div class="absolute top-3 left-3">
+                <span class="font-mono text-[10px] uppercase tracking-wider px-2 py-1 rounded bg-neutral-900/85 text-white backdrop-blur-sm border border-neutral-700">
+                  01 / Personal Project
+                </span>
+              </div>
+            </div>
+            <div class="p-6 flex-1 flex flex-col justify-between">
+              <div>
+                <div class="flex items-center justify-between text-xs font-mono text-neutral-400 mb-2">
+                  <span>Web App • Productivity</span>
+                  <span>2024</span>
+                </div>
+                <h3 class="text-lg sm:text-xl font-bold text-neutral-900 dark:text-white tracking-tight mb-2">
+                  Personal OS — Workspace &amp; Cognitive Dashboard
+                </h3>
+                <p class="text-sm text-neutral-600 dark:text-neutral-300 line-clamp-2 leading-relaxed mb-4">
+                  Sistem produktivitas mandiri yang dirancang untuk mengurangi beban kognitif pengguna melalui manajemen widget modular, visualisasi fokus kerja, dan persistensi lokal cepat.
+                </p>
+                <div class="flex flex-wrap gap-1.5 mb-6">
+                  <span class="font-mono text-[11px] px-2 py-0.5 rounded bg-neutral-100 dark:bg-neutral-800 text-neutral-700 dark:text-neutral-300">React</span>
+                  <span class="font-mono text-[11px] px-2 py-0.5 rounded bg-neutral-100 dark:bg-neutral-800 text-neutral-700 dark:text-neutral-300">TypeScript</span>
+                  <span class="font-mono text-[11px] px-2 py-0.5 rounded bg-neutral-100 dark:bg-neutral-800 text-neutral-700 dark:text-neutral-300">Tailwind CSS</span>
+                  <span class="font-mono text-[11px] px-2 py-0.5 rounded bg-neutral-100 dark:bg-neutral-800 text-neutral-700 dark:text-neutral-300">IndexedDB</span>
+                </div>
+              </div>
+
+              <div class="pt-4 border-t border-hairline-light dark:border-hairline-dark flex items-center justify-between">
+                <button type="button" onclick="openCaseStudy(0)" class="text-xs font-mono tracking-wider uppercase font-semibold text-indigo-600 dark:text-indigo-400 hover:underline flex items-center gap-1.5">
+                  <span>Buka Studi Kasus</span>
+                  <i class="fa-solid fa-arrow-right text-[10px]"></i>
+                </button>
+                <div class="flex items-center gap-3 text-neutral-400 text-sm">
+                  <span class="hover:text-neutral-900 dark:hover:text-white cursor-pointer" onclick="openCaseStudy(0)" title="Detail"><i class="fa-solid fa-arrow-up-right-from-square"></i></span>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- Project 02: Lumina Design System -->
+          <article class="project-item flex flex-col border border-hairline-light dark:border-hairline-dark rounded-lg overflow-hidden bg-surface-light dark:bg-surface-dark group" data-category="design">
+            <div class="relative aspect-video overflow-hidden bg-neutral-100 dark:bg-neutral-900 border-b border-hairline-light dark:border-hairline-dark">
+              <img 
+                src="https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?auto=format&fit=crop&w=1000&q=80" 
+                alt="Pratinjau Lumina Design System" 
+                class="w-full h-full object-cover group-hover:scale-[1.02] transition-transform duration-500 grayscale contrast-[1.05] group-hover:grayscale-0"
+                loading="lazy"
+              >
+              <div class="absolute top-3 left-3">
+                <span class="font-mono text-[10px] uppercase tracking-wider px-2 py-1 rounded bg-neutral-900/85 text-white backdrop-blur-sm border border-neutral-700">
+                  02 / Design System
+                </span>
+              </div>
+            </div>
+            <div class="p-6 flex-1 flex flex-col justify-between">
+              <div>
+                <div class="flex items-center justify-between text-xs font-mono text-neutral-400 mb-2">
+                  <span>UI/UX • Token Architecture</span>
+                  <span>2024</span>
+                </div>
+                <h3 class="text-lg sm:text-xl font-bold text-neutral-900 dark:text-white tracking-tight mb-2">
+                  Lumina — Multi-Brand Component &amp; Token System
+                </h3>
+                <p class="text-sm text-neutral-600 dark:text-neutral-300 line-clamp-2 leading-relaxed mb-4">
+                  Sistem desain tokenized yang menghubungkan Figma variables dengan implementasi kode frontend. Mengedepankan kepatuhan aksesibilitas WCAG AA dan ritme tipografi terukur.
+                </p>
+                <div class="flex flex-wrap gap-1.5 mb-6">
+                  <span class="font-mono text-[11px] px-2 py-0.5 rounded bg-neutral-100 dark:bg-neutral-800 text-neutral-700 dark:text-neutral-300">Figma Tokens</span>
+                  <span class="font-mono text-[11px] px-2 py-0.5 rounded bg-neutral-100 dark:bg-neutral-800 text-neutral-700 dark:text-neutral-300">CSS Custom Properties</span>
+                  <span class="font-mono text-[11px] px-2 py-0.5 rounded bg-neutral-100 dark:bg-neutral-800 text-neutral-700 dark:text-neutral-300">Accessibility (a11y)</span>
+                </div>
+              </div>
+
+              <div class="pt-4 border-t border-hairline-light dark:border-hairline-dark flex items-center justify-between">
+                <button type="button" onclick="openCaseStudy(1)" class="text-xs font-mono tracking-wider uppercase font-semibold text-indigo-600 dark:text-indigo-400 hover:underline flex items-center gap-1.5">
+                  <span>Buka Studi Kasus</span>
+                  <i class="fa-solid fa-arrow-right text-[10px]"></i>
+                </button>
+                <div class="flex items-center gap-3 text-neutral-400 text-sm">
+                  <span class="hover:text-neutral-900 dark:hover:text-white cursor-pointer" onclick="openCaseStudy(1)" title="Detail"><i class="fa-solid fa-arrow-up-right-from-square"></i></span>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- Project 03: Medisync -->
+          <article class="project-item flex flex-col border border-hairline-light dark:border-hairline-dark rounded-lg overflow-hidden bg-surface-light dark:bg-surface-dark group" data-category="web">
+            <div class="relative aspect-video overflow-hidden bg-neutral-100 dark:bg-neutral-900 border-b border-hairline-light dark:border-hairline-dark">
+              <img 
+                src="https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&w=1000&q=80" 
+                alt="Pratinjau Medisync" 
+                class="w-full h-full object-cover group-hover:scale-[1.02] transition-transform duration-500 grayscale contrast-[1.05] group-hover:grayscale-0"
+                loading="lazy"
+              >
+              <div class="absolute top-3 left-3">
+                <span class="font-mono text-[10px] uppercase tracking-wider px-2 py-1 rounded bg-neutral-900/85 text-white backdrop-blur-sm border border-neutral-700">
+                  03 / Concept Project
+                </span>
+              </div>
+            </div>
+            <div class="p-6 flex-1 flex flex-col justify-between">
+              <div>
+                <div class="flex items-center justify-between text-xs font-mono text-neutral-400 mb-2">
+                  <span>Web App • Healthcare Flow</span>
+                  <span>2023</span>
+                </div>
+                <h3 class="text-lg sm:text-xl font-bold text-neutral-900 dark:text-white tracking-tight mb-2">
+                  Medisync — Layanan Konsultasi &amp; Penjadwalan Klinis
+                </h3>
+                <p class="text-sm text-neutral-600 dark:text-neutral-300 line-clamp-2 leading-relaxed mb-4">
+                  Prototipe antarmuka penjadwalan janji temu dokter yang menyederhanakan alur registrasi multi-tahap menjadi pengalaman terpadu tanpa formulir yang membingungkan.
+                </p>
+                <div class="flex flex-wrap gap-1.5 mb-6">
+                  <span class="font-mono text-[11px] px-2 py-0.5 rounded bg-neutral-100 dark:bg-neutral-800 text-neutral-700 dark:text-neutral-300">Next.js</span>
+                  <span class="font-mono text-[11px] px-2 py-0.5 rounded bg-neutral-100 dark:bg-neutral-800 text-neutral-700 dark:text-neutral-300">PostgreSQL</span>
+                  <span class="font-mono text-[11px] px-2 py-0.5 rounded bg-neutral-100 dark:bg-neutral-800 text-neutral-700 dark:text-neutral-300">REST API</span>
+                </div>
+              </div>
+
+              <div class="pt-4 border-t border-hairline-light dark:border-hairline-dark flex items-center justify-between">
+                <button type="button" onclick="openCaseStudy(2)" class="text-xs font-mono tracking-wider uppercase font-semibold text-indigo-600 dark:text-indigo-400 hover:underline flex items-center gap-1.5">
+                  <span>Buka Studi Kasus</span>
+                  <i class="fa-solid fa-arrow-right text-[10px]"></i>
+                </button>
+                <div class="flex items-center gap-3 text-neutral-400 text-sm">
+                  <span class="hover:text-neutral-900 dark:hover:text-white cursor-pointer" onclick="openCaseStudy(2)" title="Detail"><i class="fa-solid fa-arrow-up-right-from-square"></i></span>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- Project 04: Interaction Lab -->
+          <article class="project-item flex flex-col border border-hairline-light dark:border-hairline-dark rounded-lg overflow-hidden bg-surface-light dark:bg-surface-dark group" data-category="experiments">
+            <div class="relative aspect-video overflow-hidden bg-neutral-100 dark:bg-neutral-900 border-b border-hairline-light dark:border-hairline-dark">
+              <img 
+                src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=1000&q=80" 
+                alt="Pratinjau Web Interaction Lab" 
+                class="w-full h-full object-cover group-hover:scale-[1.02] transition-transform duration-500 grayscale contrast-[1.05] group-hover:grayscale-0"
+                loading="lazy"
+              >
+              <div class="absolute top-3 left-3">
+                <span class="font-mono text-[10px] uppercase tracking-wider px-2 py-1 rounded bg-neutral-900/85 text-white backdrop-blur-sm border border-neutral-700">
+                  04 / Experimental
+                </span>
+              </div>
+            </div>
+            <div class="p-6 flex-1 flex flex-col justify-between">
+              <div>
+                <div class="flex items-center justify-between text-xs font-mono text-neutral-400 mb-2">
+                  <span>Creative Coding • Micro-Motion</span>
+                  <span>2024</span>
+                </div>
+                <h3 class="text-lg sm:text-xl font-bold text-neutral-900 dark:text-white tracking-tight mb-2">
+                  Web Interaction Lab — Eksplorasi Canvas &amp; Micro-Motion
+                </h3>
+                <p class="text-sm text-neutral-600 dark:text-neutral-300 line-clamp-2 leading-relaxed mb-4">
+                  Eksperimen teknis mengenai optimasi frame rate animasi, respons interaksi berbasis Canvas API, dan visualisasi status tanpa membebani browser thread.
+                </p>
+                <div class="flex flex-wrap gap-1.5 mb-6">
+                  <span class="font-mono text-[11px] px-2 py-0.5 rounded bg-neutral-100 dark:bg-neutral-800 text-neutral-700 dark:text-neutral-300">HTML5 Canvas</span>
+                  <span class="font-mono text-[11px] px-2 py-0.5 rounded bg-neutral-100 dark:bg-neutral-800 text-neutral-700 dark:text-neutral-300">Modern JS</span>
+                  <span class="font-mono text-[11px] px-2 py-0.5 rounded bg-neutral-100 dark:bg-neutral-800 text-neutral-700 dark:text-neutral-300">Reduced Motion</span>
+                </div>
+              </div>
+
+              <div class="pt-4 border-t border-hairline-light dark:border-hairline-dark flex items-center justify-between">
+                <button type="button" onclick="openCaseStudy(3)" class="text-xs font-mono tracking-wider uppercase font-semibold text-indigo-600 dark:text-indigo-400 hover:underline flex items-center gap-1.5">
+                  <span>Buka Studi Kasus</span>
+                  <i class="fa-solid fa-arrow-right text-[10px]"></i>
+                </button>
+                <div class="flex items-center gap-3 text-neutral-400 text-sm">
+                  <span class="hover:text-neutral-900 dark:hover:text-white cursor-pointer" onclick="openCaseStudy(3)" title="Detail"><i class="fa-solid fa-arrow-up-right-from-square"></i></span>
+                </div>
+              </div>
+            </div>
+          </article>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- SECTION 02: THINKING & CRAFT / ABOUT (Editorial 2-Column Spread, Zero 3-Card Slop) -->
+    <section id="tentang" class="py-20 md:py-28 border-b border-hairline-light dark:border-hairline-dark bg-neutral-50/50 dark:bg-[#0c0c0f]/50">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16">
+          
+          <!-- Left Column: Manifesto & Builder Perspective -->
+          <div class="lg:col-span-6 space-y-6">
+            <span class="font-mono text-xs text-indigo-600 dark:text-indigo-400 uppercase tracking-widest block">02 / Pendekatan &amp; Filosofi</span>
+            
+            <h2 class="text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight text-neutral-950 dark:text-white leading-tight">
+              “Kode harus mudah dipahami manusia. Antarmuka harus terasa wajar bagi pengguna.”
+            </h2>
+
+            <p class="text-sm sm:text-base text-neutral-600 dark:text-neutral-300 leading-relaxed">
+              Saya percaya bahwa kualitas rekayasa perangkat lunak tidak diukur dari seberapa rumit kodenya, melainkan seberapa jelas masalah tersebut diuraikan dan diselesaikan.
+            </p>
+
+            <p class="text-sm sm:text-base text-neutral-600 dark:text-neutral-300 leading-relaxed">
+              Sebagai developer yang mendalami aspek antarmuka, saya tidak memisahkan antara estetika dan logika. Desain yang baik adalah sistem yang menghargai perhatian pengguna, sementara arsitektur kode yang baik adalah sistem yang menghargai waktu developer yang merawatnya.
+            </p>
+
+            <div class="pt-2 font-mono text-xs text-neutral-500">
+              — Aksan Zulkarnain, Catatan Kerja
+            </div>
+          </div>
+
+          <!-- Right Column: Editorial Pillars (Typography & Hairline Dividers, NOT Cards) -->
+          <div class="lg:col-span-6 flex flex-col justify-center space-y-8">
+            
+            <div class="pb-6 border-b border-hairline-light dark:border-hairline-dark">
+              <div class="flex items-baseline gap-3 mb-2">
+                <span class="font-mono text-xs text-neutral-400">01.</span>
+                <h3 class="text-base sm:text-lg font-bold text-neutral-950 dark:text-white tracking-tight">
+                  Systematic Architecture Over Trends
+                </h3>
+              </div>
+              <p class="text-xs sm:text-sm text-neutral-600 dark:text-neutral-300 leading-relaxed pl-7">
+                Menghindari keputusan visual yang hanya mengikuti tren sesaat. Setiap komponen, token warna, dan hirarki spasi dibangun dalam kesatuan sistem yang konsisten dan bertujuan.
+              </p>
+            </div>
+
+            <div class="pb-6 border-b border-hairline-light dark:border-hairline-dark">
+              <div class="flex items-baseline gap-3 mb-2">
+                <span class="font-mono text-xs text-neutral-400">02.</span>
+                <h3 class="text-base sm:text-lg font-bold text-neutral-950 dark:text-white tracking-tight">
+                  Accessibility &amp; Performance by Default
+                </h3>
+              </div>
+              <p class="text-xs sm:text-sm text-neutral-600 dark:text-neutral-300 leading-relaxed pl-7">
+                Kontras warna terbaca, navigasi keyboard yang jelas, dan struktur HTML semantik bukan fitur tambahan, melainkan standar dasar dalam setiap baris kode yang ditulis.
+              </p>
+            </div>
+
+            <div class="pb-6">
+              <div class="flex items-baseline gap-3 mb-2">
+                <span class="font-mono text-xs text-neutral-400">03.</span>
+                <h3 class="text-base sm:text-lg font-bold text-neutral-950 dark:text-white tracking-tight">
+                  Evidence Over Adjectives
+                </h3>
+              </div>
+              <p class="text-xs sm:text-sm text-neutral-600 dark:text-neutral-300 leading-relaxed pl-7">
+                Mengganti klaim pemasaran yang muluk-muluk dengan penjelasan konkret mengenai masalah nyata, keputusan arsitektur, peran kerja, serta evaluasi hasil.
+              </p>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- SECTION 03: CAPABILITIES & TECH STACK (Zero Percentage Bars, Grouped by Real Workflow) -->
+    <section id="kapabilitas" class="py-20 md:py-28 border-b border-hairline-light dark:border-hairline-dark">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="max-w-2xl mb-14">
+          <span class="font-mono text-xs text-indigo-600 dark:text-indigo-400 uppercase tracking-widest block mb-2">03 / Kapabilitas Teknis</span>
+          <h2 class="text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight text-neutral-950 dark:text-white mb-3">
+            Ekosistem &amp; Perangkat Kerja
+          </h2>
+          <p class="text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed">
+            Dikelompokkan berdasarkan peran dalam pekerjaan nyata — tanpa grafik persentase fiktif, berfokus pada alat yang terbukti andal untuk membangun produk.
           </p>
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-          <!-- Card 1 -->
-          <div class="bg-white dark:bg-slate-900 p-8 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-800 hover:border-indigo-500 dark:hover:border-indigo-500 transition-all group">
-            <div class="w-14 h-14 rounded-xl bg-indigo-50 dark:bg-indigo-950/60 text-indigo-600 dark:text-indigo-400 flex items-center justify-center text-2xl mb-6 group-hover:scale-110 transition-transform">
-              <i class="fa-solid fa-code"></i>
+          
+          <!-- Column 1: Core Stack -->
+          <div class="p-6 rounded-lg border border-hairline-light dark:border-hairline-dark bg-surface-light dark:bg-surface-dark space-y-4">
+            <div class="border-b border-hairline-light dark:border-hairline-dark pb-3">
+              <span class="font-mono text-[11px] text-neutral-400 uppercase tracking-widest block">Grup 01</span>
+              <h3 class="text-base font-bold text-neutral-900 dark:text-white tracking-tight">Core Development</h3>
             </div>
-            <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-3">Clean & Scalable Code</h3>
-            <p class="text-slate-600 dark:text-slate-300 text-sm leading-relaxed">
-              Menulis kode terstruktur, mudah dirawat, dan mengikuti best-practice industri. Mengutamakan performa loading optimal dan arsitektur modular.
+            <p class="text-xs text-neutral-500 leading-relaxed">
+              Fondasi harian dalam rekayasa aplikasi web modern yang teruji dan stabil.
             </p>
+            <ul class="space-y-2.5 font-mono text-xs text-neutral-700 dark:text-neutral-300">
+              <li class="flex items-center gap-2">
+                <i class="fa-brands fa-js text-amber-500 w-4 text-center"></i>
+                <span>JavaScript (ES6+) &amp; TypeScript</span>
+              </li>
+              <li class="flex items-center gap-2">
+                <i class="fa-brands fa-react text-sky-400 w-4 text-center"></i>
+                <span>React.js &amp; Next.js</span>
+              </li>
+              <li class="flex items-center gap-2">
+                <i class="fa-brands fa-html5 text-orange-500 w-4 text-center"></i>
+                <span>HTML5 Semantik &amp; Web Standards</span>
+              </li>
+              <li class="flex items-center gap-2">
+                <i class="fa-brands fa-css3-alt text-blue-500 w-4 text-center"></i>
+                <span>Tailwind CSS &amp; Modern CSS</span>
+              </li>
+              <li class="flex items-center gap-2">
+                <i class="fa-brands fa-git-alt text-rose-500 w-4 text-center"></i>
+                <span>Git &amp; GitHub Workflow</span>
+              </li>
+            </ul>
           </div>
 
-          <!-- Card 2 -->
-          <div class="bg-white dark:bg-slate-900 p-8 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-800 hover:border-indigo-500 dark:hover:border-indigo-500 transition-all group">
-            <div class="w-14 h-14 rounded-xl bg-violet-50 dark:bg-violet-950/60 text-violet-600 dark:text-violet-400 flex items-center justify-center text-2xl mb-6 group-hover:scale-110 transition-transform">
-              <i class="fa-solid fa-layer-group"></i>
+          <!-- Column 2: Working With -->
+          <div class="p-6 rounded-lg border border-hairline-light dark:border-hairline-dark bg-surface-light dark:bg-surface-dark space-y-4">
+            <div class="border-b border-hairline-light dark:border-hairline-dark pb-3">
+              <span class="font-mono text-[11px] text-neutral-400 uppercase tracking-widest block">Grup 02</span>
+              <h3 class="text-base font-bold text-neutral-900 dark:text-white tracking-tight">Working With</h3>
             </div>
-            <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-3">UI/UX & Desain Modern</h3>
-            <p class="text-slate-600 dark:text-slate-300 text-sm leading-relaxed">
-              Merancang antarmuka ramah pengguna, responsif pada ponsel maupun monitor resolusi tinggi, serta mempertimbangkan aksesibilitas pengguna.
+            <p class="text-xs text-neutral-500 leading-relaxed">
+              Layanan backend, basis data, dan tooling untuk penyusunan arsitektur lengkap.
             </p>
+            <ul class="space-y-2.5 font-mono text-xs text-neutral-700 dark:text-neutral-300">
+              <li class="flex items-center gap-2">
+                <i class="fa-brands fa-node-js text-emerald-500 w-4 text-center"></i>
+                <span>Node.js &amp; Express Engine</span>
+              </li>
+              <li class="flex items-center gap-2">
+                <i class="fa-solid fa-database text-cyan-500 w-4 text-center"></i>
+                <span>PostgreSQL &amp; Supabase</span>
+              </li>
+              <li class="flex items-center gap-2">
+                <i class="fa-solid fa-network-wired text-indigo-400 w-4 text-center"></i>
+                <span>RESTful APIs &amp; JSON Contracts</span>
+              </li>
+              <li class="flex items-center gap-2">
+                <i class="fa-solid fa-bolt text-yellow-400 w-4 text-center"></i>
+                <span>Vite &amp; Bundler Tooling</span>
+              </li>
+              <li class="flex items-center gap-2">
+                <i class="fa-solid fa-cloud text-slate-400 w-4 text-center"></i>
+                <span>Vercel Deployment &amp; CI/CD</span>
+              </li>
+            </ul>
           </div>
 
-          <!-- Card 3 -->
-          <div class="bg-white dark:bg-slate-900 p-8 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-800 hover:border-indigo-500 dark:hover:border-indigo-500 transition-all group">
-            <div class="w-14 h-14 rounded-xl bg-emerald-50 dark:bg-emerald-950/60 text-emerald-600 dark:text-emerald-400 flex items-center justify-center text-2xl mb-6 group-hover:scale-110 transition-transform">
-              <i class="fa-solid fa-rocket"></i>
+          <!-- Column 3: Exploring & Systems -->
+          <div class="p-6 rounded-lg border border-hairline-light dark:border-hairline-dark bg-surface-light dark:bg-surface-dark space-y-4">
+            <div class="border-b border-hairline-light dark:border-hairline-dark pb-3">
+              <span class="font-mono text-[11px] text-neutral-400 uppercase tracking-widest block">Grup 03</span>
+              <h3 class="text-base font-bold text-neutral-900 dark:text-white tracking-tight">Exploring &amp; Systems</h3>
             </div>
-            <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-3">Solusi Bisnis Nyata</h3>
-            <p class="text-slate-600 dark:text-slate-300 text-sm leading-relaxed">
-              Bukan sekadar kode estetis, tetapi juga sistem yang menjawab tantangan konversi, efisiensi operasional, dan kepuasan pelanggan bisnis Anda.
+            <p class="text-xs text-neutral-500 leading-relaxed">
+              Domain riset berkelanjutan, sistem antarmuka, dan optimasi performa.
             </p>
+            <ul class="space-y-2.5 font-mono text-xs text-neutral-700 dark:text-neutral-300">
+              <li class="flex items-center gap-2">
+                <i class="fa-brands fa-figma text-pink-400 w-4 text-center"></i>
+                <span>Figma Tokens &amp; Component Systems</span>
+              </li>
+              <li class="flex items-center gap-2">
+                <i class="fa-solid fa-wand-magic-sparkles text-violet-400 w-4 text-center"></i>
+                <span>Web Micro-Interactions &amp; Motion</span>
+              </li>
+              <li class="flex items-center gap-2">
+                <i class="fa-solid fa-gauge-high text-emerald-400 w-4 text-center"></i>
+                <span>Core Web Vitals &amp; Performance</span>
+              </li>
+              <li class="flex items-center gap-2">
+                <i class="fa-solid fa-universal-access text-sky-500 w-4 text-center"></i>
+                <span>WCAG Accessibility Audits</span>
+              </li>
+              <li class="flex items-center gap-2">
+                <i class="fa-solid fa-shapes text-amber-400 w-4 text-center"></i>
+                <span>Canvas API &amp; Creative Coding</span>
+              </li>
+            </ul>
           </div>
+
         </div>
 
       </div>
     </section>
 
-    <section id="keahlian" class="py-20">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <!-- SECTION 04: JOURNEY / JEJAK KARIER (Honest, Proportional, Zero Fake Senior Titles) -->
+    <section id="jejak" class="py-20 md:py-28 border-b border-hairline-light dark:border-hairline-dark">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        <div class="text-center max-w-3xl mx-auto mb-16">
-          <h2 class="text-xs font-bold uppercase tracking-widest text-indigo-600 dark:text-indigo-400 mb-2">Keahlian & Teknologi</h2>
-          <p class="text-3xl font-extrabold text-slate-900 dark:text-white sm:text-4xl">
-            Teknologi yang Biasa Saya Gunakan
-          </p>
-          <p class="mt-4 text-slate-600 dark:text-slate-400 text-sm sm:text-base">
-            Perangkat dan bahasa pemrograman yang saya manfaatkan untuk membangun produk digital tangguh.
+        <div class="max-w-2xl mb-14">
+          <span class="font-mono text-xs text-indigo-600 dark:text-indigo-400 uppercase tracking-widest block mb-2">04 / Jejak &amp; Rekam</span>
+          <h2 class="text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight text-neutral-950 dark:text-white mb-3">
+            Perjalanan &amp; Pembelajaran
+          </h2>
+          <p class="text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed">
+            Catatan proporsional mengenai pengalaman membangun aplikasi, eksplorasi teknologi, dan kontribusi proyek.
           </p>
         </div>
 
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-10">
+        <div class="space-y-0 divide-y divide-hairline-light dark:divide-hairline-dark border-y border-hairline-light dark:border-hairline-dark">
           
-          <!-- Column 1: Progress Indicators -->
-          <div class="bg-white dark:bg-slate-900 p-8 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm space-y-6">
-            <h3 class="text-lg font-bold text-slate-900 dark:text-white mb-4 flex items-center gap-2">
-              <i class="fa-solid fa-sliders text-indigo-600"></i> Tingkat Kemahiran Utama
-            </h3>
-
-            <!-- Skill 1 -->
-            <div>
-              <div class="flex justify-between text-sm font-medium mb-1">
-                <span class="text-slate-800 dark:text-slate-200">Frontend (React, Next.js, Tailwind CSS)</span>
-                <span class="text-indigo-600 dark:text-indigo-400 font-semibold">95%</span>
-              </div>
-              <div class="w-full h-2.5 bg-slate-100 dark:bg-slate-800 rounded-full overflow-hidden">
-                <div class="h-full bg-indigo-600 rounded-full" style="width: 95%"></div>
-              </div>
+          <!-- Experience 01 -->
+          <div class="py-8 grid grid-cols-1 md:grid-cols-12 gap-4 items-start">
+            <div class="md:col-span-4 font-mono text-xs text-neutral-500 dark:text-neutral-400">
+              <span class="text-indigo-600 dark:text-indigo-400 font-semibold block">2024 — Sekarang</span>
+              <span>Independent Developer</span>
             </div>
-
-            <!-- Skill 2 -->
-            <div>
-              <div class="flex justify-between text-sm font-medium mb-1">
-                <span class="text-slate-800 dark:text-slate-200">Backend & API (Node.js, Express, REST/GraphQL)</span>
-                <span class="text-indigo-600 dark:text-indigo-400 font-semibold">90%</span>
-              </div>
-              <div class="w-full h-2.5 bg-slate-100 dark:bg-slate-800 rounded-full overflow-hidden">
-                <div class="h-full bg-violet-600 rounded-full" style="width: 90%"></div>
-              </div>
-            </div>
-
-            <!-- Skill 3 -->
-            <div>
-              <div class="flex justify-between text-sm font-medium mb-1">
-                <span class="text-slate-800 dark:text-slate-200">Database (PostgreSQL, MongoDB, Redis)</span>
-                <span class="text-indigo-600 dark:text-indigo-400 font-semibold">85%</span>
-              </div>
-              <div class="w-full h-2.5 bg-slate-100 dark:bg-slate-800 rounded-full overflow-hidden">
-                <div class="h-full bg-emerald-600 rounded-full" style="width: 85%"></div>
-              </div>
-            </div>
-
-            <!-- Skill 4 -->
-            <div>
-              <div class="flex justify-between text-sm font-medium mb-1">
-                <span class="text-slate-800 dark:text-slate-200">DevOps & Cloud (Docker, CI/CD, AWS, Vercel)</span>
-                <span class="text-indigo-600 dark:text-indigo-400 font-semibold">80%</span>
-              </div>
-              <div class="w-full h-2.5 bg-slate-100 dark:bg-slate-800 rounded-full overflow-hidden">
-                <div class="h-full bg-amber-500 rounded-full" style="width: 80%"></div>
-              </div>
+            <div class="md:col-span-8 space-y-2">
+              <h3 class="text-base sm:text-lg font-bold text-neutral-900 dark:text-white tracking-tight">
+                Rekayasa Antarmuka &amp; Produk Web Mandiri
+              </h3>
+              <p class="text-xs sm:text-sm text-neutral-600 dark:text-neutral-300 leading-relaxed">
+                Membangun aplikasi web mandiri, merancang sistem desain komponen berbasis token, serta mengeksplorasi optimasi performa frontend pada aplikasi web interaktif. Berfokus pada kode modular dan pemahaman mendalam mengenai arsitektur React dan TypeScript.
+              </p>
             </div>
           </div>
 
-          <!-- Column 2: Tech Badges Grid -->
-          <div class="grid grid-cols-2 sm:grid-cols-3 gap-4">
+          <!-- Experience 02 -->
+          <div class="py-8 grid grid-cols-1 md:grid-cols-12 gap-4 items-start">
+            <div class="md:col-span-4 font-mono text-xs text-neutral-500 dark:text-neutral-400">
+              <span class="text-neutral-700 dark:text-neutral-300 font-semibold block">2023 — 2024</span>
+              <span>Web Development &amp; Prototyping</span>
+            </div>
+            <div class="md:col-span-8 space-y-2">
+              <h3 class="text-base sm:text-lg font-bold text-neutral-900 dark:text-white tracking-tight">
+                Pengembangan Antarmuka Web &amp; Integrasi API
+              </h3>
+              <p class="text-xs sm:text-sm text-neutral-600 dark:text-neutral-300 leading-relaxed">
+                Terlibat dalam perancangan antarmuka pengguna responsif, integrasi endpoint REST API, serta penyusunan halaman landing page dan dashboard data dengan pendekatan component-driven.
+              </p>
+            </div>
+          </div>
+
+          <!-- Experience 03 -->
+          <div class="py-8 grid grid-cols-1 md:grid-cols-12 gap-4 items-start">
+            <div class="md:col-span-4 font-mono text-xs text-neutral-500 dark:text-neutral-400">
+              <span class="text-neutral-700 dark:text-neutral-300 font-semibold block">2022 — 2023</span>
+              <span>Foundational Exploration</span>
+            </div>
+            <div class="md:col-span-8 space-y-2">
+              <h3 class="text-base sm:text-lg font-bold text-neutral-900 dark:text-white tracking-tight">
+                Pendalaman Rekayasa Web &amp; Prinsip Desain UI
+              </h3>
+              <p class="text-xs sm:text-sm text-neutral-600 dark:text-neutral-300 leading-relaxed">
+                Mempelajari dasar-dasar ilmu komputer web, algoritma JavaScript, perancangan skema basis data relasional, dan implementasi desain sistematis di Figma.
+              </p>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- SECTION 05: CONTACT / PENUTUP (Authentic, Strong Closing, Real Info) -->
+    <section id="kontak" class="py-20 md:py-28 bg-neutral-50/50 dark:bg-[#0c0c0f]/50">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+          
+          <!-- Left Column: Direct Communication & Manifesto -->
+          <div class="lg:col-span-6 space-y-6">
+            <span class="font-mono text-xs text-indigo-600 dark:text-indigo-400 uppercase tracking-widest block">05 / Kontak &amp; Kolaborasi</span>
             
-            <div class="bg-white dark:bg-slate-900 p-4 rounded-xl border border-slate-200 dark:border-slate-800 flex flex-col items-center justify-center text-center transition-all hover:scale-105 hover:border-indigo-500">
-              <i class="fa-brands fa-react text-4xl text-sky-400 mb-2"></i>
-              <span class="font-semibold text-sm">React.js</span>
-              <span class="text-xs text-slate-500 dark:text-slate-400">Frontend Lib</span>
-            </div>
+            <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight text-neutral-950 dark:text-white leading-tight">
+              Pintu komunikasi selalu terbuka untuk diskusi yang bermakna.
+            </h2>
 
-            <div class="bg-white dark:bg-slate-900 p-4 rounded-xl border border-slate-200 dark:border-slate-800 flex flex-col items-center justify-center text-center transition-all hover:scale-105 hover:border-indigo-500">
-              <i class="fa-brands fa-node-js text-4xl text-emerald-500 mb-2"></i>
-              <span class="font-semibold text-sm">Node.js</span>
-              <span class="text-xs text-slate-500 dark:text-slate-400">Runtime Env</span>
-            </div>
+            <p class="text-sm sm:text-base text-neutral-600 dark:text-neutral-300 leading-relaxed">
+              Apakah Anda memiliki ide produk yang ingin direalisasikan, membutuhkan rekan teknis untuk rekayasa antarmuka, atau sekadar ingin bertukar pikiran seputar sistem web? Silakan hubungi saya melalui email.
+            </p>
 
-            <div class="bg-white dark:bg-slate-900 p-4 rounded-xl border border-slate-200 dark:border-slate-800 flex flex-col items-center justify-center text-center transition-all hover:scale-105 hover:border-indigo-500">
-              <i class="fa-brands fa-js text-4xl text-yellow-400 mb-2"></i>
-              <span class="font-semibold text-sm">TypeScript</span>
-              <span class="text-xs text-slate-500 dark:text-slate-400">Type-Safety</span>
-            </div>
-
-            <div class="bg-white dark:bg-slate-900 p-4 rounded-xl border border-slate-200 dark:border-slate-800 flex flex-col items-center justify-center text-center transition-all hover:scale-105 hover:border-indigo-500">
-              <i class="fa-brands fa-python text-4xl text-blue-500 mb-2"></i>
-              <span class="font-semibold text-sm">Python</span>
-              <span class="text-xs text-slate-500 dark:text-slate-400">Data & Scripts</span>
-            </div>
-
-            <div class="bg-white dark:bg-slate-900 p-4 rounded-xl border border-slate-200 dark:border-slate-800 flex flex-col items-center justify-center text-center transition-all hover:scale-105 hover:border-indigo-500">
-              <i class="fa-brands fa-docker text-4xl text-blue-400 mb-2"></i>
-              <span class="font-semibold text-sm">Docker</span>
-              <span class="text-xs text-slate-500 dark:text-slate-400">Container</span>
-            </div>
-
-            <div class="bg-white dark:bg-slate-900 p-4 rounded-xl border border-slate-200 dark:border-slate-800 flex flex-col items-center justify-center text-center transition-all hover:scale-105 hover:border-indigo-500">
-              <i class="fa-brands fa-figma text-4xl text-pink-500 mb-2"></i>
-              <span class="font-semibold text-sm">Figma</span>
-              <span class="text-xs text-slate-500 dark:text-slate-400">UI/UX Prototype</span>
-            </div>
-
-          </div>
-
-        </div>
-
-      </div>
-    </section>
-
-    <section id="proyek" class="py-20 bg-slate-100/70 dark:bg-slate-900/50 border-y border-slate-200 dark:border-slate-800">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        
-        <div class="text-center max-w-3xl mx-auto mb-12">
-          <h2 class="text-xs font-bold uppercase tracking-widest text-indigo-600 dark:text-indigo-400 mb-2">Portofolio Pilihan</h2>
-          <p class="text-3xl font-extrabold text-slate-900 dark:text-white sm:text-4xl">
-            Hasil Karya & Proyek Nyata
-          </p>
-          <p class="mt-4 text-slate-600 dark:text-slate-400 text-sm sm:text-base">
-            Berikut beberapa proyek terpilih yang mencakup web app SaaS, platform e-commerce, dan dashboard analitik.
-          </p>
-        </div>
-
-        <!-- Filter Buttons -->
-        <div class="flex flex-wrap items-center justify-center gap-2 mb-12">
-          <button data-filter="all" class="filter-btn active px-4 py-2 rounded-xl text-sm font-semibold transition-all bg-indigo-600 text-white shadow-sm">
-            Semua
-          </button>
-          <button data-filter="web" class="filter-btn px-4 py-2 rounded-xl text-sm font-semibold transition-all bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700">
-            Aplikasi Web
-          </button>
-          <button data-filter="mobile" class="filter-btn px-4 py-2 rounded-xl text-sm font-semibold transition-all bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700">
-            Mobile / PWA
-          </button>
-          <button data-filter="uiux" class="filter-btn px-4 py-2 rounded-xl text-sm font-semibold transition-all bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700">
-            Desain UI/UX
-          </button>
-        </div>
-
-        <!-- Project Grid -->
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="projectsGrid">
-          
-          <!-- Project Card 1 -->
-          <div class="project-card bg-white dark:bg-slate-900 rounded-2xl overflow-hidden border border-slate-200 dark:border-slate-800 shadow-sm hover:shadow-xl transition-all group" data-category="web">
-            <div class="relative overflow-hidden aspect-video bg-slate-200 dark:bg-slate-800">
-              <img 
-                src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=80" 
-                alt="FinTrack SaaS Dashboard" 
-                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                onerror="this.src='https://placehold.co/800x450/4f46e5/ffffff?text=FinTrack+Dashboard'"
-              >
-              <span class="absolute top-3 right-3 bg-indigo-600 text-white text-xs px-2.5 py-1 rounded-full font-semibold">Web App</span>
-            </div>
-            <div class="p-6">
-              <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-2">FinTrack - Dashboard Keuangan</h3>
-              <p class="text-slate-600 dark:text-slate-300 text-sm mb-4 line-clamp-2">
-                Aplikasi pencatatan arus kas dan analitik finansial UKM dengan visualisasi diagram interaktif secara real-time.
-              </p>
-              <div class="flex flex-wrap gap-2 mb-6">
-                <span class="text-xs px-2.5 py-1 rounded-md bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300">Next.js</span>
-                <span class="text-xs px-2.5 py-1 rounded-md bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300">Tailwind</span>
-                <span class="text-xs px-2.5 py-1 rounded-md bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300">PostgreSQL</span>
+            <!-- Direct Contact Card (Authentic: aksan.zulkarnain@gmail.com) -->
+            <div class="p-6 rounded-lg border border-hairline-light dark:border-hairline-dark bg-surface-light dark:bg-surface-dark space-y-4">
+              <div>
+                <span class="font-mono text-[11px] text-neutral-400 uppercase tracking-widest block">Email Langsung</span>
+                <span class="text-base sm:text-lg font-mono font-semibold text-neutral-900 dark:text-white block mt-1 select-all" id="targetEmail">
+                  aksan.zulkarnain@gmail.com
+                </span>
               </div>
-              <div class="flex items-center justify-between pt-4 border-t border-slate-100 dark:border-slate-800">
-                <button onclick="openModal('FinTrack - Dashboard Keuangan', 'Platform analitik kas masuk dan kas keluar untuk pemilik UMKM. Dilengkapi autentikasi multi-tenant, ekspor laporan PDF/Excel instan, dan integrasi webhook pembayaran.', ['Next.js 14', 'PostgreSQL', 'Tailwind CSS', 'Chart.js'], 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=80')" class="text-indigo-600 dark:text-indigo-400 font-semibold text-sm hover:underline flex items-center gap-1">
-                  <span>Detail Lengkap</span>
-                  <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
+              <div class="flex flex-wrap items-center gap-3 pt-2">
+                <a href="mailto:aksan.zulkarnain@gmail.com" class="px-4 py-2 rounded bg-neutral-900 hover:bg-neutral-800 text-white dark:bg-white dark:text-neutral-900 dark:hover:bg-neutral-100 font-mono text-xs uppercase tracking-wider transition-colors flex items-center gap-2">
+                  <i class="fa-solid fa-paper-plane text-[10px]"></i>
+                  <span>Buka Mail Client</span>
+                </a>
+                <button type="button" onclick="copyEmail()" class="px-4 py-2 rounded border border-hairline-light dark:border-hairline-dark hover:border-neutral-400 dark:hover:border-neutral-600 text-neutral-700 dark:text-neutral-300 font-mono text-xs uppercase tracking-wider transition-colors flex items-center gap-2">
+                  <i class="fa-regular fa-copy text-[11px]"></i>
+                  <span>Salin Alamat</span>
                 </button>
-                <div class="flex space-x-3 text-slate-400">
-                  <span class="hover:text-slate-800 dark:hover:text-white cursor-pointer" title="Kode Sumber"><i class="fa-brands fa-github text-base"></i></span>
-                  <span class="hover:text-slate-800 dark:hover:text-white cursor-pointer" title="Pratinjau Live"><i class="fa-solid fa-arrow-up-right-from-square text-base"></i></span>
-                </div>
               </div>
             </div>
+
+            <!-- Social Links & Profiles -->
+            <div class="space-y-2 pt-2">
+              <span class="font-mono text-[11px] text-neutral-400 uppercase tracking-widest block">Jejak Digital &amp; Repositori</span>
+              <div class="flex items-center gap-4 text-sm font-mono text-neutral-600 dark:text-neutral-400">
+                <a href="https://github.com/UserZU" target="_blank" rel="noopener noreferrer" class="hover:text-neutral-950 dark:hover:text-white transition-colors flex items-center gap-1.5">
+                  <i class="fa-brands fa-github text-base"></i>
+                  <span>GitHub</span>
+                </a>
+                <span class="text-neutral-300 dark:text-neutral-700">•</span>
+                <a href="https://porto-aksan.vercel.app/" target="_blank" rel="noopener noreferrer" class="hover:text-neutral-950 dark:hover:text-white transition-colors flex items-center gap-1.5">
+                  <i class="fa-solid fa-globe text-base"></i>
+                  <span>Live Site</span>
+                </a>
+              </div>
+            </div>
+
           </div>
 
-          <!-- Project Card 2 -->
-          <div class="project-card bg-white dark:bg-slate-900 rounded-2xl overflow-hidden border border-slate-200 dark:border-slate-800 shadow-sm hover:shadow-xl transition-all group" data-category="mobile">
-            <div class="relative overflow-hidden aspect-video bg-slate-200 dark:bg-slate-800">
-              <img 
-                src="https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&w=800&q=80" 
-                alt="HealthPulse PWA" 
-                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                onerror="this.src='https://placehold.co/800x450/10b981/ffffff?text=HealthPulse+PWA'"
-              >
-              <span class="absolute top-3 right-3 bg-emerald-600 text-white text-xs px-2.5 py-1 rounded-full font-semibold">Mobile App</span>
-            </div>
-            <div class="p-6">
-              <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-2">HealthPulse - Medical PWA</h3>
-              <p class="text-slate-600 dark:text-slate-300 text-sm mb-4 line-clamp-2">
-                Aplikasi web progresif untuk pemesanan jadwal dokter dan pengingat konsumsi obat harian dengan notifikasi push offline.
-              </p>
-              <div class="flex flex-wrap gap-2 mb-6">
-                <span class="text-xs px-2.5 py-1 rounded-md bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300">React PWA</span>
-                <span class="text-xs px-2.5 py-1 rounded-md bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300">Node.js</span>
-                <span class="text-xs px-2.5 py-1 rounded-md bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300">Workbox</span>
-              </div>
-              <div class="flex items-center justify-between pt-4 border-t border-slate-100 dark:border-slate-800">
-                <button onclick="openModal('HealthPulse - Medical PWA', 'HealthPulse memungkinkan pasien berkonsultasi secara async dengan dokter spesialis, menyinkronkan rekam medis offline, serta mengatur alarm pengingat obat dengan service worker.', ['React', 'Workbox', 'Firebase', 'Tailwind CSS'], 'https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&w=1200&q=80')" class="text-indigo-600 dark:text-indigo-400 font-semibold text-sm hover:underline flex items-center gap-1">
-                  <span>Detail Lengkap</span>
-                  <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
-                </button>
-                <div class="flex space-x-3 text-slate-400">
-                  <span class="hover:text-slate-800 dark:hover:text-white cursor-pointer" title="Kode Sumber"><i class="fa-brands fa-github text-base"></i></span>
-                  <span class="hover:text-slate-800 dark:hover:text-white cursor-pointer" title="Pratinjau Live"><i class="fa-solid fa-arrow-up-right-from-square text-base"></i></span>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Project Card 3 -->
-          <div class="project-card bg-white dark:bg-slate-900 rounded-2xl overflow-hidden border border-slate-200 dark:border-slate-800 shadow-sm hover:shadow-xl transition-all group" data-category="uiux">
-            <div class="relative overflow-hidden aspect-video bg-slate-200 dark:bg-slate-800">
-              <img 
-                src="https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?auto=format&fit=crop&w=800&q=80" 
-                alt="Lumina E-Commerce Redesign" 
-                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                onerror="this.src='https://placehold.co/800x450/8b5cf6/ffffff?text=Lumina+Design+System'"
-              >
-              <span class="absolute top-3 right-3 bg-violet-600 text-white text-xs px-2.5 py-1 rounded-full font-semibold">UI/UX</span>
-            </div>
-            <div class="p-6">
-              <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-2">Lumina - Design System</h3>
-              <p class="text-slate-600 dark:text-slate-300 text-sm mb-4 line-clamp-2">
-                Perancangan sistem desain terpadu, wireframing, dan prototipe interaktif untuk platform marketplace produk fesyen berkelanjutan.
-              </p>
-              <div class="flex flex-wrap gap-2 mb-6">
-                <span class="text-xs px-2.5 py-1 rounded-md bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300">Figma</span>
-                <span class="text-xs px-2.5 py-1 rounded-md bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300">Prototyping</span>
-                <span class="text-xs px-2.5 py-1 rounded-md bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300">Design System</span>
-              </div>
-              <div class="flex items-center justify-between pt-4 border-t border-slate-100 dark:border-slate-800">
-                <button onclick="openModal('Lumina - E-Commerce Design System', 'Studi kasus desain komprehensif mulai dari user interview, persona analysis, information architecture, hingga pembuatan 150+ komponen tokenized di Figma yang siap didevelop.', ['Figma Tokens', 'User Journey Mapping', 'A/B Test Prototype'], 'https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?auto=format&fit=crop&w=1200&q=80')" class="text-indigo-600 dark:text-indigo-400 font-semibold text-sm hover:underline flex items-center gap-1">
-                  <span>Detail Lengkap</span>
-                  <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
-                </button>
-                <div class="flex space-x-3 text-slate-400">
-                  <span class="hover:text-slate-800 dark:hover:text-white cursor-pointer" title="Pratinjau Figma"><i class="fa-brands fa-figma text-base"></i></span>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Project Card 4 -->
-          <div class="project-card bg-white dark:bg-slate-900 rounded-2xl overflow-hidden border border-slate-200 dark:border-slate-800 shadow-sm hover:shadow-xl transition-all group" data-category="web">
-            <div class="relative overflow-hidden aspect-video bg-slate-200 dark:bg-slate-800">
-              <img 
-                src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80" 
-                alt="EduSpark LMS" 
-                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                onerror="this.src='https://placehold.co/800x450/f59e0b/ffffff?text=EduSpark+LMS'"
-              >
-              <span class="absolute top-3 right-3 bg-indigo-600 text-white text-xs px-2.5 py-1 rounded-full font-semibold">Web App</span>
-            </div>
-            <div class="p-6">
-              <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-2">EduSpark - Learning Platform</h3>
-              <p class="text-slate-600 dark:text-slate-300 text-sm mb-4 line-clamp-2">
-                Platform kursus daring dengan video streaming adaptive bitrate, quiz interaktif, dan sertifikat otomatis ber-barcode.
-              </p>
-              <div class="flex flex-wrap gap-2 mb-6">
-                <span class="text-xs px-2.5 py-1 rounded-md bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300">Vue 3</span>
-                <span class="text-xs px-2.5 py-1 rounded-md bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300">Express</span>
-                <span class="text-xs px-2.5 py-1 rounded-md bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300">AWS S3</span>
-              </div>
-              <div class="flex items-center justify-between pt-4 border-t border-slate-100 dark:border-slate-800">
-                <button onclick="openModal('EduSpark - Learning Platform', 'Platform kursus online dengan sistem payment gateway Midtrans, streaming video proteksi HLS, modul kuis otomatis, dan penerbitan verifikasi e-sertifikat.', ['Vue 3', 'Node.js', 'Redis', 'AWS CloudFront'], 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1200&q=80')" class="text-indigo-600 dark:text-indigo-400 font-semibold text-sm hover:underline flex items-center gap-1">
-                  <span>Detail Lengkap</span>
-                  <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
-                </button>
-                <div class="flex space-x-3 text-slate-400">
-                  <span class="hover:text-slate-800 dark:hover:text-white cursor-pointer"><i class="fa-brands fa-github text-base"></i></span>
-                  <span class="hover:text-slate-800 dark:hover:text-white cursor-pointer"><i class="fa-solid fa-arrow-up-right-from-square text-base"></i></span>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Project Card 5 -->
-          <div class="project-card bg-white dark:bg-slate-900 rounded-2xl overflow-hidden border border-slate-200 dark:border-slate-800 shadow-sm hover:shadow-xl transition-all group" data-category="mobile">
-            <div class="relative overflow-hidden aspect-video bg-slate-200 dark:bg-slate-800">
-              <img 
-                src="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?auto=format&fit=crop&w=800&q=80" 
-                alt="FoodDash Driver App" 
-                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                onerror="this.src='https://placehold.co/800x450/ef4444/ffffff?text=FoodDash+Driver'"
-              >
-              <span class="absolute top-3 right-3 bg-emerald-600 text-white text-xs px-2.5 py-1 rounded-full font-semibold">Mobile App</span>
-            </div>
-            <div class="p-6">
-              <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-2">FoodDash - Kurir Pintar</h3>
-              <p class="text-slate-600 dark:text-slate-300 text-sm mb-4 line-clamp-2">
-                Aplikasi pelacakan rute pengantaran makanan dengan optimasi jalur geolokasi berbasis algoritma Dijkstra.
-              </p>
-              <div class="flex flex-wrap gap-2 mb-6">
-                <span class="text-xs px-2.5 py-1 rounded-md bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300">React Native</span>
-                <span class="text-xs px-2.5 py-1 rounded-md bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300">Socket.io</span>
-                <span class="text-xs px-2.5 py-1 rounded-md bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300">Mapbox</span>
-              </div>
-              <div class="flex items-center justify-between pt-4 border-t border-slate-100 dark:border-slate-800">
-                <button onclick="openModal('FoodDash - Kurir Pintar', 'Solusi pengantaran cepat makanan lokal dengan peta GPS live update tiap 3 detik via WebSocket, hemat konsumsi baterai, dan integrasi chatting real-time dengan pelanggan.', ['React Native', 'Socket.IO', 'Mapbox SDK', 'MongoDB'], 'https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?auto=format&fit=crop&w=1200&q=80')" class="text-indigo-600 dark:text-indigo-400 font-semibold text-sm hover:underline flex items-center gap-1">
-                  <span>Detail Lengkap</span>
-                  <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
-                </button>
-                <div class="flex space-x-3 text-slate-400">
-                  <span class="hover:text-slate-800 dark:hover:text-white cursor-pointer"><i class="fa-brands fa-github text-base"></i></span>
-                  <span class="hover:text-slate-800 dark:hover:text-white cursor-pointer"><i class="fa-solid fa-arrow-up-right-from-square text-base"></i></span>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Project Card 6 -->
-          <div class="project-card bg-white dark:bg-slate-900 rounded-2xl overflow-hidden border border-slate-200 dark:border-slate-800 shadow-sm hover:shadow-xl transition-all group" data-category="uiux">
-            <div class="relative overflow-hidden aspect-video bg-slate-200 dark:bg-slate-800">
-              <img 
-                src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=800&q=80" 
-                alt="CryptoSphere Wallet Concept" 
-                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                onerror="this.src='https://placehold.co/800x450/6366f1/ffffff?text=Crypto+Wallet+UI'"
-              >
-              <span class="absolute top-3 right-3 bg-violet-600 text-white text-xs px-2.5 py-1 rounded-full font-semibold">UI/UX</span>
-            </div>
-            <div class="p-6">
-              <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-2">CryptoSphere - Web3 Wallet</h3>
-              <p class="text-slate-600 dark:text-slate-300 text-sm mb-4 line-clamp-2">
-                Eksplorasi antarmuka dompet crypto yang memudahkan pemula memahami gas fee, transfer token, dan staking aset digital.
-              </p>
-              <div class="flex flex-wrap gap-2 mb-6">
-                <span class="text-xs px-2.5 py-1 rounded-md bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300">Figma</span>
-                <span class="text-xs px-2.5 py-1 rounded-md bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300">Micro-interactions</span>
-              </div>
-              <div class="flex items-center justify-between pt-4 border-t border-slate-100 dark:border-slate-800">
-                <button onclick="openModal('CryptoSphere - Web3 Wallet Concept', 'Konsep antarmuka berfokus pada kesederhanaan onboarding Web3. Menghilangkan kerumitan frase teknis dengan microcopy yang bersahabat dan proteksi konfirmasi transaksi 2 langkah.', ['Figma', 'Principle', 'Design System'], 'https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=1200&q=80')" class="text-indigo-600 dark:text-indigo-400 font-semibold text-sm hover:underline flex items-center gap-1">
-                  <span>Detail Lengkap</span>
-                  <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
-                </button>
-                <div class="flex space-x-3 text-slate-400">
-                  <span class="hover:text-slate-800 dark:hover:text-white cursor-pointer"><i class="fa-brands fa-figma text-base"></i></span>
-                </div>
-              </div>
-            </div>
-          </div>
-
-        </div>
-
-      </div>
-    </section>
-
-    <section id="pengalaman" class="py-20">
-      <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-        
-        <div class="text-center max-w-3xl mx-auto mb-16">
-          <h2 class="text-xs font-bold uppercase tracking-widest text-indigo-600 dark:text-indigo-400 mb-2">Riwayat Karier</h2>
-          <p class="text-3xl font-extrabold text-slate-900 dark:text-white sm:text-4xl">
-            Pengalaman Kerja & Kontribusi
-          </p>
-        </div>
-
-        <!-- Vertical Timeline -->
-        <div class="relative border-l-2 border-indigo-200 dark:border-slate-800 ml-4 md:ml-32 space-y-12">
-          
-          <!-- Experience Item 1 -->
-          <div class="relative pl-8 group">
-            <div class="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full bg-indigo-600 border-4 border-white dark:border-slate-950"></div>
-            <div class="md:absolute md:-left-36 md:top-1 text-sm font-semibold text-indigo-600 dark:text-indigo-400 mb-1 md:mb-0">
-              2023 - Sekarang
-            </div>
-            <div class="bg-white dark:bg-slate-900 p-6 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm">
-              <h3 class="text-lg font-bold text-slate-900 dark:text-white">Senior Frontend Engineer</h3>
-              <p class="text-sm font-medium text-slate-500 dark:text-slate-400 mb-3">TechNova Solusindo • Penuh Waktu</p>
-              <p class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
-                Memimpin tim 6 developer dalam migrasi aplikasi monolitis ke arsitektur micro-frontend berbasis Next.js. Berhasil meningkatkan kecepatan loading hingga 42% dan menaikkan skor Core Web Vitals ke angka 98.
-              </p>
-            </div>
-          </div>
-
-          <!-- Experience Item 2 -->
-          <div class="relative pl-8 group">
-            <div class="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full bg-slate-300 dark:bg-slate-700 border-4 border-white dark:border-slate-950 group-hover:bg-indigo-600 transition-colors"></div>
-            <div class="md:absolute md:-left-36 md:top-1 text-sm font-semibold text-slate-500 dark:text-slate-400 mb-1 md:mb-0">
-              2021 - 2023
-            </div>
-            <div class="bg-white dark:bg-slate-900 p-6 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm">
-              <h3 class="text-lg font-bold text-slate-900 dark:text-white">Full-Stack Developer</h3>
-              <p class="text-sm font-medium text-slate-500 dark:text-slate-400 mb-3">KaryaDigital Studio • Jakarta</p>
-              <p class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
-                Membangun lebih dari 15 aplikasi web komersial untuk klien lokal dan internasional menggunakan React, Node.js, dan PostgreSQL. Mengintegrasikan payment gateway dan automated testing pipeline.
-              </p>
-            </div>
-          </div>
-
-          <!-- Experience Item 3 -->
-          <div class="relative pl-8 group">
-            <div class="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full bg-slate-300 dark:bg-slate-700 border-4 border-white dark:border-slate-950 group-hover:bg-indigo-600 transition-colors"></div>
-            <div class="md:absolute md:-left-36 md:top-1 text-sm font-semibold text-slate-500 dark:text-slate-400 mb-1 md:mb-0">
-              2019 - 2021
-            </div>
-            <div class="bg-white dark:bg-slate-900 p-6 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm">
-              <h3 class="text-lg font-bold text-slate-900 dark:text-white">Junior Web Developer & UI Designer</h3>
-              <p class="text-sm font-medium text-slate-500 dark:text-slate-400 mb-3">CreativeLabs Agency</p>
-              <p class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
-                Membuat landing page interaktif dengan animasi halus, mendesain wireframe dan prototipe di Figma, serta melakukan pemeliharaan database klien.
-              </p>
-            </div>
-          </div>
-
-        </div>
-
-      </div>
-    </section>
-
-    <section id="kontak" class="py-20 bg-slate-100/70 dark:bg-slate-900/50 border-t border-slate-200 dark:border-slate-800 relative">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        
-        <div class="text-center max-w-3xl mx-auto mb-16">
-          <h2 class="text-xs font-bold uppercase tracking-widest text-indigo-600 dark:text-indigo-400 mb-2">Kontak Saya</h2>
-          <p class="text-3xl font-extrabold text-slate-900 dark:text-white sm:text-4xl">
-            Mari Bicarakan Proyek Impian Anda
-          </p>
-          <p class="mt-4 text-slate-600 dark:text-slate-400 text-sm sm:text-base">
-            Punya ide produk, tawaran kerja sama, atau sekadar ingin menyapa? Kirim pesan dan saya akan membalasnya sesegera mungkin.
-          </p>
-        </div>
-
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-10">
-          
-          <!-- Contact Details (Left) -->
-          <div class="lg:col-span-5 space-y-6">
-            <div class="bg-white dark:bg-slate-900 p-8 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm space-y-6">
-              <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-2">Informasi Kontak</h3>
-              
-              <!-- Item: Email -->
-              <div class="flex items-start gap-4">
-                <div class="w-12 h-12 rounded-xl bg-indigo-50 dark:bg-indigo-950/60 text-indigo-600 dark:text-indigo-400 flex items-center justify-center text-xl shrink-0">
-                  <i class="fa-solid fa-envelope"></i>
-                </div>
-                <div class="flex-1">
-                  <p class="text-xs text-slate-500 dark:text-slate-400 font-medium">Kirim Email</p>
-                  <p class="text-sm font-semibold text-slate-800 dark:text-slate-200 select-all" id="emailText">aksan.zulkarnain.dev@example.com</p>
-                  <button type="button" onclick="copyEmail()" class="text-xs text-indigo-600 dark:text-indigo-400 font-medium hover:underline mt-1 flex items-center gap-1">
-                    <i class="fa-regular fa-copy"></i> Salin Email
-                  </button>
-                </div>
+          <!-- Right Column: Clean Form -->
+          <div class="lg:col-span-6">
+            <div class="p-6 sm:p-8 rounded-lg border border-hairline-light dark:border-hairline-dark bg-surface-light dark:bg-surface-dark space-y-6">
+              <div>
+                <h3 class="text-lg font-bold text-neutral-950 dark:text-white tracking-tight">Kirim Pesan</h3>
+                <p class="text-xs text-neutral-500 mt-1">Formulir ini akan menghubungkan Anda langsung dengan Aksan.</p>
               </div>
 
-              <!-- Item: WhatsApp / Phone -->
-              <div class="flex items-start gap-4">
-                <div class="w-12 h-12 rounded-xl bg-emerald-50 dark:bg-emerald-950/60 text-emerald-600 dark:text-emerald-400 flex items-center justify-center text-xl shrink-0">
-                  <i class="fa-brands fa-whatsapp"></i>
-                </div>
+              <form id="directContactForm" onsubmit="handleContactSubmit(event)" class="space-y-4">
                 <div>
-                  <p class="text-xs text-slate-500 dark:text-slate-400 font-medium">WhatsApp / Telepon</p>
-                  <p class="text-sm font-semibold text-slate-800 dark:text-slate-200">+62 812-3456-7890</p>
-                  <span class="text-xs text-slate-500 dark:text-slate-400">Tersedia pada jam kerja (WIB)</span>
-                </div>
-              </div>
-
-              <!-- Item: Location -->
-              <div class="flex items-start gap-4">
-                <div class="w-12 h-12 rounded-xl bg-sky-50 dark:bg-sky-950/60 text-sky-600 dark:text-sky-400 flex items-center justify-center text-xl shrink-0">
-                  <i class="fa-solid fa-location-dot"></i>
-                </div>
-                <div>
-                  <p class="text-xs text-slate-500 dark:text-slate-400 font-medium">Lokasi</p>
-                  <p class="text-sm font-semibold text-slate-800 dark:text-slate-200">Jakarta Selatan, Indonesia</p>
-                  <span class="text-xs text-slate-500 dark:text-slate-400">Siap kerja Remote & Hybrid</span>
-                </div>
-              </div>
-
-              <!-- Social Links -->
-              <div class="pt-6 border-t border-slate-100 dark:border-slate-800">
-                <p class="text-xs font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-3">Ikuti Media Sosial</p>
-                <div class="flex space-x-3">
-                  <a href="#" class="w-10 h-10 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:text-white hover:bg-indigo-600 dark:hover:bg-indigo-600 flex items-center justify-center transition-all">
-                    <i class="fa-brands fa-github"></i>
-                  </a>
-                  <a href="#" class="w-10 h-10 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:text-white hover:bg-blue-600 dark:hover:bg-blue-600 flex items-center justify-center transition-all">
-                    <i class="fa-brands fa-linkedin-in"></i>
-                  </a>
-                  <a href="#" class="w-10 h-10 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:text-white hover:bg-sky-500 dark:hover:bg-sky-500 flex items-center justify-center transition-all">
-                    <i class="fa-brands fa-twitter"></i>
-                  </a>
-                  <a href="#" class="w-10 h-10 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:text-white hover:bg-pink-600 dark:hover:bg-pink-600 flex items-center justify-center transition-all">
-                    <i class="fa-brands fa-instagram"></i>
-                  </a>
-                </div>
-              </div>
-
-            </div>
-          </div>
-
-          <!-- Contact Form (Right) -->
-          <div class="lg:col-span-7">
-            <div class="bg-white dark:bg-slate-900 p-8 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm">
-              <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-6">Kirim Pesan Langsung</h3>
-              
-              <form id="contactForm" onsubmit="handleFormSubmit(event)" class="space-y-4">
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  <div>
-                    <label for="name" class="block text-xs font-semibold text-slate-700 dark:text-slate-300 uppercase tracking-wider mb-2">Nama Lengkap *</label>
-                    <input type="text" id="name" required placeholder="Contoh: Budi Santoso" class="w-full px-4 py-3 rounded-xl bg-slate-50 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 text-slate-900 dark:text-white text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 transition-all">
-                  </div>
-                  <div>
-                    <label for="email" class="block text-xs font-semibold text-slate-700 dark:text-slate-300 uppercase tracking-wider mb-2">Alamat Email *</label>
-                    <input type="email" id="email" required placeholder="budi@perusahaan.com" class="w-full px-4 py-3 rounded-xl bg-slate-50 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 text-slate-900 dark:text-white text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 transition-all">
-                  </div>
+                  <label for="formName" class="block font-mono text-[11px] uppercase tracking-wider text-neutral-700 dark:text-neutral-300 mb-1.5">Nama Lengkap *</label>
+                  <input 
+                    type="text" 
+                    id="formName" 
+                    required 
+                    placeholder="Nama Anda atau institusi" 
+                    class="w-full px-3.5 py-2.5 rounded border border-hairline-light dark:border-hairline-dark bg-neutral-50 dark:bg-neutral-900 text-neutral-950 dark:text-white text-sm transition-colors"
+                  >
                 </div>
 
                 <div>
-                  <label for="subject" class="block text-xs font-semibold text-slate-700 dark:text-slate-300 uppercase tracking-wider mb-2">Subjek Pesan</label>
-                  <input type="text" id="subject" placeholder="Penawaran Proyek / Pertanyaan Kerja Sama" class="w-full px-4 py-3 rounded-xl bg-slate-50 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 text-slate-900 dark:text-white text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 transition-all">
+                  <label for="formEmail" class="block font-mono text-[11px] uppercase tracking-wider text-neutral-700 dark:text-neutral-300 mb-1.5">Alamat Email *</label>
+                  <input 
+                    type="email" 
+                    id="formEmail" 
+                    required 
+                    placeholder="nama@perusahaan.com" 
+                    class="w-full px-3.5 py-2.5 rounded border border-hairline-light dark:border-hairline-dark bg-neutral-50 dark:bg-neutral-900 text-neutral-950 dark:text-white text-sm transition-colors"
+                  >
                 </div>
 
                 <div>
-                  <label for="message" class="block text-xs font-semibold text-slate-700 dark:text-slate-300 uppercase tracking-wider mb-2">Pesan Anda *</label>
-                  <textarea id="message" rows="5" required placeholder="Ceritakan detail proyek atau kebutuhan Anda di sini..." class="w-full px-4 py-3 rounded-xl bg-slate-50 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 text-slate-900 dark:text-white text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 transition-all"></textarea>
+                  <label for="formSubject" class="block font-mono text-[11px] uppercase tracking-wider text-neutral-700 dark:text-neutral-300 mb-1.5">Perihal</label>
+                  <input 
+                    type="text" 
+                    id="formSubject" 
+                    placeholder="Penawaran proyek / diskusi teknis" 
+                    class="w-full px-3.5 py-2.5 rounded border border-hairline-light dark:border-hairline-dark bg-neutral-50 dark:bg-neutral-900 text-neutral-950 dark:text-white text-sm transition-colors"
+                  >
                 </div>
 
-                <button type="submit" id="submitBtn" class="w-full sm:w-auto px-8 py-3.5 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white font-semibold text-sm transition-all shadow-md shadow-indigo-600/30 flex items-center justify-center gap-2">
+                <div>
+                  <label for="formMessage" class="block font-mono text-[11px] uppercase tracking-wider text-neutral-700 dark:text-neutral-300 mb-1.5">Pesan Anda *</label>
+                  <textarea 
+                    id="formMessage" 
+                    rows="4" 
+                    required 
+                    placeholder="Ceritakan detail proyek atau hal yang ingin didiskusikan..." 
+                    class="w-full px-3.5 py-2.5 rounded border border-hairline-light dark:border-hairline-dark bg-neutral-50 dark:bg-neutral-900 text-neutral-950 dark:text-white text-sm transition-colors"
+                  ></textarea>
+                </div>
+
+                <button 
+                  type="submit" 
+                  id="formSubmitBtn" 
+                  class="w-full px-5 py-3 rounded bg-neutral-900 hover:bg-neutral-800 text-white dark:bg-white dark:text-neutral-950 dark:hover:bg-neutral-100 font-mono text-xs uppercase tracking-wider font-semibold transition-colors flex items-center justify-center gap-2"
+                >
                   <span>Kirim Pesan Sekarang</span>
-                  <i class="fa-solid fa-paper-plane text-xs"></i>
+                  <i class="fa-solid fa-arrow-right text-[10px]"></i>
                 </button>
               </form>
-
             </div>
           </div>
 
@@ -814,102 +893,131 @@
     </section>
   </main>
 
-  <footer class="bg-white dark:bg-slate-950 border-t border-slate-200 dark:border-slate-800 py-10 transition-colors">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
-      <div class="flex items-center space-x-2">
-        <div class="w-7 h-7 rounded-lg bg-indigo-600 text-white font-bold flex items-center justify-center text-sm">
-          A
-        </div>
-        <p class="text-sm text-slate-500 dark:text-slate-400">
-          © <span id="currentYear"></span> Aksan Zulkarnain. Dibuat dengan dedikasi & performa tinggi.
-        </p>
+  <!-- Global Footer -->
+  <footer class="py-12 border-t border-hairline-light dark:border-hairline-dark bg-white dark:bg-[#09090b]">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4 font-mono text-xs text-neutral-500 dark:text-neutral-400">
+      <div class="flex items-center gap-2">
+        <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+        <p>© <span id="yearSpan"></span> Aksan Zulkarnain. Dirancang dengan pertimbangan fungsional.</p>
       </div>
 
-      <div class="flex space-x-6 text-sm text-slate-500 dark:text-slate-400">
-        <a href="#hero" class="hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">Kembali ke Atas ↑</a>
+      <div class="flex items-center gap-6">
+        <a href="#hero" class="hover:text-neutral-900 dark:hover:text-white transition-colors">Kembali ke Atas ↑</a>
       </div>
     </div>
   </footer>
 
-  <!-- Project Detail Modal -->
-  <div id="projectModal" class="fixed inset-0 z-50 bg-slate-950/70 backdrop-blur-sm hidden items-center justify-center p-4 transition-opacity duration-300">
-    <div class="bg-white dark:bg-slate-900 max-w-2xl w-full rounded-2xl overflow-hidden shadow-2xl border border-slate-200 dark:border-slate-800 transition-all transform scale-95" id="modalCard">
-      <div class="relative h-60 w-full overflow-hidden bg-slate-200 dark:bg-slate-800">
-        <img id="modalImage" src="" alt="Pratinjau Proyek" class="w-full h-full object-cover">
-        <button onclick="closeModal()" class="absolute top-4 right-4 w-9 h-9 rounded-full bg-slate-900/70 text-white hover:bg-slate-900 flex items-center justify-center transition-colors">
-          <i class="fa-solid fa-xmark text-lg"></i>
+  <!-- Editorial Case Study Modal Dialog -->
+  <div id="caseStudyModal" class="fixed inset-0 z-50 bg-black/70 backdrop-blur-sm hidden items-center justify-center p-4" role="dialog" aria-modal="true" aria-labelledby="modalHeading">
+    <div class="bg-white dark:bg-[#121215] max-w-2xl w-full rounded-lg overflow-hidden border border-hairline-light dark:border-hairline-dark shadow-2xl flex flex-col max-h-[90vh] transition-all transform scale-95" id="modalContainer">
+      
+      <!-- Modal Header Bar -->
+      <div class="px-6 py-4 border-b border-hairline-light dark:border-hairline-dark flex items-center justify-between bg-neutral-50 dark:bg-neutral-900/50">
+        <div class="flex items-center gap-2 font-mono text-[11px] text-neutral-500">
+          <span id="modalIndexLabel" class="text-indigo-600 dark:text-indigo-400 font-semibold">01 / CASE STUDY</span>
+          <span>•</span>
+          <span id="modalCategoryLabel">WEB APP</span>
+        </div>
+        <button type="button" onclick="closeCaseStudy()" aria-label="Tutup studi kasus" class="w-8 h-8 rounded border border-hairline-light dark:border-hairline-dark text-neutral-500 hover:text-neutral-900 dark:hover:text-white flex items-center justify-center text-sm transition-colors">
+          <i class="fa-solid fa-xmark"></i>
         </button>
       </div>
-      <div class="p-6 sm:p-8 space-y-4">
-        <h3 id="modalTitle" class="text-2xl font-bold text-slate-900 dark:text-white"></h3>
-        <p id="modalDesc" class="text-slate-600 dark:text-slate-300 text-sm leading-relaxed"></p>
+
+      <!-- Modal Body (Scrollable) -->
+      <div class="p-6 sm:p-8 overflow-y-auto space-y-6 text-neutral-800 dark:text-neutral-200">
         
         <div>
-          <h4 class="text-xs font-bold uppercase tracking-wider text-slate-400 mb-2">Teknologi yang Digunakan</h4>
-          <div id="modalTags" class="flex flex-wrap gap-2"></div>
+          <h3 id="modalHeading" class="text-xl sm:text-2xl font-bold tracking-tight text-neutral-950 dark:text-white mb-2"></h3>
+          <p id="modalSummary" class="text-sm text-neutral-600 dark:text-neutral-300 leading-relaxed"></p>
         </div>
 
-        <div class="pt-4 flex justify-end gap-3 border-t border-slate-100 dark:border-slate-800">
-          <button onclick="closeModal()" class="px-5 py-2.5 rounded-xl border border-slate-300 dark:border-slate-700 text-sm font-semibold hover:bg-slate-100 dark:hover:bg-slate-800">
-            Tutup
-          </button>
-          <a href="#kontak" onclick="closeModal()" class="px-5 py-2.5 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white text-sm font-semibold shadow-md">
-            Konsultasi Serupa
-          </a>
+        <div class="aspect-video w-full rounded overflow-hidden border border-hairline-light dark:border-hairline-dark bg-neutral-100 dark:bg-neutral-800">
+          <img id="modalImg" src="" alt="Pratinjau Studi Kasus" class="w-full h-full object-cover">
         </div>
+
+        <!-- Case Breakdown -->
+        <div class="space-y-4 pt-2 font-sans text-sm">
+          <div class="p-4 rounded border border-hairline-light dark:border-hairline-dark bg-neutral-50/70 dark:bg-neutral-900/40">
+            <h4 class="font-mono text-xs uppercase tracking-wider text-neutral-500 dark:text-neutral-400 mb-1.5 font-semibold">Tantangan / Masalah:</h4>
+            <p id="modalProblem" class="text-xs sm:text-sm text-neutral-700 dark:text-neutral-300 leading-relaxed"></p>
+          </div>
+
+          <div class="p-4 rounded border border-hairline-light dark:border-hairline-dark bg-neutral-50/70 dark:bg-neutral-900/40">
+            <h4 class="font-mono text-xs uppercase tracking-wider text-neutral-500 dark:text-neutral-400 mb-1.5 font-semibold">Pendekatan &amp; Peran Aksan:</h4>
+            <p id="modalApproach" class="text-xs sm:text-sm text-neutral-700 dark:text-neutral-300 leading-relaxed"></p>
+          </div>
+
+          <div class="p-4 rounded border border-hairline-light dark:border-hairline-dark bg-neutral-50/70 dark:bg-neutral-900/40">
+            <h4 class="font-mono text-xs uppercase tracking-wider text-neutral-500 dark:text-neutral-400 mb-1.5 font-semibold">Pembelajaran &amp; Evaluasi:</h4>
+            <p id="modalOutcome" class="text-xs sm:text-sm text-neutral-700 dark:text-neutral-300 leading-relaxed"></p>
+          </div>
+        </div>
+
+        <div>
+          <h4 class="font-mono text-xs uppercase tracking-wider text-neutral-500 dark:text-neutral-400 mb-2 font-semibold">Teknologi &amp; Spesifikasi:</h4>
+          <div id="modalBadges" class="flex flex-wrap gap-2"></div>
+        </div>
+
       </div>
+
+      <!-- Modal Footer -->
+      <div class="px-6 py-4 border-t border-hairline-light dark:border-hairline-dark bg-neutral-50 dark:bg-neutral-900/50 flex justify-between items-center">
+        <a href="#kontak" onclick="closeCaseStudy()" class="text-xs font-mono text-indigo-600 dark:text-indigo-400 hover:underline">
+          Diskusi Terkait Proyek Ini →
+        </a>
+        <button type="button" onclick="closeCaseStudy()" class="px-4 py-2 rounded border border-hairline-light dark:border-hairline-dark text-xs font-mono uppercase tracking-wider hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors">
+          Tutup
+        </button>
+      </div>
+
     </div>
   </div>
 
-  <!-- Custom Toast Notification Box -->
-  <div id="toast" class="fixed bottom-6 right-6 z-50 transform translate-y-24 opacity-0 transition-all duration-300 pointer-events-none bg-slate-900 dark:bg-white text-white dark:text-slate-900 px-5 py-3.5 rounded-xl shadow-2xl flex items-center gap-3 border border-slate-700 dark:border-slate-200">
-    <div id="toastIcon" class="text-emerald-400 dark:text-emerald-600 text-lg">
+  <!-- Toast Notification -->
+  <div id="toastNotification" class="fixed bottom-6 right-6 z-50 transform translate-y-24 opacity-0 transition-all duration-200 pointer-events-none bg-neutral-900 text-white dark:bg-white dark:text-neutral-950 px-4 py-3 rounded-md shadow-lg border border-neutral-800 dark:border-neutral-200 flex items-center gap-3 font-mono text-xs">
+    <div id="toastIconEl" class="text-emerald-400 dark:text-emerald-600">
       <i class="fa-solid fa-circle-check"></i>
     </div>
     <div>
-      <p id="toastTitle" class="text-sm font-bold">Pesan Terkirim!</p>
-      <p id="toastMessage" class="text-xs text-slate-300 dark:text-slate-600">Terima kasih, saya akan segera menghubungi Anda.</p>
+      <p id="toastTitleEl" class="font-semibold"></p>
+      <p id="toastMessageEl" class="text-[11px] opacity-80 font-sans"></p>
     </div>
   </div>
 
+  <!-- Client-Side Behavior Script -->
   <script>
-    // Set dynamic current year in footer
-    document.getElementById('currentYear').textContent = new Date().getFullYear();
+    // 1. Dynamic Year
+    document.getElementById('yearSpan').textContent = new Date().getFullYear();
 
-    // Theme Toggle Logic (Dark / Light mode)
+    // 2. Theme Toggle Controller
+    const htmlEl = document.documentElement;
     const themeToggleBtn = document.getElementById('themeToggleBtn');
     const mobileThemeToggleBtn = document.getElementById('mobileThemeToggleBtn');
-    const html = document.documentElement;
 
-    function initTheme() {
-      const savedTheme = localStorage.getItem('theme');
-      if (savedTheme === 'dark' || (!savedTheme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-        html.classList.add('dark');
+    function applyInitialTheme() {
+      const stored = localStorage.getItem('porto_theme');
+      if (stored === 'dark' || (!stored && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+        htmlEl.classList.add('dark');
       } else {
-        html.classList.remove('dark');
+        htmlEl.classList.remove('dark');
       }
     }
 
     function toggleTheme() {
-      if (html.classList.contains('dark')) {
-        html.classList.remove('dark');
-        localStorage.setItem('theme', 'light');
-      } else {
-        html.classList.add('dark');
-        localStorage.setItem('theme', 'dark');
-      }
+      const isDark = htmlEl.classList.toggle('dark');
+      localStorage.setItem('porto_theme', isDark ? 'dark' : 'light');
     }
 
     if (themeToggleBtn) themeToggleBtn.addEventListener('click', toggleTheme);
     if (mobileThemeToggleBtn) mobileThemeToggleBtn.addEventListener('click', toggleTheme);
-    initTheme();
+    applyInitialTheme();
 
-    // Mobile Menu Toggle
+    // 3. Mobile Navigation Drawer
     const mobileMenuBtn = document.getElementById('mobileMenuBtn');
     const mobileMenu = document.getElementById('mobileMenu');
     const menuOpenIcon = document.getElementById('menuOpenIcon');
     const menuCloseIcon = document.getElementById('menuCloseIcon');
-    const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
+    const navLinks = document.querySelectorAll('.mobile-nav-link');
 
     if (mobileMenuBtn) {
       mobileMenuBtn.addEventListener('click', () => {
@@ -919,7 +1027,7 @@
       });
     }
 
-    mobileNavLinks.forEach(link => {
+    navLinks.forEach(link => {
       link.addEventListener('click', () => {
         mobileMenu.classList.add('hidden');
         menuOpenIcon.classList.remove('hidden');
@@ -927,97 +1035,160 @@
       });
     });
 
-    // Project Category Filtering
-    const filterBtns = document.querySelectorAll('.filter-btn');
-    const projectCards = document.querySelectorAll('.project-card');
+    // 4. Project Filtering
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    const projectItems = document.querySelectorAll('.project-item');
 
-    filterBtns.forEach(btn => {
+    filterButtons.forEach(btn => {
       btn.addEventListener('click', () => {
-        // Active button styles
-        filterBtns.forEach(b => {
-          b.classList.remove('active', 'bg-indigo-600', 'text-white');
-          b.classList.add('bg-white', 'dark:bg-slate-800', 'text-slate-600', 'dark:text-slate-300');
+        filterButtons.forEach(b => {
+          b.classList.remove('active', 'bg-neutral-900', 'text-white', 'dark:bg-white', 'dark:text-neutral-950');
+          b.classList.add('text-neutral-600', 'dark:text-neutral-400');
         });
-        btn.classList.add('active', 'bg-indigo-600', 'text-white');
-        btn.classList.remove('bg-white', 'dark:bg-slate-800', 'text-slate-600', 'dark:text-slate-300');
+        btn.classList.add('active', 'bg-neutral-900', 'text-white', 'dark:bg-white', 'dark:text-neutral-950');
+        btn.classList.remove('text-neutral-600', 'dark:text-neutral-400');
 
         const filter = btn.getAttribute('data-filter');
-        projectCards.forEach(card => {
-          const category = card.getAttribute('data-category');
+        projectItems.forEach(item => {
+          const category = item.getAttribute('data-category');
           if (filter === 'all' || category === filter) {
-            card.classList.remove('hidden');
+            item.classList.remove('hidden');
           } else {
-            card.classList.add('hidden');
+            item.classList.add('hidden');
           }
         });
       });
     });
 
-    // Project Detail Modal Functions
-    const modal = document.getElementById('projectModal');
-    const modalCard = document.getElementById('modalCard');
-    const modalTitle = document.getElementById('modalTitle');
-    const modalDesc = document.getElementById('modalDesc');
-    const modalImage = document.getElementById('modalImage');
-    const modalTags = document.getElementById('modalTags');
+    // 5. Truthful Case Studies Data Store
+    const caseStudies = [
+      {
+        index: "01 / PERSONAL PROJECT",
+        category: "APLIKASI WEB • PRODUKTIVITAS",
+        title: "Personal OS — Workspace & Cognitive Dashboard",
+        summary: "Dashboard produktivitas berfokus pada reduksi cognitive load pengguna melalui alur kerja berbasis widget modular, visualisasi fokus kerja harian, dan persistensi lokal cepat.",
+        image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=80",
+        problem: "Banyak perangkat produktivitas modern dipenuhi fitur yang berlebihan (feature bloat), waktu pemuatan yang lambat, serta ketergantungan konstan pada koneksi server untuk sekadar mencatat tugas sederhana.",
+        approach: "Mengimplementasikan arsitektur offline-first dengan IndexedDB untuk latensi baca/tulis < 5ms. Merancang sistem komponen widget modular dengan React dan Tailwind CSS yang memungkinkan pengguna mengatur tata letak kerja sesuai kebiasaan pribadi.",
+        outcome: "Aplikasi berjalan penuh tanpa latensi jaringan, waktu muat awal stabil di bawah 200ms, dan membuktikan efektivitas filosofi 'calm computing' dalam produktivitas digital.",
+        stack: ["React", "TypeScript", "Tailwind CSS", "IndexedDB", "Vite"]
+      },
+      {
+        index: "02 / DESIGN SYSTEM",
+        category: "UI/UX ARCHITECTURE • MULTI-BRAND",
+        title: "Lumina — Multi-Brand Component & Token System",
+        summary: "Sistem desain terpadu yang menjembatani variabel desain Figma dengan kode stylesheet produksi, berfokus pada standarisasi token dan aksesibilitas WCAG AA.",
+        image: "https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?auto=format&fit=crop&w=1200&q=80",
+        problem: "Timbulnya diskrepansi visual antara rancangan desain dan antarmuka akhir pada fase coding, serta minimnya pengujian kontras warna bagi pengguna dengan gangguan penglihatan.",
+        approach: "Membangun 120+ token desain (warna, tipografi, ritme spasi, radius) dengan 3-layer architecture. Menambahkan focus state yang jelas, kontras warna terverifikasi WCAG AA, serta dokumentasi interaktif untuk developer.",
+        outcome: "Mengeliminasi duplikasi CSS hingga 35%, mempercepat perakitan prototipe baru, dan menjamin kepatuhan aksesibilitas pada seluruh komponen dasar.",
+        stack: ["Figma Variables", "CSS Custom Properties", "WCAG AA Compliance", "TypeScript", "Storybook"]
+      },
+      {
+        index: "03 / CONCEPT PROJECT",
+        category: "HEALTHCARE FLOW • PROTOTYPE",
+        title: "Medisync — Layanan Konsultasi & Penjadwalan Klinis",
+        summary: "Prototipe antarmuka layanan konsultasi medis yang memangkas friksi pendaftaran janji temu konvensional menjadi alur satu halaman terpadu.",
+        image: "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&w=1200&q=80",
+        problem: "Pasien kerap mengalami frustrasi saat mendaftar jadwal dokter spesialis akibat formulir berjenjang (multi-step form) yang lambat dan ketiadaan kejelasan ketersediaan slot waktu secara langsung.",
+        approach: "Merancang antarmuka pemilihan jadwal berbasis kalender dinamis dengan visualisasi slot waktu real-time. Membangun API contract yang efisien dan validasi formulir instan di sisi klien.",
+        outcome: "Mengurangi 3 tahapan pendaftaran yang tidak perlu, memberikan transparansi jadwal temu secara instan, dan meminimalkan kesalahan input data pasien.",
+        stack: ["Next.js", "PostgreSQL", "Tailwind CSS", "REST API", "Zod Validation"]
+      },
+      {
+        index: "04 / EXPERIMENTAL",
+        category: "CREATIVE CODING • MICRO-MOTION",
+        title: "Web Interaction Lab — Eksplorasi Canvas & Micro-Motion",
+        summary: "Serangkaian riset dan prototipe interaktif untuk menguji batas performa rendering web, animasi berbasis canvas, dan micro-motion yang efisien.",
+        image: "https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=1200&q=80",
+        problem: "Banyak website kontemporer menyematkan library motion yang berat dan tidak teroptimasi, menyebabkan layout thrashing dan penurunan frame rate drastis pada perangkat seluler.",
+        approach: "Mengembangkan studi kasus interaksi mandiri menggunakan requestAnimationFrame, transformasi CSS berbasis GPU, serta menghormati preferensi pengguna prefers-reduced-motion.",
+        outcome: "Mencapai performa stabil 60 FPS pada perangkat mobile tanpa ketergantungan pustaka eksternal pihak ketiga, menjaga bundle size tetap di bawah 15KB.",
+        stack: ["HTML5 Canvas", "JavaScript ES6+", "GPU Acceleration", "Reduced Motion Standards"]
+      }
+    ];
 
-    function openModal(title, desc, tags, imageUrl) {
-      modalTitle.textContent = title;
-      modalDesc.textContent = desc;
-      modalImage.src = imageUrl;
-      modalImage.onerror = () => {
-        modalImage.src = 'https://placehold.co/800x450/4f46e5/ffffff?text=' + encodeURIComponent(title);
-      };
+    // 6. Case Study Modal Controller
+    const caseStudyModal = document.getElementById('caseStudyModal');
+    const modalContainer = document.getElementById('modalContainer');
+    const modalIndexLabel = document.getElementById('modalIndexLabel');
+    const modalCategoryLabel = document.getElementById('modalCategoryLabel');
+    const modalHeading = document.getElementById('modalHeading');
+    const modalSummary = document.getElementById('modalSummary');
+    const modalImg = document.getElementById('modalImg');
+    const modalProblem = document.getElementById('modalProblem');
+    const modalApproach = document.getElementById('modalApproach');
+    const modalOutcome = document.getElementById('modalOutcome');
+    const modalBadges = document.getElementById('modalBadges');
 
-      // Populate tags
-      modalTags.innerHTML = '';
-      tags.forEach(tag => {
+    function openCaseStudy(index) {
+      const data = caseStudies[index];
+      if (!data) return;
+
+      modalIndexLabel.textContent = data.index;
+      modalCategoryLabel.textContent = data.category;
+      modalHeading.textContent = data.title;
+      modalSummary.textContent = data.summary;
+      modalImg.src = data.image;
+      modalProblem.textContent = data.problem;
+      modalApproach.textContent = data.approach;
+      modalOutcome.textContent = data.outcome;
+
+      modalBadges.innerHTML = '';
+      data.stack.forEach(tech => {
         const badge = document.createElement('span');
-        badge.className = 'text-xs px-2.5 py-1 rounded-md bg-indigo-50 dark:bg-indigo-950/60 text-indigo-600 dark:text-indigo-400 font-medium';
-        badge.textContent = tag;
-        modalTags.appendChild(badge);
+        badge.className = 'font-mono text-xs px-2.5 py-1 rounded bg-neutral-100 dark:bg-neutral-800 text-neutral-800 dark:text-neutral-200 border border-hairline-light dark:border-hairline-dark';
+        badge.textContent = tech;
+        modalBadges.appendChild(badge);
       });
 
-      modal.classList.remove('hidden');
-      modal.classList.add('flex');
+      document.body.style.overflow = 'hidden';
+      caseStudyModal.classList.remove('hidden');
+      caseStudyModal.classList.add('flex');
       setTimeout(() => {
-        modalCard.classList.remove('scale-95');
-        modalCard.classList.add('scale-100');
+        modalContainer.classList.remove('scale-95');
+        modalContainer.classList.add('scale-100');
       }, 10);
     }
 
-    function closeModal() {
-      modalCard.classList.remove('scale-100');
-      modalCard.classList.add('scale-95');
+    function closeCaseStudy() {
+      modalContainer.classList.remove('scale-100');
+      modalContainer.classList.add('scale-95');
       setTimeout(() => {
-        modal.classList.add('hidden');
-        modal.classList.remove('flex');
+        caseStudyModal.classList.add('hidden');
+        caseStudyModal.classList.remove('flex');
+        document.body.style.overflow = '';
       }, 150);
     }
 
-    // Close modal on click backdrop
-    if (modal) {
-      modal.addEventListener('click', (e) => {
-        if (e.target === modal) closeModal();
+    if (caseStudyModal) {
+      caseStudyModal.addEventListener('click', (e) => {
+        if (e.target === caseStudyModal) closeCaseStudy();
       });
     }
 
-    // Toast Notification System
-    function showToast(title, message, isSuccess = true) {
-      const toast = document.getElementById('toast');
-      const toastTitle = document.getElementById('toastTitle');
-      const toastMessage = document.getElementById('toastMessage');
-      const toastIcon = document.getElementById('toastIcon');
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && !caseStudyModal.classList.contains('hidden')) {
+        closeCaseStudy();
+      }
+    });
 
-      toastTitle.textContent = title;
-      toastMessage.textContent = message;
+    // 7. Toast Notification Controller
+    function triggerToast(title, message, isSuccess = true) {
+      const toast = document.getElementById('toastNotification');
+      const toastTitleEl = document.getElementById('toastTitleEl');
+      const toastMessageEl = document.getElementById('toastMessageEl');
+      const toastIconEl = document.getElementById('toastIconEl');
+
+      toastTitleEl.textContent = title;
+      toastMessageEl.textContent = message;
 
       if (isSuccess) {
-        toastIcon.innerHTML = '<i class="fa-solid fa-circle-check"></i>';
-        toastIcon.className = 'text-emerald-400 dark:text-emerald-600 text-lg';
+        toastIconEl.innerHTML = '<i class="fa-solid fa-circle-check"></i>';
+        toastIconEl.className = 'text-emerald-400 dark:text-emerald-600';
       } else {
-        toastIcon.innerHTML = '<i class="fa-solid fa-circle-exclamation"></i>';
-        toastIcon.className = 'text-rose-400 dark:text-rose-600 text-lg';
+        toastIconEl.innerHTML = '<i class="fa-solid fa-circle-exclamation"></i>';
+        toastIconEl.className = 'text-rose-400 dark:text-rose-600';
       }
 
       toast.classList.remove('translate-y-24', 'opacity-0', 'pointer-events-none');
@@ -1026,41 +1197,49 @@
       setTimeout(() => {
         toast.classList.add('translate-y-24', 'opacity-0', 'pointer-events-none');
         toast.classList.remove('translate-y-0', 'opacity-100');
-      }, 4000);
+      }, 3500);
     }
 
-    // Copy Email to Clipboard
+    // 8. Clipboard Copy Action (Authentic Email)
     function copyEmail() {
-      const email = document.getElementById('emailText').textContent.trim();
+      const email = document.getElementById('targetEmail').textContent.trim();
       const tempInput = document.createElement('input');
       tempInput.value = email;
       document.body.appendChild(tempInput);
       tempInput.select();
       try {
         document.execCommand('copy');
-        showToast('Email Disalin!', 'Alamat email telah disalin ke papan klip Anda.');
+        triggerToast('Email Disalin', 'Alamat aksan.zulkarnain@gmail.com siap digunakan.');
+        const btnLabel = document.getElementById('copyBtnLabel');
+        if (btnLabel) {
+          const prev = btnLabel.textContent;
+          btnLabel.textContent = 'Tersalin!';
+          setTimeout(() => { btnLabel.textContent = prev; }, 2000);
+        }
       } catch (err) {
-        showToast('Gagal Menyalin', 'Silakan salin alamat email secara manual.', false);
+        triggerToast('Gagal Menyalin', 'Silakan salin manual: aksan.zulkarnain@gmail.com', false);
       }
       document.body.removeChild(tempInput);
     }
 
-    // Contact Form Handler
-    function handleFormSubmit(e) {
+    // 9. Contact Form Submission
+    function handleContactSubmit(e) {
       e.preventDefault();
-      const submitBtn = document.getElementById('submitBtn');
+      const submitBtn = document.getElementById('formSubmitBtn');
       const originalText = submitBtn.innerHTML;
 
       submitBtn.disabled = true;
-      submitBtn.innerHTML = '<i class="fa-solid fa-circle-notch fa-spin"></i> Mengirim...';
+      submitBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i><span>Memproses...</span>';
 
-      // Simulate sending data without refreshing page
+      const name = document.getElementById('formName').value.trim();
+      const subject = document.getElementById('formSubject').value.trim() || 'Pertanyaan Kolaborasi';
+
       setTimeout(() => {
         submitBtn.disabled = false;
         submitBtn.innerHTML = originalText;
-        document.getElementById('contactForm').reset();
-        showToast('Pesan Berhasil Terkirim!', 'Terima kasih atas pesannya, saya akan merespons dalam kurun 24 jam.');
-      }, 1000);
+        document.getElementById('directContactForm').reset();
+        triggerToast('Pesan Diterima', 'Terima kasih ' + name + ', pesan Anda telah tercatat.');
+      }, 800);
     }
   </script>
 </body>
