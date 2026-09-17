@@ -13,101 +13,6 @@
 
   <!-- Font Awesome Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-
-  <!-- Tailwind CSS CDN -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      darkMode: 'class',
-      theme: {
-        extend: {
-          fontFamily: {
-            sans: ['"Plus Jakarta Sans"', 'Inter', 'system-ui', 'sans-serif'],
-            mono: ['"JetBrains Mono"', 'monospace'],
-          },
-          colors: {
-            brand: {
-              50: '#eef2ff',
-              100: '#e0e7ff',
-              500: '#6366f1',
-              600: '#4f46e5',
-              700: '#4338ca',
-            },
-            canvas: {
-              light: '#fbfbfb',
-              dark: '#09090b',
-            },
-            surface: {
-              light: '#ffffff',
-              dark: '#121215',
-              subtleLight: '#f4f4f5',
-              subtleDark: '#18181c',
-            },
-            hairline: {
-              light: '#e4e4e7',
-              dark: '#27272a',
-              mediumLight: '#d4d4d8',
-              mediumDark: '#3f3f46',
-            }
-          }
-        }
-      }
-    }
-  </script>
-
-  <style>
-    :root {
-      --bg-canvas: #fbfbfb;
-      --bg-surface: #ffffff;
-      --text-main: #09090b;
-      --text-muted: #71717a;
-      --border-subtle: #e4e4e7;
-      --accent: #4f46e5;
-    }
-
-    .dark {
-      --bg-canvas: #09090b;
-      --bg-surface: #121215;
-      --text-main: #fafafa;
-      --text-muted: #a1a1aa;
-      --border-subtle: #27272a;
-      --accent: #6366f1;
-    }
-
-    body {
-      background-color: var(--bg-canvas);
-      color: var(--text-main);
-      text-rendering: optimizeLegibility;
-      -webkit-font-smoothing: antialiased;
-    }
-
-    /* Custom subtle scrollbar */
-    ::-webkit-scrollbar {
-      width: 6px;
-    }
-    ::-webkit-scrollbar-track {
-      background: transparent;
-    }
-    ::-webkit-scrollbar-thumb {
-      background: #a1a1aa;
-      border-radius: 3px;
-    }
-    .dark ::-webkit-scrollbar-thumb {
-      background: #3f3f46;
-    }
-
-    /* Focus accessibility styling */
-    a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible {
-      outline: 2px solid var(--accent);
-      outline-offset: 2px;
-    }
-
-    /* Subtle backdrop for fixed nav */
-    .header-backdrop {
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-    }
-  </style>
 </head>
 <body class="font-sans min-h-screen selection:bg-indigo-500/20 selection:text-indigo-600 dark:selection:text-indigo-300">
 
@@ -147,11 +52,17 @@
 
         <!-- Right Side Controls (Theme Toggle & Direct Contact Action) -->
         <div class="hidden md:flex items-center gap-3">
-          <!-- Theme Toggle -->
-          <button id="themeToggleBtn" type="button" aria-label="Ganti tema warna" class="w-9 h-9 rounded-md border border-hairline-light dark:border-hairline-dark text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white hover:bg-neutral-100 dark:hover:bg-neutral-900 flex items-center justify-center text-xs transition-colors">
-            <i class="fa-solid fa-moon dark:hidden"></i>
-            <i class="fa-solid fa-sun hidden dark:block text-amber-400"></i>
-          </button>
+          <!-- Theme Switch Toggle -->
+          <label for="themeSwitch" class="theme-switch" title="Alihkan mode malam/siang">
+            <span class="sr-only">Alihkan mode malam/siang</span>
+            <input type="checkbox" id="themeSwitch" role="switch" class="sr-only" aria-label="Alihkan tema gelap atau terang">
+            <div class="theme-switch-track">
+              <i class="fa-solid fa-sun text-[10px] text-amber-50"></i>
+              <i class="fa-solid fa-moon text-[10px] text-zinc-900 dark:text-indigo-400"></i>
+              <span class="theme-switch-thumb">
+              </span>
+            </div>
+          </label>
           
           <!-- Direct CTA -->
           <a href="#kontak" class="px-4 py-2 rounded-md bg-neutral-900 hover:bg-neutral-800 text-white dark:bg-white dark:text-neutral-900 dark:hover:bg-neutral-100 text-xs font-semibold tracking-tight transition-colors flex items-center gap-1.5">
@@ -162,10 +73,19 @@
 
         <!-- Mobile Controls -->
         <div class="flex items-center gap-2 md:hidden">
-          <button id="mobileThemeToggleBtn" type="button" aria-label="Ganti tema warna" class="w-9 h-9 rounded-md border border-hairline-light dark:border-hairline-dark text-neutral-600 dark:text-neutral-400 flex items-center justify-center text-xs">
-            <i class="fa-solid fa-moon dark:hidden"></i>
-            <i class="fa-solid fa-sun hidden dark:block text-amber-400"></i>
-          </button>
+          <!-- Mobile Theme Switch Toggle -->
+          <label for="mobileThemeSwitch" class="theme-switch" title="Alihkan mode malam/siang">
+            <span class="sr-only">Alihkan mode malam/siang</span>
+            <input type="checkbox" id="mobileThemeSwitch" role="switch" class="sr-only" aria-label="Alihkan tema gelap atau terang">
+            <div class="theme-switch-track">
+              <i class="fa-solid fa-sun text-[10px] text-amber-500"></i>
+              <i class="fa-solid fa-moon text-[10px] text-zinc-400 dark:text-indigo-400"></i>
+              <span class="theme-switch-thumb">
+                <i class="fa-solid fa-sun text-[8px] text-amber-500 dark:hidden"></i>
+                <i class="fa-solid fa-moon text-[8px] text-indigo-400 hidden dark:block"></i>
+              </span>
+            </div>
+          </label>
           
           <button id="mobileMenuBtn" type="button" aria-label="Buka menu navigasi" class="w-9 h-9 rounded-md border border-hairline-light dark:border-hairline-dark text-neutral-800 dark:text-neutral-200 flex items-center justify-center text-sm">
             <i class="fa-solid fa-bars" id="menuOpenIcon"></i>
@@ -516,7 +436,7 @@
             <span class="font-mono text-xs text-indigo-600 dark:text-indigo-400 uppercase tracking-widest block">02 / Pendekatan &amp; Filosofi</span>
             
             <h2 class="text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight text-neutral-950 dark:text-white leading-tight">
-              “Kode harus mudah dipahami manusia. Antarmuka harus terasa wajar bagi pengguna.”
+              "Kode harus mudah dipahami manusia. Antarmuka harus terasa wajar bagi pengguna."
             </h2>
 
             <p class="text-sm sm:text-base text-neutral-600 dark:text-neutral-300 leading-relaxed">
@@ -984,263 +904,7 @@
     </div>
   </div>
 
-  <!-- Client-Side Behavior Script -->
-  <script>
-    // 1. Dynamic Year
-    document.getElementById('yearSpan').textContent = new Date().getFullYear();
-
-    // 2. Theme Toggle Controller
-    const htmlEl = document.documentElement;
-    const themeToggleBtn = document.getElementById('themeToggleBtn');
-    const mobileThemeToggleBtn = document.getElementById('mobileThemeToggleBtn');
-
-    function applyInitialTheme() {
-      const stored = localStorage.getItem('porto_theme');
-      if (stored === 'dark' || (!stored && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-        htmlEl.classList.add('dark');
-      } else {
-        htmlEl.classList.remove('dark');
-      }
-    }
-
-    function toggleTheme() {
-      const isDark = htmlEl.classList.toggle('dark');
-      localStorage.setItem('porto_theme', isDark ? 'dark' : 'light');
-    }
-
-    if (themeToggleBtn) themeToggleBtn.addEventListener('click', toggleTheme);
-    if (mobileThemeToggleBtn) mobileThemeToggleBtn.addEventListener('click', toggleTheme);
-    applyInitialTheme();
-
-    // 3. Mobile Navigation Drawer
-    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-    const mobileMenu = document.getElementById('mobileMenu');
-    const menuOpenIcon = document.getElementById('menuOpenIcon');
-    const menuCloseIcon = document.getElementById('menuCloseIcon');
-    const navLinks = document.querySelectorAll('.mobile-nav-link');
-
-    if (mobileMenuBtn) {
-      mobileMenuBtn.addEventListener('click', () => {
-        const isHidden = mobileMenu.classList.toggle('hidden');
-        menuOpenIcon.classList.toggle('hidden', !isHidden);
-        menuCloseIcon.classList.toggle('hidden', isHidden);
-      });
-    }
-
-    navLinks.forEach(link => {
-      link.addEventListener('click', () => {
-        mobileMenu.classList.add('hidden');
-        menuOpenIcon.classList.remove('hidden');
-        menuCloseIcon.classList.add('hidden');
-      });
-    });
-
-    // 4. Project Filtering
-    const filterButtons = document.querySelectorAll('.filter-btn');
-    const projectItems = document.querySelectorAll('.project-item');
-
-    filterButtons.forEach(btn => {
-      btn.addEventListener('click', () => {
-        filterButtons.forEach(b => {
-          b.classList.remove('active', 'bg-neutral-900', 'text-white', 'dark:bg-white', 'dark:text-neutral-950');
-          b.classList.add('text-neutral-600', 'dark:text-neutral-400');
-        });
-        btn.classList.add('active', 'bg-neutral-900', 'text-white', 'dark:bg-white', 'dark:text-neutral-950');
-        btn.classList.remove('text-neutral-600', 'dark:text-neutral-400');
-
-        const filter = btn.getAttribute('data-filter');
-        projectItems.forEach(item => {
-          const category = item.getAttribute('data-category');
-          if (filter === 'all' || category === filter) {
-            item.classList.remove('hidden');
-          } else {
-            item.classList.add('hidden');
-          }
-        });
-      });
-    });
-
-    // 5. Truthful Case Studies Data Store
-    const caseStudies = [
-      {
-        index: "01 / PERSONAL PROJECT",
-        category: "APLIKASI WEB • PRODUKTIVITAS",
-        title: "Personal OS — Workspace & Cognitive Dashboard",
-        summary: "Dashboard produktivitas berfokus pada reduksi cognitive load pengguna melalui alur kerja berbasis widget modular, visualisasi fokus kerja harian, dan persistensi lokal cepat.",
-        image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=80",
-        problem: "Banyak perangkat produktivitas modern dipenuhi fitur yang berlebihan (feature bloat), waktu pemuatan yang lambat, serta ketergantungan konstan pada koneksi server untuk sekadar mencatat tugas sederhana.",
-        approach: "Mengimplementasikan arsitektur offline-first dengan IndexedDB untuk latensi baca/tulis < 5ms. Merancang sistem komponen widget modular dengan React dan Tailwind CSS yang memungkinkan pengguna mengatur tata letak kerja sesuai kebiasaan pribadi.",
-        outcome: "Aplikasi berjalan penuh tanpa latensi jaringan, waktu muat awal stabil di bawah 200ms, dan membuktikan efektivitas filosofi 'calm computing' dalam produktivitas digital.",
-        stack: ["React", "TypeScript", "Tailwind CSS", "IndexedDB", "Vite"]
-      },
-      {
-        index: "02 / DESIGN SYSTEM",
-        category: "UI/UX ARCHITECTURE • MULTI-BRAND",
-        title: "Lumina — Multi-Brand Component & Token System",
-        summary: "Sistem desain terpadu yang menjembatani variabel desain Figma dengan kode stylesheet produksi, berfokus pada standarisasi token dan aksesibilitas WCAG AA.",
-        image: "https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?auto=format&fit=crop&w=1200&q=80",
-        problem: "Timbulnya diskrepansi visual antara rancangan desain dan antarmuka akhir pada fase coding, serta minimnya pengujian kontras warna bagi pengguna dengan gangguan penglihatan.",
-        approach: "Membangun 120+ token desain (warna, tipografi, ritme spasi, radius) dengan 3-layer architecture. Menambahkan focus state yang jelas, kontras warna terverifikasi WCAG AA, serta dokumentasi interaktif untuk developer.",
-        outcome: "Mengeliminasi duplikasi CSS hingga 35%, mempercepat perakitan prototipe baru, dan menjamin kepatuhan aksesibilitas pada seluruh komponen dasar.",
-        stack: ["Figma Variables", "CSS Custom Properties", "WCAG AA Compliance", "TypeScript", "Storybook"]
-      },
-      {
-        index: "03 / CONCEPT PROJECT",
-        category: "HEALTHCARE FLOW • PROTOTYPE",
-        title: "Medisync — Layanan Konsultasi & Penjadwalan Klinis",
-        summary: "Prototipe antarmuka layanan konsultasi medis yang memangkas friksi pendaftaran janji temu konvensional menjadi alur satu halaman terpadu.",
-        image: "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&w=1200&q=80",
-        problem: "Pasien kerap mengalami frustrasi saat mendaftar jadwal dokter spesialis akibat formulir berjenjang (multi-step form) yang lambat dan ketiadaan kejelasan ketersediaan slot waktu secara langsung.",
-        approach: "Merancang antarmuka pemilihan jadwal berbasis kalender dinamis dengan visualisasi slot waktu real-time. Membangun API contract yang efisien dan validasi formulir instan di sisi klien.",
-        outcome: "Mengurangi 3 tahapan pendaftaran yang tidak perlu, memberikan transparansi jadwal temu secara instan, dan meminimalkan kesalahan input data pasien.",
-        stack: ["Next.js", "PostgreSQL", "Tailwind CSS", "REST API", "Zod Validation"]
-      },
-      {
-        index: "04 / EXPERIMENTAL",
-        category: "CREATIVE CODING • MICRO-MOTION",
-        title: "Web Interaction Lab — Eksplorasi Canvas & Micro-Motion",
-        summary: "Serangkaian riset dan prototipe interaktif untuk menguji batas performa rendering web, animasi berbasis canvas, dan micro-motion yang efisien.",
-        image: "https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=1200&q=80",
-        problem: "Banyak website kontemporer menyematkan library motion yang berat dan tidak teroptimasi, menyebabkan layout thrashing dan penurunan frame rate drastis pada perangkat seluler.",
-        approach: "Mengembangkan studi kasus interaksi mandiri menggunakan requestAnimationFrame, transformasi CSS berbasis GPU, serta menghormati preferensi pengguna prefers-reduced-motion.",
-        outcome: "Mencapai performa stabil 60 FPS pada perangkat mobile tanpa ketergantungan pustaka eksternal pihak ketiga, menjaga bundle size tetap di bawah 15KB.",
-        stack: ["HTML5 Canvas", "JavaScript ES6+", "GPU Acceleration", "Reduced Motion Standards"]
-      }
-    ];
-
-    // 6. Case Study Modal Controller
-    const caseStudyModal = document.getElementById('caseStudyModal');
-    const modalContainer = document.getElementById('modalContainer');
-    const modalIndexLabel = document.getElementById('modalIndexLabel');
-    const modalCategoryLabel = document.getElementById('modalCategoryLabel');
-    const modalHeading = document.getElementById('modalHeading');
-    const modalSummary = document.getElementById('modalSummary');
-    const modalImg = document.getElementById('modalImg');
-    const modalProblem = document.getElementById('modalProblem');
-    const modalApproach = document.getElementById('modalApproach');
-    const modalOutcome = document.getElementById('modalOutcome');
-    const modalBadges = document.getElementById('modalBadges');
-
-    function openCaseStudy(index) {
-      const data = caseStudies[index];
-      if (!data) return;
-
-      modalIndexLabel.textContent = data.index;
-      modalCategoryLabel.textContent = data.category;
-      modalHeading.textContent = data.title;
-      modalSummary.textContent = data.summary;
-      modalImg.src = data.image;
-      modalProblem.textContent = data.problem;
-      modalApproach.textContent = data.approach;
-      modalOutcome.textContent = data.outcome;
-
-      modalBadges.innerHTML = '';
-      data.stack.forEach(tech => {
-        const badge = document.createElement('span');
-        badge.className = 'font-mono text-xs px-2.5 py-1 rounded bg-neutral-100 dark:bg-neutral-800 text-neutral-800 dark:text-neutral-200 border border-hairline-light dark:border-hairline-dark';
-        badge.textContent = tech;
-        modalBadges.appendChild(badge);
-      });
-
-      document.body.style.overflow = 'hidden';
-      caseStudyModal.classList.remove('hidden');
-      caseStudyModal.classList.add('flex');
-      setTimeout(() => {
-        modalContainer.classList.remove('scale-95');
-        modalContainer.classList.add('scale-100');
-      }, 10);
-    }
-
-    function closeCaseStudy() {
-      modalContainer.classList.remove('scale-100');
-      modalContainer.classList.add('scale-95');
-      setTimeout(() => {
-        caseStudyModal.classList.add('hidden');
-        caseStudyModal.classList.remove('flex');
-        document.body.style.overflow = '';
-      }, 150);
-    }
-
-    if (caseStudyModal) {
-      caseStudyModal.addEventListener('click', (e) => {
-        if (e.target === caseStudyModal) closeCaseStudy();
-      });
-    }
-
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && !caseStudyModal.classList.contains('hidden')) {
-        closeCaseStudy();
-      }
-    });
-
-    // 7. Toast Notification Controller
-    function triggerToast(title, message, isSuccess = true) {
-      const toast = document.getElementById('toastNotification');
-      const toastTitleEl = document.getElementById('toastTitleEl');
-      const toastMessageEl = document.getElementById('toastMessageEl');
-      const toastIconEl = document.getElementById('toastIconEl');
-
-      toastTitleEl.textContent = title;
-      toastMessageEl.textContent = message;
-
-      if (isSuccess) {
-        toastIconEl.innerHTML = '<i class="fa-solid fa-circle-check"></i>';
-        toastIconEl.className = 'text-emerald-400 dark:text-emerald-600';
-      } else {
-        toastIconEl.innerHTML = '<i class="fa-solid fa-circle-exclamation"></i>';
-        toastIconEl.className = 'text-rose-400 dark:text-rose-600';
-      }
-
-      toast.classList.remove('translate-y-24', 'opacity-0', 'pointer-events-none');
-      toast.classList.add('translate-y-0', 'opacity-100');
-
-      setTimeout(() => {
-        toast.classList.add('translate-y-24', 'opacity-0', 'pointer-events-none');
-        toast.classList.remove('translate-y-0', 'opacity-100');
-      }, 3500);
-    }
-
-    // 8. Clipboard Copy Action (Authentic Email)
-    function copyEmail() {
-      const email = document.getElementById('targetEmail').textContent.trim();
-      const tempInput = document.createElement('input');
-      tempInput.value = email;
-      document.body.appendChild(tempInput);
-      tempInput.select();
-      try {
-        document.execCommand('copy');
-        triggerToast('Email Disalin', 'Alamat aksan.zulkarnain@gmail.com siap digunakan.');
-        const btnLabel = document.getElementById('copyBtnLabel');
-        if (btnLabel) {
-          const prev = btnLabel.textContent;
-          btnLabel.textContent = 'Tersalin!';
-          setTimeout(() => { btnLabel.textContent = prev; }, 2000);
-        }
-      } catch (err) {
-        triggerToast('Gagal Menyalin', 'Silakan salin manual: aksan.zulkarnain@gmail.com', false);
-      }
-      document.body.removeChild(tempInput);
-    }
-
-    // 9. Contact Form Submission
-    function handleContactSubmit(e) {
-      e.preventDefault();
-      const submitBtn = document.getElementById('formSubmitBtn');
-      const originalText = submitBtn.innerHTML;
-
-      submitBtn.disabled = true;
-      submitBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i><span>Memproses...</span>';
-
-      const name = document.getElementById('formName').value.trim();
-      const subject = document.getElementById('formSubject').value.trim() || 'Pertanyaan Kolaborasi';
-
-      setTimeout(() => {
-        submitBtn.disabled = false;
-        submitBtn.innerHTML = originalText;
-        document.getElementById('directContactForm').reset();
-        triggerToast('Pesan Diterima', 'Terima kasih ' + name + ', pesan Anda telah tercatat.');
-      }, 800);
-    }
-  </script>
+  <!-- Vite Module Entry Point -->
+  <script type="module" src="/src/main.js"></script>
 </body>
 </html>

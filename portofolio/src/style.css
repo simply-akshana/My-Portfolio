@@ -1,0 +1,171 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* ============================================================
+   TAILWIND CSS v4 — @theme Configuration
+   Maps DESIGN_SYSTEM.md tokens to Tailwind utility classes.
+   ============================================================ */
+
+@theme {
+  /* --- Font Families --- */
+  --font-sans: "Plus Jakarta Sans", "Inter", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+
+  /* --- Custom Color Tokens --- */
+  --color-brand-50: #eef2ff;
+  --color-brand-100: #e0e7ff;
+  --color-brand-500: #6366f1;
+  --color-brand-600: #4f46e5;
+  --color-brand-700: #4338ca;
+
+  --color-canvas-light: #fbfbfb;
+  --color-canvas-dark: #09090b;
+
+  --color-surface-light: #ffffff;
+  --color-surface-dark: #121215;
+  --color-surface-subtleLight: #f4f4f5;
+  --color-surface-subtleDark: #18181c;
+
+  --color-hairline-light: #e4e4e7;
+  --color-hairline-dark: #27272a;
+  --color-hairline-mediumLight: #d4d4d8;
+  --color-hairline-mediumDark: #3f3f46;
+}
+
+/* ============================================================
+   CSS Custom Properties — Dark/Light Mode Tokens
+   Used by components via var() for runtime theming.
+   ============================================================ */
+
+:root {
+  --bg-canvas: #fbfbfb;
+  --bg-surface: #ffffff;
+  --text-main: #09090b;
+  --text-muted: #71717a;
+  --border-subtle: #e4e4e7;
+  --accent: #4f46e5;
+}
+
+.dark {
+  --bg-canvas: #09090b;
+  --bg-surface: #121215;
+  --text-main: #fafafa;
+  --text-muted: #a1a1aa;
+  --border-subtle: #27272a;
+  --accent: #6366f1;
+}
+
+/* ============================================================
+   Base Styles
+   ============================================================ */
+
+body {
+  background-color: var(--bg-canvas);
+  color: var(--text-main);
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Custom subtle scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: #a1a1aa;
+  border-radius: 3px;
+}
+.dark ::-webkit-scrollbar-thumb {
+  background: #3f3f46;
+}
+
+/* Focus accessibility styling */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+/* Subtle backdrop for fixed nav */
+.header-backdrop {
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+/* ============================================================
+   Theme Switch Toggle
+   Accessible, tactile editorial control adhering to DESIGN_SYSTEM.md
+   ============================================================ */
+
+.theme-switch {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  cursor: pointer;
+  user-select: none;
+  min-height: 44px;
+  min-width: 44px;
+  justify-content: center;
+}
+
+.theme-switch-track {
+  position: relative;
+  width: 48px;
+  height: 26px;
+  background-color: #f4f4f5;
+  border: 1px solid #d4d4d8;
+  border-radius: 9999px;
+  padding: 0 4px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  transition: background-color 200ms cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 200ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.dark .theme-switch-track {
+  background-color: #18181c;
+  border-color: #27272a;
+}
+
+.theme-switch-thumb {
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 20px;
+  height: 20px;
+  background-color: #ffffff;
+  border: 1px solid #e4e4e7;
+  border-radius: 9999px;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.08);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 200ms cubic-bezier(0.16, 1, 0.3, 1),
+              background-color 200ms cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 200ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.dark .theme-switch-thumb {
+  transform: translateX(22px);
+  background-color: #09090b;
+  border-color: #3f3f46;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.3);
+}
+
+.theme-switch input:focus-visible + .theme-switch-track {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .theme-switch-track,
+  .theme-switch-thumb {
+    transition: none !important;
+  }
+}
