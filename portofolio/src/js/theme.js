@@ -27,7 +27,17 @@ function updateSwitches(isDark) {
   }
 }
 
-function setTheme(isDark, save = true) {
+let transitionTimeout = null;
+
+function setTheme(isDark, save = true, animate = false) {
+  if (animate) {
+    htmlEl.classList.add('theme-transitioning');
+    if (transitionTimeout) clearTimeout(transitionTimeout);
+    transitionTimeout = setTimeout(() => {
+      htmlEl.classList.remove('theme-transitioning');
+    }, 280);
+  }
+
   if (isDark) {
     htmlEl.classList.add('dark');
   } else {
@@ -50,13 +60,13 @@ export function initTheme() {
 
   if (themeSwitch) {
     themeSwitch.addEventListener('change', (e) => {
-      setTheme(e.target.checked);
+      setTheme(e.target.checked, true, true);
     });
   }
 
   if (mobileThemeSwitch) {
     mobileThemeSwitch.addEventListener('change', (e) => {
-      setTheme(e.target.checked);
+      setTheme(e.target.checked, true, true);
     });
   }
 
@@ -64,7 +74,7 @@ export function initTheme() {
   const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
   mediaQuery.addEventListener('change', (e) => {
     if (!localStorage.getItem('porto_theme')) {
-      setTheme(e.matches, false);
+      setTheme(e.matches, false, true);
     }
   });
 }
