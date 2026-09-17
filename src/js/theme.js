@@ -35,7 +35,7 @@ function setTheme(isDark, save = true, animate = false) {
     if (transitionTimeout) clearTimeout(transitionTimeout);
     transitionTimeout = setTimeout(() => {
       htmlEl.classList.remove('theme-transitioning');
-    }, 280);
+    }, 320);
   }
 
   if (isDark) {

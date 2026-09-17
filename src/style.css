@@ -172,19 +172,20 @@ textarea:focus-visible {
 
 /* ============================================================
    Smooth Theme Color Transition
-   Applies buttery 250ms transition to background and text colors
-   during theme toggle without breaking layout or animations.
+   Selectively transitions major surfaces and text containers
+   without layout thrashing or interfering with component animations.
    ============================================================ */
 html.theme-transitioning,
-html.theme-transitioning *,
-html.theme-transitioning *::before,
-html.theme-transitioning *::after {
-  transition: background-color 250ms cubic-bezier(0.16, 1, 0.3, 1),
-              border-color 250ms cubic-bezier(0.16, 1, 0.3, 1),
-              color 250ms cubic-bezier(0.16, 1, 0.3, 1),
-              fill 250ms cubic-bezier(0.16, 1, 0.3, 1),
-              stroke 250ms cubic-bezier(0.16, 1, 0.3, 1) !important;
-  transition-delay: 0s !important;
+html.theme-transitioning body,
+html.theme-transitioning header,
+html.theme-transitioning main,
+html.theme-transitioning section,
+html.theme-transitioning footer,
+html.theme-transitioning article,
+html.theme-transitioning nav {
+  transition: background-color 300ms cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 300ms cubic-bezier(0.16, 1, 0.3, 1),
+              color 300ms cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 /* ============================================================
@@ -213,19 +214,40 @@ html.theme-transitioning *::after {
   transform: translateY(-6px) rotate(-45deg);
 }
 
-/* Collapsible Mobile Menu Drawer with Smooth Grid Expansion */
+/* ============================================================
+   Mobile Navigation Drawer
+   ============================================================ */
+
+/* Completely hide mobile menu drawer on desktop screens */
+@media (min-width: 768px) {
+  .mobile-menu-drawer,
+  #mobileMenu {
+    display: none !important;
+  }
+}
+
 .mobile-menu-drawer {
   display: grid;
   grid-template-rows: 0fr;
-  transition: grid-template-rows 250ms cubic-bezier(0.16, 1, 0.3, 1),
-              border-color 200ms ease;
+  transition: grid-template-rows 250ms cubic-bezier(0.16, 1, 0.3, 1);
+  overflow: hidden;
+}
+
+.mobile-menu-drawer:not(.is-open) {
+  grid-template-rows: 0fr !important;
+  border-bottom-width: 0px !important;
+  border-bottom: none !important;
+  visibility: hidden;
 }
 
 .mobile-menu-drawer.is-open {
   grid-template-rows: 1fr;
+  border-bottom-width: 1px;
+  visibility: visible;
 }
 
 .mobile-menu-inner {
+  min-height: 0;
   overflow: hidden;
   transition: opacity 220ms cubic-bezier(0.16, 1, 0.3, 1),
               transform 250ms cubic-bezier(0.16, 1, 0.3, 1);
@@ -245,49 +267,107 @@ html.theme-transitioning *::after {
   .mobile-menu-drawer,
   .mobile-menu-inner,
   #heroPortraitImg,
-  .project-image-container img {
+  .project-image-container img,
+  .project-image-container::after,
+  .photo-status-badge {
     transition: none !important;
     transform: none !important;
+    animation: none !important;
   }
 }
 
 /* ============================================================
-   Interactive Photos (Mobile Tap / Click & Desktop Color Reveal)
-   Mirrors desktop hover:grayscale-0 for touch/mobile devices
-   adhering to DESIGN_SYSTEM.md motion and contrast tokens.
+   Interactive Photos (Smooth Hover, Click & Tactile Interactions)
+   Adheres to DESIGN_SYSTEM.md motion and contrast tokens.
    ============================================================ */
 
 .hero-portrait-frame,
 .project-image-container {
+  position: relative;
   cursor: pointer;
   -webkit-tap-highlight-color: transparent;
   user-select: none;
+  isolation: isolate;
 }
 
-/* Portrait Hero Image Transitions & Active State */
+/* Base Photo Styling with Hardware Acceleration & Silky 650ms Ease */
+.project-image-container img,
 #heroPortraitImg {
-  transition: filter 500ms cubic-bezier(0.16, 1, 0.3, 1);
-  will-change: filter;
-}
-
-#heroPortraitImg.is-colored,
-.hero-portrait-frame.is-colored #heroPortraitImg,
-.hero-portrait-frame:active #heroPortraitImg {
-  filter: grayscale(0%) contrast(1) !important;
-}
-
-/* Project Card Photos Transitions & Active State */
-.project-image-container img {
-  transition: filter 500ms cubic-bezier(0.16, 1, 0.3, 1),
-              transform 500ms cubic-bezier(0.16, 1, 0.3, 1);
+  filter: grayscale(100%) contrast(1.04) brightness(0.96);
+  transform: scale(1) translate3d(0, 0, 0);
+  transform-origin: center center;
+  transition: filter 650ms cubic-bezier(0.16, 1, 0.3, 1),
+              transform 650ms cubic-bezier(0.16, 1, 0.3, 1),
+              opacity 500ms ease;
   will-change: filter, transform;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
 }
 
+/* Subtle Vignette Atmosphere on Project Image Container */
+.project-image-container::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.04) 0%, transparent 40%, rgba(0, 0, 0, 0.28) 100%);
+  opacity: 0.65;
+  transition: opacity 650ms cubic-bezier(0.16, 1, 0.3, 1);
+  pointer-events: none;
+  z-index: 2;
+}
+
+/* Silky Smooth Hover State */
+.project-item:hover .project-image-container img,
+.project-image-container:hover img,
+.hero-portrait-frame:hover #heroPortraitImg {
+  filter: grayscale(0%) contrast(1.02) brightness(1.02);
+  transform: scale3d(1.04, 1.04, 1);
+}
+
+.project-item:hover .project-image-container::after,
+.project-image-container:hover::after,
+.project-image-container.is-colored::after {
+  opacity: 0.15;
+}
+
+/* Tactile Click / Mousedown Press Down Feedback */
+.project-image-container:active img,
+.hero-portrait-frame:active #heroPortraitImg {
+  transform: scale3d(1.015, 1.015, 1) !important;
+  transition-duration: 160ms !important;
+}
+
+/* Active / Locked Click State (.is-colored) */
 .project-image-container.is-colored img,
-.project-image-container img.is-colored,
 .project-item.is-colored .project-image-container img,
-.project-image-container:active img {
-  filter: grayscale(0%) contrast(1) !important;
-  transform: scale(1.02);
+#heroPortraitImg.is-colored,
+.hero-portrait-frame.is-colored #heroPortraitImg {
+  filter: grayscale(0%) contrast(1.02) brightness(1.02) !important;
+  transform: scale3d(1.04, 1.04, 1) !important;
+}
+
+/* Status Indicator Pill for Locked Photo State */
+.photo-status-badge {
+  opacity: 0;
+  transform: translateY(-4px) scale(0.96);
+  transition: opacity 350ms cubic-bezier(0.16, 1, 0.3, 1),
+              transform 350ms cubic-bezier(0.16, 1, 0.3, 1);
+  pointer-events: none;
+  z-index: 10;
+}
+
+.project-image-container.is-colored .photo-status-badge,
+.hero-portrait-frame.is-colored .photo-status-badge {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+/* Subtle hairline indicator on container when active */
+.project-image-container {
+  transition: border-color 350ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.project-image-container.is-colored {
+  border-bottom-color: rgba(99, 102, 241, 0.4);
 }
 

@@ -13,6 +13,24 @@
 
   <!-- Font Awesome Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <!-- Core Stylesheet Linked in Head to Prevent FOUC -->
+  <link rel="stylesheet" href="/src/style.css">
+
+  <!-- Critical Inline Script to Prevent Theme FOUC -->
+  <script>
+    (function() {
+      try {
+        var stored = localStorage.getItem('porto_theme');
+        var isDark = stored ? stored === 'dark' : window.matchMedia('(prefers-color-scheme: dark)').matches;
+        if (isDark) {
+          document.documentElement.classList.add('dark');
+        } else {
+          document.documentElement.classList.remove('dark');
+        }
+      } catch (e) {}
+    })();
+  </script>
 </head>
 <body class="font-sans min-h-screen selection:bg-indigo-500/20 selection:text-indigo-600 dark:selection:text-indigo-300">
 
@@ -22,9 +40,9 @@
   </a>
 
   <!-- Global Header Navigation -->
-  <header class="fixed top-0 left-0 w-full z-40 header-backdrop bg-white/90 dark:bg-[#09090b]/90 border-b border-hairline-light dark:border-hairline-dark transition-colors duration-200">
+  <header class="fixed top-0 left-0 w-full z-40 header-backdrop bg-white/90 dark:bg-canvas-dark/90 border-b border-hairline-light dark:border-hairline-dark transition-colors duration-200">
     <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex items-center justify-between h-16 sm:h-20">
+      <div class="flex items-center justify-between h-14">
         
         <!-- Brand Identity -->
         <a href="#hero" class="flex items-center gap-3 group focus-visible:rounded-sm">
@@ -65,7 +83,7 @@
           </label>
           
           <!-- Direct CTA -->
-          <a href="#kontak" class="px-4 py-2 rounded-md bg-neutral-900 hover:bg-neutral-800 text-white dark:bg-white dark:text-neutral-900 dark:hover:bg-neutral-100 text-xs font-semibold tracking-tight transition-colors flex items-center gap-1.5">
+          <a href="#kontak" class="px-3.5 py-1.5 rounded-md bg-neutral-900 hover:bg-neutral-800 text-white dark:bg-white dark:text-neutral-900 dark:hover:bg-neutral-100 text-xs font-semibold tracking-tight transition-colors flex items-center gap-1.5">
             <span>Diskusi Proyek</span>
             <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
           </a>
@@ -85,7 +103,7 @@
             </div>
           </label>
           
-          <button id="mobileMenuBtn" type="button" aria-label="Buka menu navigasi" aria-expanded="false" class="w-9 h-9 rounded-md border border-hairline-light dark:border-hairline-dark text-neutral-800 dark:text-neutral-200 flex flex-col items-center justify-center gap-[4px] p-2 focus-visible:outline-none">
+          <button id="mobileMenuBtn" type="button" aria-label="Buka menu navigasi" aria-expanded="false" class="w-9 h-9 rounded-md border border-hairline-light dark:border-hairline-dark text-neutral-800 dark:text-neutral-200 flex flex-col items-center justify-center gap-1 p-2 focus-visible:outline-none">
             <span class="hamburger-line hamburger-line-1 w-4 h-[1.5px] bg-neutral-800 dark:bg-neutral-200 rounded-full block"></span>
             <span class="hamburger-line hamburger-line-2 w-4 h-[1.5px] bg-neutral-800 dark:bg-neutral-200 rounded-full block"></span>
             <span class="hamburger-line hamburger-line-3 w-4 h-[1.5px] bg-neutral-800 dark:bg-neutral-200 rounded-full block"></span>
@@ -96,15 +114,15 @@
     </div>
 
     <!-- Mobile Dropdown Navigation with Smooth Drawer Animation -->
-    <div id="mobileMenu" class="mobile-menu-drawer md:hidden bg-white dark:bg-[#09090b] border-b border-hairline-light dark:border-hairline-dark">
-      <div class="mobile-menu-inner px-4 pt-3 pb-6 space-y-2 font-mono text-xs uppercase tracking-wider">
+    <div id="mobileMenu" class="mobile-menu-drawer md:hidden bg-white dark:bg-canvas-dark border-b border-hairline-light dark:border-hairline-dark">
+      <div class="mobile-menu-inner px-4 pt-3 font-mono text-xs uppercase tracking-wider">
         <a href="#karya" class="block py-2.5 text-neutral-700 dark:text-neutral-300 hover:text-indigo-600 dark:hover:text-indigo-400 mobile-nav-link border-b border-hairline-light/50 dark:border-hairline-dark/50">01 / Karya Terpilih</a>
         <a href="#tentang" class="block py-2.5 text-neutral-700 dark:text-neutral-300 hover:text-indigo-600 dark:hover:text-indigo-400 mobile-nav-link border-b border-hairline-light/50 dark:border-hairline-dark/50">02 / Pendekatan</a>
         <a href="#kapabilitas" class="block py-2.5 text-neutral-700 dark:text-neutral-300 hover:text-indigo-600 dark:hover:text-indigo-400 mobile-nav-link border-b border-hairline-light/50 dark:border-hairline-dark/50">03 / Kapabilitas Teknis</a>
         <a href="#jejak" class="block py-2.5 text-neutral-700 dark:text-neutral-300 hover:text-indigo-600 dark:hover:text-indigo-400 mobile-nav-link border-b border-hairline-light/50 dark:border-hairline-dark/50">04 / Jejak &amp; Rekam</a>
         <a href="#kontak" class="block py-2.5 text-neutral-700 dark:text-neutral-300 hover:text-indigo-600 dark:hover:text-indigo-400 mobile-nav-link">05 / Hubungi Langsung</a>
         <div class="pt-3">
-          <a href="#kontak" class="w-full text-center block px-4 py-2.5 rounded-md bg-neutral-900 text-white dark:bg-white dark:text-neutral-900 text-xs font-sans font-semibold tracking-tight mobile-nav-link">
+          <a href="#kontak" class="w-full text-center block mb-6 px-4 py-2.5 rounded-md bg-neutral-900 text-white dark:bg-white dark:text-neutral-900 text-xs font-sans font-semibold tracking-tight mobile-nav-link">
             Kirim Pesan Kolaborasi
           </a>
         </div>
@@ -114,7 +132,7 @@
 
   <main id="main-content">
     <!-- HERO SECTION: Editorial, High-Contrast, Restrained -->
-    <section id="hero" class="pt-28 pb-16 md:pt-40 md:pb-28 border-b border-hairline-light dark:border-hairline-dark">
+    <section id="hero" class="pt-24 pb-16 md:pt-32 md:pb-24 border-b border-hairline-light dark:border-hairline-dark">
       <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
           
@@ -180,18 +198,25 @@
                 tabindex="0" 
                 aria-label="Ketuk untuk melihat warna foto potret" 
                 title="Ketuk atau klik untuk melihat warna asli foto"
-                class="hero-portrait-frame relative overflow-hidden rounded-lg border border-hairline-light dark:border-hairline-dark bg-neutral-100 dark:bg-neutral-900 aspect-[4/5] cursor-pointer select-none"
+                class="hero-portrait-frame relative overflow-hidden rounded-lg border border-hairline-light dark:border-hairline-dark bg-neutral-100 dark:bg-neutral-900 aspect-4/5 cursor-pointer select-none"
               >
                 <img 
                   id="heroPortraitImg"
                   src="/img/me.png" 
                   alt="Potret Aksan Zulkarnain"
-                  class="w-full h-full object-cover grayscale contrast-[1.05] hover:grayscale-0 transition-all duration-500"
+                  class="w-full h-full object-cover"
                   onerror="this.parentElement.innerHTML='<div class=\'w-full h-full flex items-center justify-center font-mono text-xs text-neutral-400\'>Aksan Zulkarnain</div>'"
                 >
+                <!-- Subtle Status Indicator on Active / Click -->
+                <div class="photo-status-badge absolute top-3 right-3 pointer-events-none z-10">
+                  <span class="font-mono text-[10px] uppercase tracking-wider px-2 py-1 rounded bg-neutral-900/85 text-white backdrop-blur-sm border border-neutral-700 flex items-center gap-1.5 shadow-sm">
+                    <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+                    <span>Warna Aktif</span>
+                  </span>
+                </div>
                 <!-- Subtle Vignette Frame -->
-                <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent pointer-events-none"></div>
-                <div class="absolute bottom-3 left-3 right-3 p-3 rounded bg-neutral-950/80 backdrop-blur-sm border border-neutral-800 text-white pointer-events-none">
+                <div class="absolute inset-0 bg-linear-to-t from-black/60 via-transparent to-transparent pointer-events-none z-0"></div>
+                <div class="absolute bottom-3 left-3 right-3 p-3 rounded bg-neutral-950/80 backdrop-blur-sm border border-neutral-800 text-white pointer-events-none z-10">
                   <p class="font-mono text-[10px] uppercase tracking-widest text-neutral-400">Portret Subjek</p>
                   <p class="text-xs font-semibold tracking-tight">Aksan Zulkarnain — Software &amp; UI Builder</p>
                 </div>
@@ -250,12 +275,18 @@
               <img 
                 src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1000&q=80" 
                 alt="Pratinjau Personal OS" 
-                class="w-full h-full object-cover grayscale contrast-[1.05] group-hover:scale-[1.02] group-hover:grayscale-0 transition-all duration-500"
+                class="w-full h-full object-cover"
                 loading="lazy"
               >
-              <div class="absolute top-3 left-3 pointer-events-none">
+              <div class="absolute top-3 left-3 pointer-events-none z-10">
                 <span class="font-mono text-[10px] uppercase tracking-wider px-2 py-1 rounded bg-neutral-900/85 text-white backdrop-blur-sm border border-neutral-700">
                   01 / Personal Project
+                </span>
+              </div>
+              <div class="photo-status-badge absolute top-3 right-3 pointer-events-none z-10">
+                <span class="font-mono text-[10px] uppercase tracking-wider px-2 py-1 rounded bg-neutral-900/85 text-white backdrop-blur-sm border border-neutral-700 flex items-center gap-1.5 shadow-sm">
+                  <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+                  <span>Warna Aktif</span>
                 </span>
               </div>
             </div>
@@ -297,12 +328,18 @@
               <img 
                 src="https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?auto=format&fit=crop&w=1000&q=80" 
                 alt="Pratinjau Lumina Design System" 
-                class="w-full h-full object-cover grayscale contrast-[1.05] group-hover:scale-[1.02] group-hover:grayscale-0 transition-all duration-500"
+                class="w-full h-full object-cover"
                 loading="lazy"
               >
-              <div class="absolute top-3 left-3 pointer-events-none">
+              <div class="absolute top-3 left-3 pointer-events-none z-10">
                 <span class="font-mono text-[10px] uppercase tracking-wider px-2 py-1 rounded bg-neutral-900/85 text-white backdrop-blur-sm border border-neutral-700">
                   02 / Design System
+                </span>
+              </div>
+              <div class="photo-status-badge absolute top-3 right-3 pointer-events-none z-10">
+                <span class="font-mono text-[10px] uppercase tracking-wider px-2 py-1 rounded bg-neutral-900/85 text-white backdrop-blur-sm border border-neutral-700 flex items-center gap-1.5 shadow-sm">
+                  <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+                  <span>Warna Aktif</span>
                 </span>
               </div>
             </div>
@@ -343,12 +380,18 @@
               <img 
                 src="https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&w=1000&q=80" 
                 alt="Pratinjau Medisync" 
-                class="w-full h-full object-cover grayscale contrast-[1.05] group-hover:scale-[1.02] group-hover:grayscale-0 transition-all duration-500"
+                class="w-full h-full object-cover"
                 loading="lazy"
               >
-              <div class="absolute top-3 left-3 pointer-events-none">
+              <div class="absolute top-3 left-3 pointer-events-none z-10">
                 <span class="font-mono text-[10px] uppercase tracking-wider px-2 py-1 rounded bg-neutral-900/85 text-white backdrop-blur-sm border border-neutral-700">
                   03 / Concept Project
+                </span>
+              </div>
+              <div class="photo-status-badge absolute top-3 right-3 pointer-events-none z-10">
+                <span class="font-mono text-[10px] uppercase tracking-wider px-2 py-1 rounded bg-neutral-900/85 text-white backdrop-blur-sm border border-neutral-700 flex items-center gap-1.5 shadow-sm">
+                  <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+                  <span>Warna Aktif</span>
                 </span>
               </div>
             </div>
@@ -389,12 +432,18 @@
               <img 
                 src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=1000&q=80" 
                 alt="Pratinjau Web Interaction Lab" 
-                class="w-full h-full object-cover grayscale contrast-[1.05] group-hover:scale-[1.02] group-hover:grayscale-0 transition-all duration-500"
+                class="w-full h-full object-cover"
                 loading="lazy"
               >
-              <div class="absolute top-3 left-3 pointer-events-none">
+              <div class="absolute top-3 left-3 pointer-events-none z-10">
                 <span class="font-mono text-[10px] uppercase tracking-wider px-2 py-1 rounded bg-neutral-900/85 text-white backdrop-blur-sm border border-neutral-700">
                   04 / Experimental
+                </span>
+              </div>
+              <div class="photo-status-badge absolute top-3 right-3 pointer-events-none z-10">
+                <span class="font-mono text-[10px] uppercase tracking-wider px-2 py-1 rounded bg-neutral-900/85 text-white backdrop-blur-sm border border-neutral-700 flex items-center gap-1.5 shadow-sm">
+                  <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+                  <span>Warna Aktif</span>
                 </span>
               </div>
             </div>
@@ -823,7 +872,7 @@
   </main>
 
   <!-- Global Footer -->
-  <footer class="py-12 border-t border-hairline-light dark:border-hairline-dark bg-white dark:bg-[#09090b]">
+  <footer class="py-12 border-t border-hairline-light dark:border-hairline-dark bg-white dark:bg-canvas-dark">
     <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4 font-mono text-xs text-neutral-500 dark:text-neutral-400">
       <div class="flex items-center gap-2">
         <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
@@ -838,7 +887,7 @@
 
   <!-- Editorial Case Study Modal Dialog -->
   <div id="caseStudyModal" class="fixed inset-0 z-50 bg-black/70 backdrop-blur-sm hidden items-center justify-center p-4" role="dialog" aria-modal="true" aria-labelledby="modalHeading">
-    <div class="bg-white dark:bg-[#121215] max-w-2xl w-full rounded-lg overflow-hidden border border-hairline-light dark:border-hairline-dark shadow-2xl flex flex-col max-h-[90vh] transition-all transform scale-95" id="modalContainer">
+    <div class="bg-white dark:bg-surface-dark max-w-2xl w-full rounded-lg overflow-hidden border border-hairline-light dark:border-hairline-dark shadow-2xl flex flex-col max-h-[90vh] transition-all transform scale-95" id="modalContainer">
       
       <!-- Modal Header Bar -->
       <div class="px-6 py-4 border-b border-hairline-light dark:border-hairline-dark flex items-center justify-between bg-neutral-50 dark:bg-neutral-900/50">

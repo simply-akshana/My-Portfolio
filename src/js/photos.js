@@ -17,6 +17,7 @@ export function initInteractivePhotos() {
       
       heroImg.classList.toggle('is-colored', willBeColored);
       heroContainer.classList.toggle('is-colored', willBeColored);
+      heroContainer.setAttribute('aria-pressed', String(willBeColored));
     };
 
     heroContainer.addEventListener('click', toggleHero);
@@ -41,6 +42,7 @@ export function initInteractivePhotos() {
       // Toggle this container and image
       img.classList.toggle('is-colored', willBeColored);
       container.classList.toggle('is-colored', willBeColored);
+      container.setAttribute('aria-pressed', String(willBeColored));
 
       const article = container.closest('.project-item');
       if (article) {
@@ -62,6 +64,9 @@ export function initInteractivePhotos() {
     if (!e.target.closest('#heroPortraitContainer, .project-image-container')) {
       document.querySelectorAll('.is-colored').forEach(el => {
         el.classList.remove('is-colored');
+        if (el.hasAttribute('aria-pressed')) {
+          el.setAttribute('aria-pressed', 'false');
+        }
       });
     }
   });
