@@ -10,6 +10,7 @@ import { initNavigation } from './js/navigation.js';
 import { initProjectFilters, initCaseStudyModal } from './js/projects.js';
 import { initCopyEmail, initContactForm } from './js/contact.js';
 import { initDynamicYear } from './js/utils.js';
+import { initInteractivePhotos } from './js/photos.js';
 
 // Initialize all modules when DOM is ready
 document.addEventListener('DOMContentLoaded', () => {
@@ -20,4 +21,5 @@ document.addEventListener('DOMContentLoaded', () => {
   initCopyEmail();
   initContactForm();
   initDynamicYear();
+  initInteractivePhotos();
 });
